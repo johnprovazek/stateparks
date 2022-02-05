@@ -1,0 +1,167 @@
+@font-face {  
+    font-family: 'FormataMedium';  
+    font-weight: 400;  
+    font-style: normal;  
+    unicode-range: U+000-5FF;
+    src: local('FormataMedium'), url('../fonts/Formata-Medium.woff2') format('woff2'), url('../fonts/Formata-Medium.woff') format('woff');
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    caret-color: transparent;
+    font-family: 'FormataMedium';
+    font-size: 20px;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.unselectable {
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#dialogText {
+    color: #FCC917;
+    background-color: #592626;
+}
+
+#dialogWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+
+#dialogWrapCell {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #fcc917;
+}
+
+#marginWrap{
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+#mainDialog {
+    max-width: 400px;
+    margin: 5px;
+    border: solid #000000 2px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    text-align: left;
+    position:relative;
+    z-index: 5;
+}
+
+#mainDialog > * {
+    padding: 10px 30px;
+}
+
+#passArea {
+    padding: 20px 30px;
+    background-color: #FCC917;
+}
+
+#passArea > * {
+    margin: 5px auto;
+}
+
+#pass {
+    width: 100%;
+    height: 40px;
+    font-size: 30px;
+    caret-color: #000000;
+}
+
+#messageWrapper {
+    float: left;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.notifyText {
+    display: none;
+}
+
+#invalidPass {
+    color: red;
+}
+
+#success {
+    color: green;
+}
+
+#submitPass {
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #592626;
+    border: solid #000000 2px;
+    float: right;
+    cursor: pointer;
+    font-family: 'FormataMedium';  
+    color: #FCC917
+}
+
+#contentFrame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#attribution {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+#attribution, #attribution a {
+    color: #999;
+}
+
+.error {
+    display: none;
+    color: red;
+}
+
+#passwordPrompt{
+    color: #592626;
+}
+
+#guest {
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #592626;
+    border: solid #000000 2px;
+    cursor: pointer;
+    font-family: 'FormataMedium';  
+    color: #FCC917;
+    /* float: bottom; */
+    position: relative;
+    top: 20px;
+    left:auto;
+    right:auto;
+}
+
+/* <button id="guest">Guest Access</button> */

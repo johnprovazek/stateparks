@@ -1,0 +1,124 @@
+/* initially have navbar elements hidden */
+#navbar-main-text{visibility: hidden;}
+#logo {visibility: hidden;}
+#menu-symbol{visibility: hidden;}
+
+/*  Common screen sizes used to handle the navbar scaling  */
+@media only screen and (min-width: 2561px)  {
+    #navbar-main-text{font-size: calc(var(--screenheight) * .04);}
+    #logo {width:calc(var(--screenheight) * .081); height:calc(var(--screenheight) * .081);}
+}
+@media only screen and (min-width: 1921px) and (max-width: 2560px) {
+    #navbar-main-text{font-size: calc(var(--screenheight) * .04);}
+    #logo {width:calc(var(--screenheight) * .081); height:calc(var(--screenheight) * .081);}
+}
+@media only screen and (min-width: 1481px) and (max-width: 1920px) {
+    #navbar-main-text{font-size: calc(var(--screenheight) * .04);}
+    #logo {width:calc(var(--screenheight) * .081); height:calc(var(--screenheight) * .081);}
+}
+@media only screen and (min-width: 1281px) and (max-width: 1480px) { 
+    #navbar-main-text{font-size: calc(var(--screenheight) * .032);}
+    #logo {width:calc(var(--screenheight) * .064); height:calc(var(--screenheight) * .064);}
+}
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+    #navbar-main-text{font-size: calc(var(--screenheight) * .024);}
+    #logo {width:calc(var(--screenheight) * .048); height:calc(var(--screenheight) * .048);}
+}
+@media only screen and (min-width: 651px) and (max-width: 1024px) {
+    #navbar-main-text{font-size: calc(var(--screenheight) * .016);}
+    #logo {width:calc(var(--screenheight) * .032); height:calc(var(--screenheight) * .032);}
+    #menu-symbol{width:calc(var(--screenheight) * .032); height:calc(var(--screenheight) * .032);}
+}
+@media only screen and (min-width:500px) and (max-width: 650px) {
+    #navbar-main-text{font-size: calc(var(--screenheight) * .012);}
+    #logo {width:calc(var(--screenheight) * .024); height:calc(var(--screenheight) * .024);}
+    #menu-symbol{width:calc(var(--screenheight) * .024); height:calc(var(--screenheight) * .024);}
+}
+@media only screen and (max-width: 499px) {  /* TODO: find a small monitor to test this on */
+    #navbar-main-text{font-size: calc(var(--screenheight) * .012);}
+    #logo {width:calc(var(--screenheight) * .024); height:calc(var(--screenheight) * .024);}
+    #menu-symbol{width:calc(var(--screenheight) * .024); height:calc(var(--screenheight) * .024);}
+}
+
+/*  Desktop Version of navbar starts at 1025px and up  */
+@media (min-width: 1025px){
+    .navbar-expand-custom {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .navbar-expand-custom .navbar-nav {
+        flex-direction: row;
+    }
+    .navbar-expand-custom .dropdown-menu {
+        position: absolute;
+    }
+    .navbar-expand-custom .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+    .navbar-expand-custom > .container {
+        flex-wrap: nowrap;
+    }
+    .navbar-expand-custom .navbar-collapse {
+        display: flex!important;
+        flex-basis: auto;
+    }
+    .navbar-expand-custom .navbar-toggler {
+        display: none;
+    }
+}
+
+/*  Mobile Version of navbar starts at 1024px and down  */
+@media (max-width: 1024px){
+    .navbar-toggler {
+        padding: 0px;
+        font-size: 0px;
+        border: 0px;
+        border-radius: 0.25rem;
+        transition: box-shadow .15s ease-in-out;
+    }
+}
+
+/*  Set the font, color, background color for all items under navbar  */
+.navbar *, .navbar *:hover, .navbar *:visited, .navbar *:focus{
+    font-family: "FormataMedium";
+    background-color: #592626;
+    color: #FCC917;
+}
+
+/*  Turning off the outline on mobile toggle switch when active */
+.navbar-toggler:focus,.navbar-toggler:active{
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar, .navbar-expand-lg{
+    padding: 0px;
+}
+
+.container-fluid{
+    padding: calc(var(--screenheight) * .01);
+}
+
+.dropdown-item:hover{
+    color: #337321 !important;
+    background-color: #002469 !important;
+}
+
+.dropdown-menu{
+    border: 2px solid #FCC917;
+}
+
+.dropdown-toggle{
+    text-align: center;
+}
+
+.navbar-brand{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#navbarNavDropdown{
+    padding-top: 0px;
+}

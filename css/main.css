@@ -1,0 +1,90 @@
+/*  Common screen sizes used to handle sizing the landscape photos  */
+@media only screen and (min-width: 2561px)  {
+    .landscape{height: auto;width: 33vw;}
+    .parksign {object-fit: cover; flex: 1 1 auto; height: calc(var(--screenheight) * .2); width: auto;}
+}
+@media only screen and (min-width: 1921px) and (max-width: 2560px) {
+        .landscape{height: auto;width: 33vw;}
+        .parksign {object-fit: cover; flex: 1 1 auto; height: calc(var(--screenheight) * .2); width: auto;}
+}
+@media only screen and (min-width: 1441px) and (max-width: 1920px) {
+        .landscape{height: auto;width: 33vw;}
+        .parksign {object-fit: cover; flex: 1 1 auto; height: calc(var(--screenheight) * .2); width: auto;}
+}
+@media only screen and (min-width: 1281px) and (max-width: 1440px) {
+        .landscape{height: auto;width: 33vw;}
+        .parksign {object-fit: cover; flex: 1 1 auto; height: calc(var(--screenheight) * .2); width: auto;}
+}
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+        .landscape{height: auto;width: 33vw;}
+        .parksign {object-fit: cover; flex: 1 1 auto; height: calc(var(--screenheight) * .2); width: auto;}
+}
+@media only screen and (min-width: 651px) and (max-width: 1024px) {
+        .landscape{height: auto;width: 33vw;}
+        .parksign {object-fit: cover; flex: 1 1 auto; height: calc(var(--screenheight) * .2); width: auto;}
+
+}
+@media only screen and (max-width: 650px) {
+        .landscape{height: auto;width: 100vw;}
+        .parksign {object-fit: cover; flex: 1 1 auto; height: calc(var(--screenheight) * .2); width: auto;}
+}
+
+@font-face {  
+    font-family: 'FormataMedium';  
+    font-weight: 400;  
+    font-style: normal;  
+    unicode-range: U+000-5FF;
+    src: local('FormataMedium'), url('../fonts/Formata-Medium.woff2') format('woff2'), url('../fonts/Formata-Medium.woff') format('woff');
+}
+
+body {
+    margin:0;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    caret-color: rgba(0,0,0,0);
+    background-color: #FCC917;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.unselectable {
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+:root {
+    --screenwidth: 1000px;
+    --screenheight: 1000px;
+}
+
+.flex {
+    content: "";
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.landscape_container{
+    display:none;
+}
+
+.landscape{
+    object-fit: cover;
+    flex: 1 1 auto;
+    /* height: auto;
+    width: 33vw; */
+}
+
+.parksigntext{
+    display:none;
+    background-color: #FCC917
+}
+
+.transparentend{
+    background-color: #FCC917;
+}
