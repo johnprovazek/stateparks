@@ -10,7 +10,7 @@ This website is hosted for free here using GitHub Pages. It is written using van
 
 If you would like to access my website it can be found at [johnprovazek.com/stateparks](https://www.johnprovazek.com/stateparks/). If you would like to create a copy of this website for yourself follow along below. 
 
-Once development is complete and thoroughly tested I will create two branches *simplesite* and *pagecrypt*, where it would be best to start your own development. The *simplesite* branch will not include guest access or [PageCrypt](https://www.maxlaumeister.com/pagecrypt/) and therefore will not be password protected. The *pagecrypt* branch will not include guest access but will still be password protected. Fork off this repo to start creating your own website and start tracking the state parks you've visited! 
+Once development is complete and thoroughly tested (mobile is a little broken) I will create two branches *simplesite* and *pagecrypt*, where it would be best to start your own development. The *simplesite* branch will not include guest access or [PageCrypt](https://www.maxlaumeister.com/pagecrypt/) and therefore will not be password protected. The *pagecrypt* branch will not include guest access but will still be password protected. Fork off this repo to start creating your own website and start tracking the state parks you've visited! 
 
 ## Usage
 
