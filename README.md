@@ -44,6 +44,13 @@ Lastly, this website has been setup and designed to fit the picture aspect ratio
 
 [Bootstrap 5](https://getbootstrap.com/docs/5.0/components/navbar/) was used for the navbar.
 
+## Bugs & Features
+
+- Might be race condition when opening landscape, specifcally a problem on slow networks.
+- Add password-free guest option.
+- Add missing parks SVGs.
+- Add simplesite and pagecrypt branch.
+
 ## License
 
 No License for now until I have a better understanding of this. Would like this to be free for non commercial use.
