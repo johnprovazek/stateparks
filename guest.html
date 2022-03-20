@@ -1,0 +1,824 @@
+<!doctype html>
+<html>
+    <head>
+        <title>State Parks</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+        <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="robots" content="noindex">
+        <link rel="preload" as="font" href="fonts/Formata-Medium.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="fonts/Formata-Medium.woff" type="font/woff2" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/navbar.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-custom" onmouseover="handleLandscapeOnMouseOver(this)">
+            <div id="navbar-container" class="container-fluid">
+                <a class="navbar-brand unselectable"><img src="img/park-emblem.svg" alt="" id="logo" class="unselectable"></a>
+                <a class="navbar-brand unselectable" id="navbar-main-text">John Provazek's State Park Checklist</a>
+                <button id="menu-button" class="navbar-toggler" type="button" onClick="navbarOpenDropdown(this)">
+                    <img id="menu-symbol" src="img/menu-symbol-sm.svg">
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle unselectable" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-current-id="ALL">All State Parks 45/282</a>
+                            <ul id= "dropdown-parks" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item unselectable" href="#" id="ALL" data-text="All State Parks" onclick="filterParks(this)">All State Parks</a><li>
+                                <li><a class="dropdown-item unselectable" href="#" id="SPK" data-text="State Parks" onclick="filterParks(this)">State Parks</a><li>
+                                <li><a class="dropdown-item unselectable" href="#" id="HPK" data-text="State Historic Parks" onclick="filterParks(this)">State Historic Parks</a><li>
+                                <li><a class="dropdown-item unselectable" href="#" id="SBH" data-text="State Beaches" onclick="filterParks(this)">State Beaches</a><li>
+                                <li><a class="dropdown-item unselectable" href="#" id="SRA" data-text="State Recreation Area" onclick="filterParks(this)">State Recreation Areas</a><li>
+                                <li><a class="dropdown-item unselectable" href="#" id="SNR" data-text="State Natural Reserves" onclick="filterParks(this)">State Natural Reserves</a><li>
+                                <li><a class="dropdown-item unselectable" href="#" id="VRA" data-text="State Vehicular Recreation Areas" onclick="filterParks(this)">State Vehicular Recreation Area</a><li>
+                                <li><a class="dropdown-item unselectable" href="#" id="OTH" data-text="Other" onclick="filterParks(this)">Other</a><li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="flex" id="parksignflexbox">
+            <img class="parksign parksigntext SRA ALL" id="s424" data-visited="0" src="img/parks/424.svg" data-parksid="424" alt="Admiral William Standley State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s464" data-visited="0" src="img/parks/464.svg" data-parksid="464" alt="Ahjumawi Lava Springs State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s901" data-visited="0" src="img/parks/901.svg" data-parksid="22880" alt="Albany State Marine Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s483" data-visited="0" src="img/parks/483.svg" data-parksid="483" alt="Anderson Marsh State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s582" data-visited="0" src="img/parks/582.svg" data-parksid="582" alt="Andrew Molera State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s468" data-visited="0" src="img/parks/468.svg" data-parksid="468" alt="Angel Island State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s523" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/KXO8QcStnQ9j2DJgrNBfkMiPs2Iob_NNd2ct1Pa7LCOrWXr3oaHXJTMb4rzosKJrcmtJ5ja_emjL37o-YfJUrQhcVeAladmp5Ftdxc5rxyVkv4tEM2L6j22twWGQTdH_aZeNHP0Wnw=w324" data-parksid="523" alt="Año Nuevo State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s627" data-visited="0" src="img/parks/627.svg" data-parksid="627" alt="Antelope Valley California Poppy Reserve State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s632" data-visited="0" src="img/parks/632.svg" data-parksid="632" alt="Antelope Valley Indian Museum State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s638" data-visited="0" src="img/parks/638.svg" data-parksid="638" alt="Anza-Borrego Desert State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s450" data-visited="0" src="img/parks/450.svg" data-parksid="450" alt="Armstrong Redwoods State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s634" data-visited="0" src="img/parks/634.svg" data-parksid="634" alt="Arthur B. Ripley Desert Woodland State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s566" data-visited="0" src="img/parks/566.svg" data-parksid="566" alt="Asilomar State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s502" data-visited="0" src="img/parks/502.svg" data-parksid="502" alt="Auburn State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s452" data-visited="0" src="img/parks/452.svg" data-parksid="452" alt="Austin Creek State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s420" data-visited="0" src="img/parks/420.svg" data-parksid="420" alt="Azalea State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s482" data-visited="0" src="img/parks/482.svg" data-parksid="482" alt="Bale Grist Mill State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s527" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/NbmM6TEqvKN5pnyIYuQuwJ1bunPMu_l9Rl3zXOu5EVhEsyvSDuyNRmmr8pwuXy23sdXgAObP1vPTQw1R54YwALLjaPjQkQNVXd8-3HE0NUVB7aL2rTMbXSfeB3FD5ZdO53FUFebP1Q=w324" data-parksid="527" alt="Bean Hollow State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s426" data-visited="0" src="img/parks/426.svg" data-parksid="426" alt="Benbow State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s476" data-visited="0" src="img/parks/476.svg" data-parksid="476" alt="Benicia State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s475" data-visited="0" src="img/parks/475.svg" data-parksid="475" alt="Benicia Capitol State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s562" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/QTPebeB0yx-nquH4TQp2OYyB8UwZ_a5MI_RkbyEv4BSwQnqIN_h0JT1uCs7VEXqWakZOfBMQERhhvpYYOmlJONikKBIr1h9kSYwakc80fHPs6IuUBL4DHkULAC7Etz4PVXEyn4PjZA=w324" data-parksid="562" alt="Bethany Reservoir State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s460" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/O63L-OYOccNg2SpGKoBmhnHp_VWBrYIilseON9vbs8kkth63qxqQ3aQBR7k3KUJmkQG5ee3EgwCG7X2PNC7PSJ8ak3W6WgSG2PPAFWnVl54CpkAU1Tcp0c9uuMrjKu-3Vth5PgE9Mg=w324" data-parksid="460" alt="Bidwell Mansion State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s463" data-visited="0" src="img/parks/463.svg" data-parksid="463" alt="Bidwell-Sacramento River State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s540" data-visited="0" src="img/parks/540.svg" data-parksid="540" alt="Big Basin Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s509" data-visited="0" src="img/parks/509.svg" data-parksid="509" alt="Bodie State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s642" data-visited="0" src="img/parks/642.svg" data-parksid="642" alt="Bolsa Chica State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s664" data-visited="0" src="img/parks/664.svg" data-parksid="664" alt="Border Field State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s477" data-visited="0" src="img/parks/477.svg" data-parksid="477" alt="Bothe-Napa Valley State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s487" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/oN6XJfbsC0VeDND7EmoqjzI_XUixOcL1KnoeCDp6ON2badWJyih0hlBRL_40aqIIgl9h05e4q5nudNKVxjU7EPMivxtdGX4j5zixURtrjZ9gxoFn0ZmrmRw_QJi-9XegpqQooM8-Uw=w324" data-parksid="487" alt="Brannan Island State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s535" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/GN2DkHcX0GXda68ZGq4a-iuNeZpa41zT6haZnoTk84WPUAmHZSFkjQBNloT_d5Q2Y0TZwX_Z9tndPbq48VKhauJyLuqNzNNdA7lElRhGsZ3hhjOk-gxccyf9pp4EsCPAk35mXBsM_g=w324" data-parksid="535" alt="Burleigh H. Murray Ranch Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s512" data-visited="0" src="img/parks/512.svg" data-parksid="512" alt="Burton Creek State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s536" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/2cO4TNjOwWgHn_C_yeXnjYhh7pqnq4slSnpU_BWqVZi8OiG2vBpHrRPtPDQFonQroC8AcXw00KZqkJs1KfiW2MyjxdzhHQ5Mk8y6oF96LPT2OuY2nxEDGUfuD4flXt9_AUKIAUNXfw=w324" data-parksid="536" alt="Butano State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s902" data-visited="0" src="img/parks/902.svg" data-parksid="25601" alt="Butte City Project Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s551" data-visited="0" src="img/parks/551.svg" data-parksid="551" alt="Calaveras Big Trees State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s649" data-visited="0" src="img/parks/649.svg" data-parksid="649" alt="California Citrus State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s903" data-visited="0" src="img/parks/903.svg" data-parksid="22628" alt="California Indian Heritage Center Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s495" data-visited="0" src="img/parks/495.svg" data-parksid="495" alt="California State Capitol Museum" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s588" data-visited="0" src="img/parks/588.svg" data-parksid="588" alt="California State Mining and Mineral Museum Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s668" data-visited="0" src="img/parks/668.svg" data-parksid="668" alt="California State Railroad Museum Point of Interest" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s904" data-visited="0" src="img/parks/904.svg" data-parksid="27712" alt="Cambria State Marine Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s519" data-visited="0" src="img/parks/519.svg" data-parksid="519" alt="Candlestick Point State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s656" data-visited="0" src="img/parks/656.svg" data-parksid="656" alt="Cardiff State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s567" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/mY8EgT0fT4vaEwMDDHKg86-vWuGwQIkyy0SSKLCj-Rk5P8KWSrN0-QwID-4Un4kWznWPXqVEGRO4FxyFWkeTvhcPlWjhe9VacFRjzH8cwvzzUN305TEh7SEPE5iJEsopt2K-kn-c6A=w324" data-parksid="567" alt="Carmel River State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s410" data-visited="0" src="img/parks/410.svg" data-parksid="410" alt="Carnegie State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s599" data-visited="0" src="img/parks/599.svg" data-parksid="599" alt="Carpinteria State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s444" data-visited="0" src="img/parks/444.svg" data-parksid="444" alt="Caspar Headlands State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s445" data-visited="0" src="img/parks/445.svg" data-parksid="445" alt="Caspar Headlands State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s628" data-visited="0" src="img/parks/628.svg" data-parksid="628" alt="Castaic Lake State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s454" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/6Z4MSHMaTea3fUFl8IvTwU1XPGaU3r7J7yzmWbZic1SCRINpU9Mw3TcsqbBTJKSPFFhej9zYm_Y2hN3j3Z9nYQlna2Aqvzy65aO8udm2H63LRJBweFsmVTF2xR53AvY4xlv3JK_NQQ=w324" data-parksid="454" alt="Castle Crags State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s538" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/91mk-m5RKeZ1fF2Yvfim2hNFe95T5fj-OuV8FhZIknVID4Y8QxSF34QG6GO06Vklwds2v0CefI4pQ5PjnXiHwyGGSzdSoTJ2TgX-IJm27h7a94VNXSChQO2ou7piul34whol0mIBPg=w324" data-parksid="538" alt="Castle Rock State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s557" data-visited="0" src="img/parks/557.svg" data-parksid="557" alt="Caswell Memorial State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s596" data-visited="0" src="img/parks/596.svg" data-parksid="596" alt="Cayucos State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s466" data-visited="0" src="img/parks/466.svg" data-parksid="466" alt="China Camp State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s648" data-visited="0" src="img/parks/648.svg" data-parksid="648" alt="Chino Hills State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s602" data-visited="0" src="img/parks/602.svg" data-parksid="602" alt="Chumash Painted Cave State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s409" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/xDsc7Ok6HDkAdqqp_7Qs60niO-mtCTSzya1Mu0oOvH0nryFuuNJRy-o_Q26pcz2zQ7CoBXzuZCkOodRxkwg9UTo87fkc3suZnpDeKWOD0QUSxsALiKSYd1rlmLjgXCFZECNI_ZeH2A=w324" data-parksid="409" alt="Clay Pit State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s473" data-visited="0" src="img/parks/473.svg" data-parksid="473" alt="Clear Lake State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s583" data-visited="0" src="img/parks/583.svg" data-parksid="583" alt="Colonel Allensworth State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s552" data-visited="0" src="img/parks/552.svg" data-parksid="552" alt="Columbia State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s461" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/WIAa4Df0nVu23Q4LNMBH5yxzeg5tDF46YiVVsO8xlmOAOT_SkUmVzB6DRzGvUVD-LrdxFuiqWbhLLHnWPd9Jxl32tN4doRuZeG-Xg4Ss6YLKMXuEf-YEYeLRHrzkFyrCclnnCRwWiw=w324" data-parksid="461" alt="Colusa-Sacramento River State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s652" data-visited="0" src="img/parks/652.svg" data-parksid="652" alt="Corona del Mar State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s644" data-visited="0" src="img/parks/644.svg" data-parksid="644" alt="Crystal Cove State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s667" data-visited="0" src="img/parks/667.svg" data-parksid="667" alt="Cuyamaca Rancho State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s505" data-visited="0" src="img/parks/505.svg" data-parksid="505" alt="D. L. Bliss State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s414" data-visited="0" src="img/parks/414.svg" data-parksid="414" alt="Del Norte Coast Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s492" data-visited="0" src="img/parks/492.svg" data-parksid="492" alt="Delta Meadows Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s617" data-visited="0" src="img/parks/617.svg" data-parksid="617" alt="Dockweiler State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s645" data-visited="0" src="img/parks/645.svg" data-parksid="645" alt="Doheny State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s503" data-visited="0" src="img/parks/503.svg" data-parksid="503" alt="Donner Memorial State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s905" data-visited="0" src="img/parks/905.svg" data-parksid="28617" alt="Eastern Kern County Onyx Ranch State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s510" data-visited="0" src="img/parks/510.svg" data-parksid="510" alt="Ed Z'berg Sugar Pine Point State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s601" data-visited="0" src="img/parks/601.svg" data-parksid="601" alt="El Capitán State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s608" data-visited="0" src="img/parks/608.svg" data-parksid="608" alt="El Presidio de Santa Barbara State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s506" data-visited="0" src="img/parks/506.svg" data-parksid="506" alt="Emerald Bay State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s906" data-visited="0" src="img/parks/906.svg" data-parksid="22881" alt="Emeryville Crescent State Marine Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s604" data-visited="0" src="img/parks/604.svg" data-parksid="604" alt="Emma Wood State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s499" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/fzm8kw8yqdTw2GFN7WIwr-4t0NKJn0wj5vy_gt5w_ynnRi9_rDKFtZFCXls2mrI-Qui1xO4RrfCqNfjmZHtcoPT_7QRNMV0hED6uLvn__O3p4b4uMILbFvZNIJp_4G_REBoeqxC_yQ=w324" data-parksid="499" alt="Empire Mine State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s907" data-visited="0" src="img/parks/907.svg" data-parksid="22263" alt="Estero Bluffs State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s500" data-visited="0" src="img/parks/500.svg" data-parksid="500" alt="Folsom Lake State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s501" data-visited="0" src="img/parks/501.svg" data-parksid="501" alt="Folsom Powerhouse State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s665" data-visited="0" src="img/parks/665.svg" data-parksid="665" alt="Fort Humboldt State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s580" data-visited="0" src="img/parks/580.svg" data-parksid="580" alt="Fort Ord Dunes State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s449" data-visited="0" src="img/parks/449.svg" data-parksid="449" alt="Fort Ross State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s585" data-visited="0" src="img/parks/585.svg" data-parksid="585" alt="Fort Tejon State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s490" data-visited="0" src="img/parks/490.svg" data-parksid="490" alt="Franks Tract State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s564" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/8TsHvxXPyokIzGM4_mKQ6VmcMGi_nTiWsSoZfDAUuC-_H9tVLR9OgbG6mhUub2vcA_0Q3NzNRx2XgN6-arydT3lyqhr24-61QrUhqW7SqBw77gI7kDqH5KrCIbk36TyKrwqoBPW3MA=w324" data-parksid="564" alt="Fremont Peak State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s579" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/C2Oq3fKrqke2RbiyUnywuMORZjwixnim-KKTdso6VQXNhf1sFqeCCGpxQmeGSjqkRTgRgB7rFDK5TbUxAeW9XiAo6YPrRcelLQ55nnbmVlqFSzz-FZQmSwImaBUqfpyuMitFyMbOnQ=w324" data-parksid="579" alt="Garrapata State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s606" data-visited="0" src="img/parks/606.svg" data-parksid="606" alt="Gaviota State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s556" data-visited="0" src="img/parks/556.svg" data-parksid="556" alt="George J. Hatfield State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s498" data-visited="0" src="img/parks/498.svg" data-parksid="498" alt="Governor's Mansion State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s528" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/pZRoYaYUhpDdI2Rna8CA1WKY2WmX9TcTGDyjBaKGiUdm2unJsd-5TQCY1pkWBNxOEvVXR0d_Ruu0iss6iSq0E952A5Ety4_dk6FTW84YO9fJweBEAxba9jRe-hSQcs1ZIpYFMgT7RQ=w324" data-parksid="528" alt="Gray Whale Cove State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s559" data-visited="0" src="img/parks/559.svg" data-parksid="559" alt="Great Valley Grasslands State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s447" data-visited="0" src="img/parks/447.svg" data-parksid="447" alt="Greenwood State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s421" data-visited="0" src="img/parks/421.svg" data-parksid="421" alt="Grizzly Creek Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s508" data-visited="0" src="img/parks/508.svg" data-parksid="508" alt="Grover Hot Springs State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s531" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/QjabFrTQEU899m4rQFSOhB2B_bizK5GTOsQXlid1YWzFiCb2H1Qdt2jhJllgucLmafv5ebduVllvY9pAilDfwf5GeTKFT3t1KGq8E63vbgPR8yJLq2YYulbIV1eoeiHAuCnC6giGeg=w324" data-parksid="531" alt="Half Moon Bay State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s908" data-visited="0" src="img/parks/908.svg" data-parksid="25735" alt="Harmony Headlands State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s431" data-visited="0" src="img/parks/431.svg" data-parksid="431" alt="Harry A. Merlo State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s909" data-visited="0" src="img/parks/909.svg" data-parksid="22273" alt="Hatton Canyon Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s590" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/cClJj3gGj30rHDtItQVhicQHGUxSFYB7-jTKyRWyn12IJBF77LZqfS39dFk1WPCK6ksH2AVusR8vWFEcTG-xZqQ73PG8cmvq6T9Qb0mwh-gxdbmVfF_0WMDpDnVym-aH9nRXRVmk8Q=w324" data-parksid="590" alt="Hearst San Simeon State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s591" data-visited="0" src="img/parks/591.svg" data-parksid="591" alt="Hearst San Simeon State Historical Monument" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s910" data-visited="0" src="img/parks/910.svg" data-parksid="26080" alt="Heber Dunes State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s438" data-visited="0" src="img/parks/438.svg" data-parksid="438" alt="Hendy Woods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s546" data-visited="0" src="img/parks/546.svg" data-parksid="546" alt="Henry Cowell Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s561" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/-GLSPU81uYAjcPtoOPj8TgMAUKCwIffHgpKhBGf4t0Ct88e9WxUW_thz6O0nIDOhke7qHj6tvpTPjFoEf_Si_E2tDZGKPm7DhDKUbz_M7_3WUXGYu8gNUS4HNvcR_M_dX6hhE-x7UA=w324" data-parksid="561" alt="Henry W. Coe State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s911" data-visited="0" src="img/parks/911.svg" data-parksid="1179" alt="Hollister Hills State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s416" data-visited="0" src="img/parks/416.svg" data-parksid="416" alt="Humboldt Lagoons State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s425" data-visited="0" src="img/parks/425.svg" data-parksid="425" alt="Humboldt Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s405" data-visited="0" src="img/parks/405.svg" data-parksid="405" alt="Hungry Valley State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s643" data-visited="0" src="img/parks/643.svg" data-parksid="643" alt="Huntington State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s553" data-visited="0" src="img/parks/553.svg" data-parksid="553" alt="Indian Grinding Rock State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s640" data-visited="0" src="img/parks/640.svg" data-parksid="640" alt="Indio Hills Palms Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s478" data-visited="0" src="img/parks/478.svg" data-parksid="478" alt="Jack London State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s413" data-visited="0" src="img/parks/413.svg" data-parksid="413" alt="Jedediah Smith Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s912" data-visited="0" src="img/parks/912.svg" data-parksid="22274" alt="John B. Dewitt Redwoods State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s568" data-visited="0" src="img/parks/568.svg" data-parksid="568" alt="John Little State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s441" data-visited="0" src="img/parks/441.svg" data-parksid="441" alt="Jug Handle State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s578" data-visited="0" src="img/parks/578.svg" data-parksid="578" alt="Julia Pfeiffer Burns State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s612" data-visited="0" src="img/parks/612.svg" data-parksid="612" alt="Kenneth Hahn State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s511" data-visited="0" src="img/parks/511.svg" data-parksid="511" alt="Kings Beach State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s448" data-visited="0" src="img/parks/448.svg" data-parksid="448" alt="Kruse Rhododendron State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s598" data-visited="0" src="img/parks/598.svg" data-parksid="598" alt="La Purísima Mission State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s537" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/T-b5rlHY3l9xbb7bdfNDSbmLNCeVd_DNQCu_PBgwJz_aCKpIqEOMGdUHC_kLtx7SNwSuTxU32nb6e8pN58H8g3fonS41XztiuEh09C-uYoYJul4k5UWBBZTVTKtLfgQtBdbTu8lnpQ=w324" data-parksid="537" alt="Lake Del Valle State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s462" data-visited="0" src="img/parks/462.svg" data-parksid="462" alt="Lake Oroville State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s651" data-visited="0" src="img/parks/651.svg" data-parksid="651" alt="Lake Perris State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s515" data-visited="0" src="img/parks/515.svg" data-parksid="515" alt="Lake Valley State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s489" data-visited="0" src="img/parks/489.svg" data-parksid="489" alt="Leland Stanford Mansion State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s616" data-visited="0" src="img/parks/616.svg" data-parksid="616" alt="Leo Carrillo State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s661" data-visited="0" src="img/parks/661.svg" data-parksid="661" alt="Leucadia State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s550" data-visited="0" src="img/parks/550.svg" data-parksid="550" alt="Lighthouse Field State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s577" data-visited="0" src="img/parks/577.svg" data-parksid="577" alt="Limekiln State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s419" data-visited="0" src="img/parks/419.svg" data-parksid="419" alt="Little River State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s913" data-visited="0" src="img/parks/913.svg" data-parksid="24343" alt="Locke Boarding House Museum Point of Interest" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s914" data-visited="0" src="img/parks/914.svg" data-parksid="22272" alt="Los Angeles State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s619" data-visited="0" src="img/parks/619.svg" data-parksid="619" alt="Los Encinos State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s597" data-visited="0" src="img/parks/597.svg" data-parksid="597" alt="Los Osos Oaks State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s436" data-visited="0" src="img/parks/436.svg" data-parksid="436" alt="MacKerricher State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s439" data-visited="0" src="img/parks/439.svg" data-parksid="439" alt="Mailliard Redwoods State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s494" data-visited="0" src="img/parks/494.svg" data-parksid="494" alt="Malakoff Diggins State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s614" data-visited="0" src="img/parks/614.svg" data-parksid="614" alt="Malibu Creek State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s835" data-visited="0" src="img/parks/835.svg" data-parksid="835" alt="Malibu Lagoon State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s437" data-visited="0" src="img/parks/437.svg" data-parksid="437" alt="Manchester State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s609" data-visited="0" src="img/parks/609.svg" data-parksid="609" alt="Mandalay State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s545" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/Wg7QPiEwThhdy7fY4eskLci7-48P0OvI8ZsEJsejyPkONq3KgU6LTrwxgcXbcPQe0ZNjemXQUQCt2Wb7BhI2_n6VIvqioXb3llry6GfAqdgZtC9JES074SJswcjQeVr9dgzkbUVAYQ=w324" data-parksid="545" alt="Manresa State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s467" data-visited="0" src="img/parks/467.svg" data-parksid="467" alt="Marconi Conference Center State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s581" data-visited="0" src="img/parks/581.svg" data-parksid="581" alt="Marina State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s525" data-visited="0" src="img/parks/525.svg" data-parksid="525" alt="Marsh Creek State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s484" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/TQKg9U5Q1GzYkmcJspRA7mEs6E6Xba5igNSWSsG-2AH78Y5X83rpg8uQgGYfDRU53ECscetO7yzn2Skh2qQotwpbofIHyxxY8HI-cMWHhQ1GxeDnW1LI4IVcrHNmWN6a17IRDCdJeg=w324" data-parksid="484" alt="Marshall Gold Discovery State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s915" data-visited="0" src="img/parks/915.svg" data-parksid="23450" alt="Martial Cottle Park State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s455" data-visited="0" src="img/parks/455.svg" data-parksid="455" alt="McArthur-Burney Falls Memorial State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s554" data-visited="0" src="img/parks/554.svg" data-parksid="554" alt="McConnell State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s607" data-visited="0" src="img/parks/607.svg" data-parksid="607" alt="McGrath State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s520" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/hWz8RQ-hZFEdxVM0fxX6ssG3T0FExKoc51Te_Xzmx25Jk9NG13a5bK3S4kQ08s0y5an9sfbSfur1jh6aYgmMxgdEj0k6lL39zDtgItLz7G2BJDC-mCPOJmYrsGNSDIWyxE0uE5Nr2Q=w324" data-parksid="520" alt="McLaughlin Eastshore State Park State Seashore" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s442" data-visited="0" src="img/parks/442.svg" data-parksid="442" alt="Mendocino Headlands State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s443" data-visited="0" src="img/parks/443.svg" data-parksid="443" alt="Mendocino Woodlands State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s587" data-visited="0" src="img/parks/587.svg" data-parksid="587" alt="Millerton Lake State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s514" data-visited="0" src="img/parks/514.svg" data-parksid="514" alt="Mono Lake Tufa State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s592" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/Ax5_gU7wv96sKRi3gvMLOiWEasyQPMQxH3iXr1W8ytXPisNnGhxzJWa9otDGyt_s3CFMuTIIJ3e-85IZ1PRu3MXVKxDaAJ8tKdsSUyL1Yon_kjgsmXJmAwqJG_x2f_n_yxXnZZu8Bg=w324" data-parksid="592" alt="Montaña de Oro State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s532" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/0-Fb3xzBIzPJMKveBxukYZpRHv3DJZ_VjZNEim8Ayas4zmFlWyolU2y8eVG35ab9L55vhxZvMU1rhOaXE-t7naLNnk1bdpUzsQYXNdc-ZZ8Oj2ZN5Pnnicd8vsZGivs7NbCshrw_0Q=w324" data-parksid="532" alt="Montara State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s575" data-visited="0" src="img/parks/575.svg" data-parksid="575" alt="Monterey State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s576" data-visited="0" src="img/parks/576.svg" data-parksid="576" alt="Monterey State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s434" data-visited="0" src="img/parks/434.svg" data-parksid="434" alt="Montgomery Woods State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s659" data-visited="0" src="img/parks/659.svg" data-parksid="659" alt="Moonlight State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s594" data-visited="0" src="img/parks/594.svg" data-parksid="594" alt="Morro Bay State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s593" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/Tt9rZOA8zhnhikwreOxLMfq3RPA1S0DV9mOrFNGWwOMJ_9aBdu-Jgdhw4PdsclFZcxGyXmhtgz0ILS2-p6RC6eZNEtl-Gd2cB2KSpYr0hyCQVajh0eopXUvJl9Jqzpbu72JKbKAY6g=w324" data-parksid="593" alt="Morro Strand State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s574" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/u-drt6m4QzxyxlSY2ktg9RRmiH9srsyyKwwoommJT64FASj3k9lru46TtmuQ8nipAZ4sZat4Qxq71VY_c-WTw0bS6Td9sxh0RIiGreWRfV4aBrOeb_8eYI538THf_RvS1ncWP-lDjA=w324" data-parksid="574" alt="Moss Landing State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s517" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/FjyOVHIbvQxlYF60kkJd-vCudiWuwRh0TjRWPauj0-Tlm4lSOHFYuCHKijfLBJ_2i7XwUv2O8H0_X79OdICvkckj8EjWYFR7NMLYAC9lMZ0--o7SkOBciGhcJvydQSV9iK85PiUOFQ=w324" data-parksid="517" alt="Mount Diablo State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s636" data-visited="0" src="img/parks/636.svg" data-parksid="636" alt="Mount San Jacinto State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s471" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/uLgm1dPZPVdQFuTgFlfsnNFiDuHRYs4d_AojivvbiWkhgyqNeYMkPPI0bExi03LOIoFaQdrEk-1tDBDP7lyULoEvPQu3Yv-7xCwlQ46agylhW8YUE4t5RfoD4D4GIlZHX7gPeayU-g=w324" data-parksid="471" alt="Mount Tamalpais State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s541" data-visited="0" src="img/parks/541.svg" data-parksid="541" alt="Natural Bridges State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s435" data-visited="0" src="img/parks/435.svg" data-parksid="435" alt="Navarro River Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s542" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/lEvpnrzPoemUJ8G5vL2KsPBQLAByidW79UPbuAQHy8o6exwvQ2D0i7SVzKSehHM708oJLGacnmm5mnmPMehiS7JGdFnraJ09yZ3qtqt8aukEpPSQPjlbaXjmLdt69n3PbpEnRhVxEA=w324" data-parksid="542" alt="New Brighton State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s916" data-visited="0" src="img/parks/916.svg" data-parksid="1207" alt="Oceano Dunes State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s917" data-visited="0" src="img/parks/917.svg" data-parksid="1217" alt="Ocotillo Wells State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s497" data-visited="0" src="img/parks/497.svg" data-parksid="497" alt="Old Sacramento State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s663" data-visited="0" src="img/parks/663.svg" data-parksid="663" alt="Old Town San Diego State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s465" data-visited="0" src="img/parks/465.svg" data-parksid="465" alt="Olompali State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s560" data-visited="0" src="img/parks/560.svg" data-parksid="560" alt="Pacheco State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s524" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/-y-3wMQX3udKxvSWGJ8bKh_6OJnZhLITMN4w3F450FtGlnnQjUBp6Oqv7ob0l5u2h0-mJ9-YQfz-JKuLe5pi5f_TUbiIczASyF-34tTBXYQtbmUUiXxzf5yM6kVyRtIqsC0-TT8o7g=w324" data-parksid="524" alt="Pacifica State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s637" data-visited="0" src="img/parks/637.svg" data-parksid="637" alt="Palomar Mountain State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s412" data-visited="0" src="img/parks/412.svg" data-parksid="412" alt="Pelican State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s522" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/ZXUVNeOW_KYKvE-MEEVtggDCC_BMeFwOdcfZEn5ME1xTInjOlJcASOjrDOFaKJ_Lk_AzF-HXwwQFq2p0ZFhB-uMqt7xtZEEG6KZPEuv3HkVPAGjeE5i53kN6-DuxUPL0oZ8rFk3Tgg=w324" data-parksid="522" alt="Pescadero State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s474" data-visited="0" src="img/parks/474.svg" data-parksid="474" alt="Petaluma Adobe State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s570" data-visited="0" src="img/parks/570.svg" data-parksid="570" alt="Pfeiffer Big Sur State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s641" data-visited="0" src="img/parks/641.svg" data-parksid="641" alt="Picacho State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s533" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/Vqk8DK7zi8hfgLqPea4WI3cUdcr3TPBLgbOnEPWGXuD1jJw8Y2usBga66G4JHl2Y8usqET7j9am5-VZ_OwUauDS2LWf4yu7pBhy_YHFYVotAE7FW35xXeqYJ36Paz3uQ-FASCBYm3g=w324" data-parksid="533" alt="Pigeon Point Light Station State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s621" data-visited="0" src="img/parks/621.svg" data-parksid="621" alt="Pío Pico State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s595" data-visited="0" src="img/parks/595.svg" data-parksid="595" alt="Pismo State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s622" data-visited="0" src="img/parks/622.svg" data-parksid="622" alt="Placerita Canyon State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s507" data-visited="0" src="img/parks/507.svg" data-parksid="507" alt="Plumas-Eureka State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s918" data-visited="0" src="img/parks/918.svg" data-parksid="22276" alt="Point Cabrillo Light Station State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s623" data-visited="0" src="img/parks/623.svg" data-parksid="623" alt="Point Dume State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s571" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/BglHdWEKNIMFk_wsWV9_W4Qi6dJiBvFyzjP-aRvXProGNrtkWwpD8GEQeXBuC1gpbD2-2KfsiOpF5EImceEVLRHq_XsE_2XoBhldPR9lODBBGoZkHkiIczwzj1jtjrB8F52-k1ErcA=w324" data-parksid="571" alt="Point Lobos State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s569" data-visited="0" src="img/parks/569.svg" data-parksid="569" alt="Point Lobos Ranch Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s630" data-visited="0" src="img/parks/630.svg" data-parksid="630" alt="Point Mugu State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s605" data-visited="0" src="img/parks/605.svg" data-parksid="605" alt="Point Sal State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s565" data-visited="0" src="img/parks/565.svg" data-parksid="565" alt="Point Sur State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s521" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/fxWcBnaWvGr_ZCvF2Vd8bvaxg8HrnzOWIn_iFkoziEIED2GSu5o42_FCoieP3VInrQvtSLAmcIpeqoVPwVgTC5Fo_Pwrsc-RNTS1BDEmmiTE2Q7kDn_OA4Djz7C6fFG5vMdYzCH2OQ=w324" data-parksid="521" alt="Pomponio State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s539" data-visited="0" src="img/parks/539.svg" data-parksid="539" alt="Portola Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext VRA ALL" id="s411" data-visited="0" src="img/parks/411.svg" data-parksid="411" alt="Prairie City State Vehicular Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s415" data-visited="0" src="img/parks/415.svg" data-parksid="415" alt="Prairie Creek Redwoods State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s615" data-visited="0" src="img/parks/615.svg" data-parksid="615" alt="Providence Mountains State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s491" data-visited="0" src="img/parks/491.svg" data-parksid="491" alt="Railtown 1897 State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s919" data-visited="0" src="img/parks/919.svg" data-parksid="22271" alt="Rancho San Andrés Castro Adobe Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s631" data-visited="0" src="img/parks/631.svg" data-parksid="631" alt="Red Rock Canyon State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s603" data-visited="0" src="img/parks/603.svg" data-parksid="603" alt="Refugio State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s428" data-visited="0" src="img/parks/428.svg" data-parksid="428" alt="Reynolds Wayside Campground" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s422" data-visited="0" src="img/parks/422.svg" data-parksid="422" alt="Richardson Grove State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s920" data-visited="0" src="img/parks/920.svg" data-parksid="22277" alt="Rio de Los Angeles State Park State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s633" data-visited="0" src="img/parks/633.svg" data-parksid="633" alt="Robert H. Meyer Memorial State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s472" data-visited="0" src="img/parks/472.svg" data-parksid="472" alt="Robert Louis Stevenson State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s526" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/fCo7b2dCiKssbuOnjvX2kAZ_NOx_P8tnUxX7bpZ0WyBuypixvzVkvQzfsIDiO714WDtI11cFNzIxuf4mVNkP1KQTH6DWkoqJDAP0zy4yb4iKTHatpuT1Ff2E54_y17VK1yspSlD0Jw=w324" data-parksid="526" alt="Robert W. Crown Memorial State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s432" data-visited="0" src="img/parks/432.svg" data-parksid="432" alt="Russian Gulch State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s618" data-visited="0" src="img/parks/618.svg" data-parksid="618" alt="Saddleback Butte State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s573" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/hsxrDL9uGshOGA4qrMZ4VgSJCdPB5yBqbaz4kT6tcEiW4ZoUG8Z9qLJjKH52qgHUAnFLCxcqSxAhW0ux37dCc6IzwNBQ1264e6ROI12MgDwCQIktQJ7SjdX7mo6D8v5sJ1LX9ZXxww=w324" data-parksid="573" alt="Salinas River State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s453" data-visited="0" src="img/parks/453.svg" data-parksid="453" alt="Salt Point State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s639" data-visited="0" src="img/parks/639.svg" data-parksid="639" alt="Salton Sea State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s469" data-visited="0" src="img/parks/469.svg" data-parksid="469" alt="Samuel P. Taylor State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s518" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/tq5DQvwd6RNHdqnA5zhPPCDJqYrV27nYMmiuDUgWvWiGdXY6oKzcvzOSrkvyUPy0lqaaknwKTgtz7g4jMywS_4Y4ux6yjFWl7gY7NqTy7tMeQ_IDSaTgCcvuEx72bq435XhjIE6N6w=w324" data-parksid="518" alt="San Bruno Mountain State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s600" data-visited="0" src="img/parks/600.svg" data-parksid="600" alt="San Buenaventura State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s646" data-visited="0" src="img/parks/646.svg" data-parksid="646" alt="San Clemente State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s662" data-visited="0" src="img/parks/662.svg" data-parksid="662" alt="San Elijo State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s529" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/ejIFLpRpyKKBavTHZw2XWS4vlKhKoV0rD8rDs3nohHGfnO7SAh5LOnbmJLhJi_rx3B4DD0AbbNolzfUZrwWZhic44NQGO9d1MKyg1Vo_q0ttJ6JWXqGfOBOxH0q_tyi8ttt1Qg1VPg=w324" data-parksid="529" alt="San Gregorio State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s563" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/fs7jYND8eJepJFxFIy98FFhKGAoAtborrmnW3xQrWQMopF2JbL4LBNRuokrBtFQANDdd28YYxZ2dBr7OTDTwMVsxr5tPKhajdcYXg9YVLzhwr6AC8swoWyt5Vf5_jwYX_Vgo-QM1vA=w324" data-parksid="563" alt="San Juan Bautista State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s558" data-visited="0" src="img/parks/558.svg" data-parksid="558" alt="San Luis Reservoir State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s647" data-visited="0" src="img/parks/647.svg" data-parksid="647" alt="San Onofre State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s655" data-visited="0" src="img/parks/655.svg" data-parksid="655" alt="San Pasqual Battlefield State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s921" data-visited="0" src="img/parks/921.svg" data-parksid="22882" alt="San Timoteo Canyon Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s548" data-visited="0" src="img/parks/548.svg" data-parksid="548" alt="Santa Cruz Mission State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s624" data-visited="0" src="img/parks/624.svg" data-parksid="624" alt="Santa Monica State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s611" data-visited="0" src="img/parks/611.svg" data-parksid="611" alt="Santa Susana Pass State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s446" data-visited="0" src="img/parks/446.svg" data-parksid="446" alt="Schooner Gulch State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s543" data-visited="0" src="img/parks/543.svg" data-parksid="543" alt="Seacliff State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s456" data-visited="0" src="img/parks/456.svg" data-parksid="456" alt="Shasta State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s654" data-visited="0" src="img/parks/654.svg" data-parksid="654" alt="Silver Strand State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s650" data-visited="0" src="img/parks/650.svg" data-parksid="650" alt="Silverwood Lake State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s429" data-visited="0" src="img/parks/429.svg" data-parksid="429" alt="Sinkyone Wilderness State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s427" data-visited="0" src="img/parks/427.svg" data-parksid="427" alt="Smithe Redwoods State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s479" data-visited="0" src="img/parks/479.svg" data-parksid="479" alt="Sonoma State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s451" data-visited="0" src="img/parks/451.svg" data-parksid="451" alt="Sonoma Coast State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s660" data-visited="0" src="img/parks/660.svg" data-parksid="660" alt="South Carlsbad State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s496" data-visited="0" src="img/parks/496.svg" data-parksid="496" alt="South Yuba River State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s423" data-visited="0" src="img/parks/423.svg" data-parksid="423" alt="Standish-Hickey State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s486" data-visited="0" src="img/parks/486.svg" data-parksid="486" alt="State Indian Museum State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s493" data-visited="0" src="img/parks/493.svg" data-parksid="493" alt="Stone Lake Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s417" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/AYNphTVf5WaLvR8fCMEZlkTbzXiZXOZLmK-Z5pzIfrXav9ICu2jMC9-Fn4uAkwVRPW7j0l3l5XxizGwk61FrAuIiotIx8zjK8kabVywvjC4x_vQvgiopbiyrQFeMnyK3D7qE80TgEA=w324" data-parksid="417" alt="Sue-meg State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s481" data-visited="0" src="img/parks/481.svg" data-parksid="481" alt="Sugarloaf Ridge State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s544" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/_RQtl2LZcOT00c307eiTKzSnu4rYr_4IEhpbS9MnupiWM-CjkSyJS-cLDhTq0gO0nIyBDi4zY0jhtft7avGP0PQv1RmtoIjCCM0x71gm59pllB3-5TC-FLJSyQnY-EFAmS3AHb3qGw=w324" data-parksid="544" alt="Sunset State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s922" data-visited="0" src="img/parks/922.svg" data-parksid="23452" alt="Sutter Buttes State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s485" data-visited="0" src="img/parks/485.svg" data-parksid="485" alt="Sutter's Fort State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s504" data-visited="0" src="img/parks/504.svg" data-parksid="504" alt="Tahoe State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s666" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/Vj2bwADQNrLLqmEry1lCqg_iQ8M-g8Ysp-5JkZzapfMXhlK-j9mHdkcobE9TFX2XHNYcTX350jk15FPtcQyJYx9EGkNvHX-oLpaPorVpWpPgf7Iv1_dUMc1-Z7vm6qXOH9nVrCl95w=w324" data-parksid="666" alt="The Forest of Nisene Marks State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s530" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/3hY_wUukeEZGnA6wLPCAXWRLQADU4BR3T42y4FXDiqOdlNUo_FFFHvw53zqAgqIiWapMeASQFTx5_boR7yCHmLo5WWXW3NT4WaX7KqcqTdQk4FIJ1ski_u8jr7L1PGbepG8tzL0cYA=w324" data-parksid="530" alt="Thornton State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s669" data-visited="0" src="img/parks/669.svg" data-parksid="669" alt="Tijuana Estuary NP Point of Interest" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s430" data-visited="0" src="img/parks/430.svg" data-parksid="430" alt="Tolowa Dunes State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s470" data-visited="0" src="img/parks/470.svg" data-parksid="470" alt="Tomales Bay State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s610" data-visited="0" src="img/parks/610.svg" data-parksid="610" alt="Tomo-Kahni State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s629" data-visited="0" src="img/parks/629.svg" data-parksid="629" alt="Topanga State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s657" data-visited="0" src="img/parks/657.svg" data-parksid="657" alt="Torrey Pines State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s658" data-visited="0" src="img/parks/658.svg" data-parksid="658" alt="Torrey Pines State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s418" data-visited="0" src="img/parks/418.svg" data-parksid="418" alt="Trinidad State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s480" data-visited="0" src="img/parks/480.svg" data-parksid="480" alt="Trione-Annadel State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SNR ALL" id="s584" data-visited="0" src="img/parks/584.svg" data-parksid="584" alt="Tule Elk State Natural Reserve" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s555" data-visited="0" src="img/parks/555.svg" data-parksid="555" alt="Turlock Lake State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s547" data-visited="0" src="img/parks/547.svg" data-parksid="547" alt="Twin Lakes State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s433" data-visited="0" src="img/parks/433.svg" data-parksid="433" alt="Van Damme State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s635" data-visited="0" src="img/parks/635.svg" data-parksid="635" alt="Verdugo Mountains Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s513" data-visited="0" src="img/parks/513.svg" data-parksid="513" alt="Ward Creek Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s516" data-visited="0" src="img/parks/516.svg" data-parksid="516" alt="Washoe Meadows State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s586" data-visited="0" src="img/parks/586.svg" data-parksid="586" alt="Wassama Round House State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s613" data-visited="0" src="img/parks/613.svg" data-parksid="613" alt="Watts Towers of Simon Rodia State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s457" data-visited="0" src="img/parks/457.svg" data-parksid="457" alt="Weaverville Joss House State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s440" data-visited="0" src="img/parks/440.svg" data-parksid="440" alt="Westport-Union Landing State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SPK ALL" id="s549" data-visited="0" src="img/parks/549.svg" data-parksid="549" alt="Wilder Ranch State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext OTH ALL" id="s923" data-visited="0" src="img/parks/923.svg" data-parksid="22883" alt="Wildwood Canyon Park Property" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s625" data-visited="0" src="img/parks/625.svg" data-parksid="625" alt="Will Rogers State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s626" data-visited="0" src="img/parks/626.svg" data-parksid="626" alt="Will Rogers State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s458" data-visited="1" src="img/minporttr.png" data-photo-link="https://lh3.googleusercontent.com/uCWtrDJR_KBnU74AusY2oAtx8-lAaXQ22GhG2UFB2PUTDYWgJ_H0zedMxlAnfO-Ij5wIxe5QLKv2EfxW40aOa51_4ylX7DYgPcg20H1edupNsIoyDKTu4Ow52krm05tw2qWQbUgPxw=w324" data-parksid="458" alt="William B. Ide Adobe State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext HPK ALL" id="s488" data-visited="0" src="img/parks/488.svg" data-parksid="488" alt="Woodland Opera House State Historic Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SRA ALL" id="s459" data-visited="0" src="img/parks/459.svg" data-parksid="459" alt="Woodson Bridge State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign parksigntext SBH ALL" id="s572" data-visited="0" src="img/parks/572.svg" data-parksid="572" alt="Zmudowski State Beach" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+            <img class="parksign transparentend" src="img/transparent612x817.png">
+        </div>
+        <div class="landscape_container">
+            <div id="l424_p" class="landscape_list" alt="Admiral William Standley State Recreation Area"></div>
+            <div id="l464_p" class="landscape_list" alt="Ahjumawi Lava Springs State Park"></div>
+            <div id="l901_p" class="landscape_list" alt="Albany State Marine Reserve"></div>
+            <div id="l483_p" class="landscape_list" alt="Anderson Marsh State Historic Park"></div>
+            <div id="l582_p" class="landscape_list" alt="Andrew Molera State Park"></div>
+            <div id="l468_p" class="landscape_list" alt="Angel Island State Park"></div>
+            <div id="l523_p" class="landscape_list" alt="Año Nuevo State Park">
+                <img class="landscape" id="l523_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/8SVbLiCBtMWnESw2uuwdkf8XQDNo12PvXoooQMPIP0cPw-Dy0NRzwYQhKQ7ZO_5RDXl315MIG1iLJDE6iynr4zJPLfPttZUKyznH9OBhiVlNpi2pTMgeqo7gEZbmKbxLagm_-OEgUo0=w1366">
+                <img class="landscape" id="l523_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/T4_o8RgG2EfQ-xP15l7F_eHE5VBu_-TCNQiwDdXu37rb2_Ih6FEWFxMTbGchwV4tqU7EhDq49j3h2vbLP1aszkq0D_mWf75fW8AwfoTEwyyJikpN492wvQgD388cC-qwalyq8hnZ6HM=w1366">
+                <img class="landscape" id="l523_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/DY1NuTvi0KpzbBRLte6mI3PNiV1wwCogZR5HFny344zr6S96_DHhcwUZ9ikSdbIx78y1aMIBi6jQdquGXN-oFjz6b1J0fTwvkgraZL1DOfhMkTw3YHYqLYySQGlUm2v3fXaQedMElUQ=w1366">
+            </div>
+            <div id="l627_p" class="landscape_list" alt="Antelope Valley California Poppy Reserve State Natural Reserve"></div>
+            <div id="l632_p" class="landscape_list" alt="Antelope Valley Indian Museum State Historic Park"></div>
+            <div id="l638_p" class="landscape_list" alt="Anza-Borrego Desert State Park"></div>
+            <div id="l450_p" class="landscape_list" alt="Armstrong Redwoods State Natural Reserve"></div>
+            <div id="l634_p" class="landscape_list" alt="Arthur B. Ripley Desert Woodland State Park"></div>
+            <div id="l566_p" class="landscape_list" alt="Asilomar State Beach"></div>
+            <div id="l502_p" class="landscape_list" alt="Auburn State Recreation Area"></div>
+            <div id="l452_p" class="landscape_list" alt="Austin Creek State Recreation Area"></div>
+            <div id="l420_p" class="landscape_list" alt="Azalea State Natural Reserve"></div>
+            <div id="l482_p" class="landscape_list" alt="Bale Grist Mill State Historic Park"></div>
+            <div id="l527_p" class="landscape_list" alt="Bean Hollow State Beach">
+                <img class="landscape" id="l527_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/xIMO1YA5zM1d1mSJ-UUZWi6-uJ3vg1EuHSEsfllH15n7A5HQyMDGPZCDrGvTdxBJAzB9xrhz00SvQTEqGanxo4pcPXxQkNbb9Evw41qdpnP1r3kU_GLRDdhb3le2BD6morulzhx7FQ=w1366">
+                <img class="landscape" id="l527_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/PuUhXsF7OloonCO-j6aitjCHB5jt3JPJcgYecsZRpPEIyfIbAUOYk7VsstbwVdHHncqTeHdl7rr8LuFJbwtTTdwNOSxQe5mZg4p5LgbpUYN8f98x4gM8qULGqmh7VoqOjP0ouDugOg=w1366">
+                <img class="landscape" id="l527_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/rdYea2Q0v7Da1ekTHekF42HlAlPZnakJK70uNQmjZqOgQ5b17DcEwLSDIziC-MMbPMpuyWhife1nqalqhBNX3oxfjEqgO76a-Yq0Ec0t5zIw5EAPjhdR1xe52FWqq661iW0vMSYqQ8s=w1366">
+            </div>
+            <div id="l426_p" class="landscape_list" alt="Benbow State Recreation Area"></div>
+            <div id="l476_p" class="landscape_list" alt="Benicia State Recreation Area"></div>
+            <div id="l475_p" class="landscape_list" alt="Benicia Capitol State Historic Park"></div>
+            <div id="l562_p" class="landscape_list" alt="Bethany Reservoir State Recreation Area">
+                <img class="landscape" id="l562_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/13l9SMhDiPvlflJ-MjOj--qPzFWtnLpcMf0kOiNvV9U4TRTjWaH7zVUR90yDoUDMiBHXzIEN8vPtciCo3Iwkr-CJ5vdEa2dfo_vKm4pRjS-IQ_abUC3L2CnqT3lI3ijlRIcagp3LHD4=w1366">
+                <img class="landscape" id="l562_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/3h2LyVhy4xRTbNfQcYKhgVXf2fJYWWl5vdP_J2fx_tzG6VdAU9m0uw0shkavwqpT7e5J65j9njQkLOomdVsxfHSAub8BdqBosZ26B7IeqsXzTUftMzmDYuCh3xvMu1PL_l1HK8R_woI=w1366">
+                <img class="landscape" id="l562_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/vXtN7N2g1c3HFmKwejpC82gLkiLbSfm9abVlRbpkitmXzA8kE6onez-6mzLiIjLBjRk5x8mlxqEYK2ar5czA6qcn1dS6f0J1T1mYqjUkxHPjRpT5Gb56hE-jebZ_aXUTw5wBgYM1AOY=w1366">
+            </div>
+            <div id="l460_p" class="landscape_list" alt="Bidwell Mansion State Historic Park">
+                <img class="landscape" id="l460_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/C2ixUa3asF-Yj5HzdEigajj5HilXbDwx7l9VsxFS-bf36i9bkNJu9ujafkBaRGpIu9-zhCR9-2LisVTWFgwyFCJ_j_hJZq3KXWjsoSGfJ1GKijoYYmR30qQ4PffOByZ9qmySh-Lziew=w1366">
+                <img class="landscape" id="l460_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/Q5lAQF-SNZJh-Zc-u2lECxsOde-HlwaIXT9zw76NxGDWnChRjtnUomg8buZB6dNgAAtulAeakPzMFmgZ3HrMqqyv6NYN709Vh34kpEZyiGL1fsKZjJbEZxUDn0d0fqu8l5BG-1HtfvM=w1366">
+                <img class="landscape" id="l460_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/MwDCRIpbWU4ScvbsKQJy6v1HAUUjxkscDKr0R5IU44-S9pJ6WJqSa8bVA9ouZ6fuCh3iy6tQyY36iMDG0JJpSNloVc5IqZf9s8DASmmMCGT14g7t5umNP2VuiSJeSfKeidelWRrRcDs=w1366">
+            </div>
+            <div id="l463_p" class="landscape_list" alt="Bidwell-Sacramento River State Park"></div>
+            <div id="l540_p" class="landscape_list" alt="Big Basin Redwoods State Park"></div>
+            <div id="l509_p" class="landscape_list" alt="Bodie State Historic Park"></div>
+            <div id="l642_p" class="landscape_list" alt="Bolsa Chica State Beach"></div>
+            <div id="l664_p" class="landscape_list" alt="Border Field State Park"></div>
+            <div id="l477_p" class="landscape_list" alt="Bothe-Napa Valley State Park"></div>
+            <div id="l487_p" class="landscape_list" alt="Brannan Island State Recreation Area">
+                <img class="landscape" id="l487_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/VhD7AND0hBLCGP7O1Ijzuzo3zAlgpIL55PnHWRvsILvc1t57-sQRI81vMqG6BYuLGKN7I5T2QSn2VhIIzQ7D6bRecgEr-iZgxWZWOeWgmSperqVBOV3OtKNQCGofeLS8VUk3xbtbt7Y=w1366">
+                <img class="landscape" id="l487_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/WYNCEhVzhHtV1A27pyv1QYgkbjd-vstvLlCCDaQbamdGiFApoq19__nVdOrr4vrD7gUg9t61Uh13qmuLZB2nPvHsmwytz9JulHNZ_EKRo_Uc2c-xNiau9abtCA_8hEXVb8zkIEJk-w=w1366">
+                <img class="landscape" id="l487_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/XGz61he99WG4OA0j1iLcepcavNTW2OtLH3sQHtwv63yr8cNQlV5seANfxj8VypAkT58iTZ2RRi-YgoCTo7iARLE_qM6IIqSvEoyqW4ff-B2MWSCz3pp_DVUT_k8TDalLi87IddALDOI=w1366">
+            </div>
+            <div id="l535_p" class="landscape_list" alt="Burleigh H. Murray Ranch Park Property">
+                <img class="landscape" id="l535_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/FG4wDlFAx33t9UxCb8JpK7b9TC4Vb9Iz8ITGjBexJJcGyujM-HprTN_KoMEn6N3_kFxLgO7fougIXFhtfXRDM_pr-B0DRAbUhnQaVK-dejXHOrKV5kBuCrbVPdff4yAcY7Z3VY41FxY=w1366">
+                <img class="landscape" id="l535_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/BRGfGUwdAJ7Jxk-ygzq_SyMMB8MMmC0PAD8N8MUCHKTBI5njBrcfHuqU8I-b9Gdx5ANiQg8neby5MxO4FcpZJPrzH47p-pcLE3APlxSF5qYBogpuN5mSa_ApUcZ3-_R5SkcNXA5rqWY=w1366">
+                <img class="landscape" id="l535_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/MVaWBKTs2Hj5EDskyo1DAUCxmhGLeSFcKufXBydbIpQqz7INGRIO57a2pyw1_XUxP9LPMhwlSVZBd3FpDsXmluilJEQ52EztyNX4ob_Vsw7dFNnqOdcTNt7YNosBkumRy9BmP8gtaPY=w1366">
+            </div>
+            <div id="l512_p" class="landscape_list" alt="Burton Creek State Park"></div>
+            <div id="l536_p" class="landscape_list" alt="Butano State Park">
+                <img class="landscape" id="l536_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/qeFjPXnB_A05TEpw7u3YCPi7yoDNJuDqcGVC5CYAvPtw_qbgGYz_Lq9BRuY-LjVd0QyMO33rtIC40s5X8YPibfQeqx1DcBGCkz26pSEj1EblGFKyln4c00NPhA6yvCmTijQCN4SSdSU=w1366">
+                <img class="landscape" id="l536_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/PV-av9IAXv3tNKV2MQ5SWbuW7uB5QxQNORu5F87pLCSHhQr1ByX6-tVcn1ocMmzUzgso5qQY0mO0FhSwPOGsa_OLPpOLKu_c-FPf18t7hbajVZ5MxTGjii8Xp792AKQIC4HZ2wlpNSg=w1366">
+                <img class="landscape" id="l536_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/n3jSLJvset5nGM4FgFh56fKwg90xqUFCl136-f9DL0LAJYEAXldDbCAGQocpTTl5FHuAZnJsBemqTxDC8kRs9pFVGgBT8R4DhmLFCjGM8Z4zJOCSuscFIjyHTF77jf6CHaiiy-nZHwc=w1366">
+            </div>
+            <div id="l902_p" class="landscape_list" alt="Butte City Project Park Property"></div>
+            <div id="l551_p" class="landscape_list" alt="Calaveras Big Trees State Park"></div>
+            <div id="l649_p" class="landscape_list" alt="California Citrus State Historic Park"></div>
+            <div id="l903_p" class="landscape_list" alt="California Indian Heritage Center Park Property"></div>
+            <div id="l495_p" class="landscape_list" alt="California State Capitol Museum"></div>
+            <div id="l588_p" class="landscape_list" alt="California State Mining and Mineral Museum Park Property"></div>
+            <div id="l668_p" class="landscape_list" alt="California State Railroad Museum Point of Interest"></div>
+            <div id="l904_p" class="landscape_list" alt="Cambria State Marine Park"></div>
+            <div id="l519_p" class="landscape_list" alt="Candlestick Point State Recreation Area"></div>
+            <div id="l656_p" class="landscape_list" alt="Cardiff State Beach"></div>
+            <div id="l567_p" class="landscape_list" alt="Carmel River State Beach">
+                <img class="landscape" id="l567_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/I5MYcQkg_Pfvue7XSy7vrtcc3yltnDD8f_1MgmqRPSGPRa7ru0Cbbbb31-m1Noh1GT4cnDub6K9CbUGPH8LpXT_DDDCWi73CElL3mO4vXc4QYyQM9tGBUA0swnSoxdSHB_VRcsKO_ZQ=w1366">
+                <img class="landscape" id="l567_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/NdGkSBuNiVYYJdqscY1S9S501zr4RwSLGt4vxdQMdA-g4qQhuO1DbFQ7U--4nTzGS4JjeNvPmgR3LTuvR6eO6l8dcNmbQ-_gZZyOdRhUb-T2Eqe77hF-u2j56LrmMb3ZG_f8BrhaSSE=w1366">
+                <img class="landscape" id="l567_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/WqQyV6UBwC8gOy6jTrSnn5TntBJVrnPuA-O1fnn97SENQDRcOpuqW-XRjlqdT0ZRl2wxKzKBGMj8WKiMLZ1iJH6O-CUaUKukhfDhmpPwF8_E6KTLT1qpVzWM0o16OwtRHQ5O3N89vRo=w1366">
+            </div>
+            <div id="l410_p" class="landscape_list" alt="Carnegie State Vehicular Recreation Area"></div>
+            <div id="l599_p" class="landscape_list" alt="Carpinteria State Beach"></div>
+            <div id="l444_p" class="landscape_list" alt="Caspar Headlands State Natural Reserve"></div>
+            <div id="l445_p" class="landscape_list" alt="Caspar Headlands State Beach"></div>
+            <div id="l628_p" class="landscape_list" alt="Castaic Lake State Recreation Area"></div>
+            <div id="l454_p" class="landscape_list" alt="Castle Crags State Park">
+                <img class="landscape" id="l454_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/o3arqj9ouY-hWHJw99zY78JSHiRDxfThfKZKEwyyvKi8--Z18cSOi5Q8kjAWVg5FsctfNlLBindstKG56gNi_JlCy0XMf3jsyjK76tf2UlAQVDEhBHYCTBBCZqWFHKXuk5ABqtkwFbY=w1366">
+                <img class="landscape" id="l454_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/_G2EjdK1gmRw9bEnQOTz3NKd1KWKqxhOOVXCpMFxazGIsQORWQB_qLZv205MB_hN4OEx9uFteOnwZ8Q4d5LNTAQZtQAEXOHvZ8MdOw8xNR4dvUE0VO8Auw7xJzCx6IFm19L983FNiXU=w1366">
+                <img class="landscape" id="l454_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/CnBRhXi2PAvvuia3qDVCHBWFyfGm8qoF3QbviTTJ2hFRFWxCTtXHZ6F4duoKhjqQGgj6aKWXdSZCMWAO4Py0twMDo-jE9odoysnZzWgT7JqRkxsDR_pg8x4gJ8OjbEy5ExxI-6AC0b8=w1366">
+            </div>
+            <div id="l538_p" class="landscape_list" alt="Castle Rock State Park">
+                <img class="landscape" id="l538_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ESSCDOPSWa-YYLwIVLUp24vKbP6aqyCgIuTScW7Ub-2uwQRvQdmqg8-1HW3XRvoTmOt9lJUFo3_GIc5uUAVT241QhXY-mCvf0jU_7W2bMuG6m_3KAfAFGx1SgiQZspxEq9NHLgraO_g=w1366">
+                <img class="landscape" id="l538_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/-p8_97Yt9boZgaMTwnYE-QbHWHrwYuHjSgWgW3wgxVBGHGyG9woWsGrqd8U9FyxUTUVb3IIqrHERAAStuiw-jtCmyIIbe6Zk4S56CaKB_TUhjJaz3jUz4-LePqkJ0TgQKbZpe5rdm6Q=w1366">
+                <img class="landscape" id="l538_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/bpwNRSzEF16G52DQ8DX5JgGGdJ42KLtD-U9LW4jRvdYNSrWn2bDFOG3yOJtMNLpGAaGuSAroEswb-ChDzfOlPkikbW71MXNdE3XMRLG7vBL0UhOCb2xo9gw9r-MHLKhZFE7zDx030HY=w1366">
+            </div>
+            <div id="l557_p" class="landscape_list" alt="Caswell Memorial State Park"></div>
+            <div id="l596_p" class="landscape_list" alt="Cayucos State Beach"></div>
+            <div id="l466_p" class="landscape_list" alt="China Camp State Park"></div>
+            <div id="l648_p" class="landscape_list" alt="Chino Hills State Park"></div>
+            <div id="l602_p" class="landscape_list" alt="Chumash Painted Cave State Historic Park"></div>
+            <div id="l409_p" class="landscape_list" alt="Clay Pit State Vehicular Recreation Area">
+                <img class="landscape" id="l409_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/E3GCyXgVH0FNx1tVRIv6jfksCrsdq9sMxfXWvInJeVPqQOTudWry7JAKrOr9uq58Vowlb0QApWHb_02FKgnrHa4bTbScB19yYeI0h2ZoPS8juqZCU2cZ7k7DBw6S0C-oNBo0ciA42pk=w1366">
+                <img class="landscape" id="l409_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ryVY5qI8o2hSekzoDFhaD3BMJxwPBGMXuswRBQ0anK5RGFSbRvRCkSxbifRY-g709hkBAKF3vfIVhuMaY6uGC-nTykUrBB4paXXCwWdCNmOvbAf1yWGD8VuSrQLtvViiFJE7vqzRhag=w1366">
+                <img class="landscape" id="l409_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/wo78lN5vwxL8ivsaM9cKZvDGsLLuGIGYlEA39j4TTTAb_rWfWgGEgR_zL_Ofmq1FGNGwZ4JZDxfvGfESfPcla4V6OTUhxXgz9A5hoxYIKq3gph7Wffjy_SA8YK5nMET1qNZ4Ria6kGc=w1366">
+            </div>
+            <div id="l473_p" class="landscape_list" alt="Clear Lake State Park"></div>
+            <div id="l583_p" class="landscape_list" alt="Colonel Allensworth State Historic Park"></div>
+            <div id="l552_p" class="landscape_list" alt="Columbia State Historic Park"></div>
+            <div id="l461_p" class="landscape_list" alt="Colusa-Sacramento River State Recreation Area">
+                <img class="landscape" id="l461_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/gC4u_VWgBkHbY767cvu43YxyK65LD8JYZy1k6_QImPRPmmr9aEi8sK192pKr-OT0ovT4OuhCLSvpp7Vg2R5Csd52IE69WjQGd22SMUEa6dL1xKDv88colD9YPZ5pABbaXMJLiKwpBYE=w1366">
+                <img class="landscape" id="l461_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/KdWiF0EvHGJa3RFS6XJgjJ7Kr-sYNANQiIzvOe8z6J7mWkuyDQAo89LDhSLwCZj4s0dF7UQZn39wYDJamcFTJR3KpnfXgcJZiAc6PyEicNCldzCz1MsprqNlh2vDH0R2g7IOdKzIkNs=w1366">
+                <img class="landscape" id="l461_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/4eX5uVKZ4n94_TAVHR2ymQ8QV2ORfBSYjVlK1VbJJgBEzwuBY4i8bPI4jWVX9q3AN-Lv5q7fOu9-c9kT53QFJ6A8A-y2fFZfv9GSmVjmA5AkZv2uRyDiS2gSyXX2XpFFg9sA6J6A1HU=w1366">
+            </div>
+            <div id="l652_p" class="landscape_list" alt="Corona del Mar State Beach"></div>
+            <div id="l644_p" class="landscape_list" alt="Crystal Cove State Park"></div>
+            <div id="l667_p" class="landscape_list" alt="Cuyamaca Rancho State Park"></div>
+            <div id="l505_p" class="landscape_list" alt="D. L. Bliss State Park"></div>
+            <div id="l414_p" class="landscape_list" alt="Del Norte Coast Redwoods State Park"></div>
+            <div id="l492_p" class="landscape_list" alt="Delta Meadows Park Property"></div>
+            <div id="l617_p" class="landscape_list" alt="Dockweiler State Beach"></div>
+            <div id="l645_p" class="landscape_list" alt="Doheny State Beach"></div>
+            <div id="l503_p" class="landscape_list" alt="Donner Memorial State Park"></div>
+            <div id="l905_p" class="landscape_list" alt="Eastern Kern County Onyx Ranch State Vehicular Recreation Area"></div>
+            <div id="l510_p" class="landscape_list" alt="Ed Z'berg Sugar Pine Point State Park"></div>
+            <div id="l601_p" class="landscape_list" alt="El Capitán State Beach"></div>
+            <div id="l608_p" class="landscape_list" alt="El Presidio de Santa Barbara State Historic Park"></div>
+            <div id="l506_p" class="landscape_list" alt="Emerald Bay State Park"></div>
+            <div id="l906_p" class="landscape_list" alt="Emeryville Crescent State Marine Reserve"></div>
+            <div id="l604_p" class="landscape_list" alt="Emma Wood State Beach"></div>
+            <div id="l499_p" class="landscape_list" alt="Empire Mine State Historic Park">
+                <img class="landscape" id="l499_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/DahHduH5N7l07Drj-J9iLfd_zZIQiBOJXAPjp9di9EjsyjJboaS9bhiEN7UlNtfRelkYdZrKeHJKK2GKSAzxCg2Bl0FKpFGzW8sxoHcmRjim7hNASdN-DUHJOuHCoKpADfnA4w7FpnU=w1366">
+                <img class="landscape" id="l499_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/E6bZ8fuu7HJpe-2_x4kaypDuSqIdtJwt_C49GNI_ZiNT2F3F_KqAw8oOVEwIqRe_wsUFpaRpqRjmXw_miEwJ-hYtoFQWTUC5NIYeyM5Rr2Sqqnxg3xYqvJBrTXSGOEv4TxeiqNdeZwY=w1366">
+                <img class="landscape" id="l499_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/5HUwpL20IAkfN4VU6X3NeQIVeNGs5CSQklUiL2h64OgtT_iYoyFTWoWGS_-sczWICHv1eUUzG_zILjnu106nW4ximG5dZxrjDuG1zW01fjmuCYZHJWJVsddDWPG3kZu_ltLtrOIWS7E=w1366">
+            </div>
+            <div id="l907_p" class="landscape_list" alt="Estero Bluffs State Park"></div>
+            <div id="l500_p" class="landscape_list" alt="Folsom Lake State Recreation Area"></div>
+            <div id="l501_p" class="landscape_list" alt="Folsom Powerhouse State Historic Park"></div>
+            <div id="l665_p" class="landscape_list" alt="Fort Humboldt State Historic Park"></div>
+            <div id="l580_p" class="landscape_list" alt="Fort Ord Dunes State Park"></div>
+            <div id="l449_p" class="landscape_list" alt="Fort Ross State Historic Park"></div>
+            <div id="l585_p" class="landscape_list" alt="Fort Tejon State Historic Park"></div>
+            <div id="l490_p" class="landscape_list" alt="Franks Tract State Recreation Area"></div>
+            <div id="l564_p" class="landscape_list" alt="Fremont Peak State Park">
+                <img class="landscape" id="l564_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/mkSCX-J8euszprqD-F4AnRjmJD7CfoTfsVW40pOqNlNEBja5Nl15utf-xZ4mzMSbDBsKggwL-j4R1fQNj4vyX8eFSG52xCcJS4jGw170nlfMtYgn1FD66V_VgqldjMeWx-1U2zVPyA=w1366">
+                <img class="landscape" id="l564_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/KVc4QBgFjr-QqM0gUycaSt8mvRVZlOGlT1rq8HHkDbfzuoHjFgpCgZvOT3L9LauoQs1hG_Xi9gulTz-gW6QtDvk_WZBL6TXpZ9zmeTZoslhqS7rWaW2_D0LoqvCBkIb8u6fWUI1q-xc=w1366">
+                <img class="landscape" id="l564_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/o1wjL0Z5RXS2H73twkOHd3uZ3XGpcPn9PmOlp4uQgBWE1TolXJhSefT8TlHMbnRruVM3IfTFKdxhHqtJPHSQGqyUkrUpD-GwsJaq0C9JQp1S8rxIjPAAXqoQR47earbWgfacSCUTfJ4=w1366">
+            </div>
+            <div id="l579_p" class="landscape_list" alt="Garrapata State Park">
+                <img class="landscape" id="l579_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/k0PZVVoLqd7RbOJoQXixXFwRyxVUL2ombbRm9loUMzeJ8U-aMX-ceROY9kdw7vdF1Ql7rHqCxHoi3Z4_sz3kLtlaZBIiXUfpMXgRNIrKD6pF1ouxCV7hzKDz5525UYg3cBlcvcihUWU=w1366">
+                <img class="landscape" id="l579_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ku3f56rnn63VB10RPIYuywoxFbGhhywRP1160JsF84tFF5r6FNaC6gSsCKXlrg5RN2iaYbf3qh7ufskcnJDsolDFryno7fEkdc8F2f30Wh-JuAAayRkMNF3yXbtMvQisinPk5PZk1zc=w1366">
+                <img class="landscape" id="l579_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/M0JdPlU-KqQ445PICOKGcUYQLZRoWItPe8ZNUXL5aU8yOTTnO-c51TqdPLjSt3FE_LDRW3sqj698wEDCqV2Kl9Ingnh5C3RG1xEJ-m2I6UiX9T7ZmzukYgCz_Uo6AQC7mzus1hCOvAU=w1366">
+            </div>
+            <div id="l606_p" class="landscape_list" alt="Gaviota State Park"></div>
+            <div id="l556_p" class="landscape_list" alt="George J. Hatfield State Recreation Area"></div>
+            <div id="l498_p" class="landscape_list" alt="Governor's Mansion State Historic Park"></div>
+            <div id="l528_p" class="landscape_list" alt="Gray Whale Cove State Beach">
+                <img class="landscape" id="l528_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/-zA2UDLQlgIohqyIH2tgZVw1aSdfjATlRsISdxAmo9avb2CidNhiHAS2SE8WLU5qoDbmSkf7tDWgZ3m2RDtVbEd2e_AG0rDmCfxVojKYqw_tidyMNjOooaBlygaQgnh2BpeNxe6tYLs=w1366">
+                <img class="landscape" id="l528_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/1Agn03sZLPT63-NAB-co0AK7L9wnUi1YTU-8w9IAez0_Vl7vAP7aGr864-uBeSyGzFp__bMi_PY-AyO_jZKFv0v3yCcndIUQkZAmhabztYqCioHQiNYoSgi25vi1gfw5O-I8Uf_UJvU=w1366">
+                <img class="landscape" id="l528_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/691Jixv9VX7Xmz3rgAv5s9dtLYpw6ozVL3aZ3DjGG2TN49Nl67zgRVPRqqksUA_9sJxZQkYA8Sk78LZXBSwOuJnB_zqN4MKBZXO4mwCeSQJ5WCuw4eyFxWqC0nvfnhSgBY0XPOF3Pn4=w1366">
+            </div>
+            <div id="l559_p" class="landscape_list" alt="Great Valley Grasslands State Park"></div>
+            <div id="l447_p" class="landscape_list" alt="Greenwood State Beach"></div>
+            <div id="l421_p" class="landscape_list" alt="Grizzly Creek Redwoods State Park"></div>
+            <div id="l508_p" class="landscape_list" alt="Grover Hot Springs State Park"></div>
+            <div id="l531_p" class="landscape_list" alt="Half Moon Bay State Beach">
+                <img class="landscape" id="l531_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/Vv7G66m8KqYueTq82eUgjnYt-zuWVX7bTLEfOPohIdqIvm0cAW5DedJBXXoQ-WDF3o4Kf2N9sauQN3VJJ16T4a6NnDaiavi2zGwGEIv7Gm1PVSQzq1sujEGYE5vUmkZMP1LGxgVQL-E=w1366">
+                <img class="landscape" id="l531_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/w8tcWVepCMvzCCSCNmBFPPbJ4_uwcLKX9MAzRHA5B1k9AllVZW8YPt7B3alG0soUILEOXPC9TC9T7OXev8v0addSExLALuunZWbrl--vZ18S2g9pBNHa_qtw1tq1sMMpUfxtIn0OfMo=w1366">
+                <img class="landscape" id="l531_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/BDoYxXHZDXtNK3hUWYDhHGfuyzx-emDetMWWtdto5EhHjY6uW9o5KUWGKYVU39x3p4Edqiw1LWs9KZqhOHAEb2nOIZ_aN4Qak7FrcRymEB7H5XxyucW_nQyzQr0zsUeDZdgtO8UqsQ=w1366">
+            </div>
+            <div id="l908_p" class="landscape_list" alt="Harmony Headlands State Park"></div>
+            <div id="l431_p" class="landscape_list" alt="Harry A. Merlo State Recreation Area"></div>
+            <div id="l909_p" class="landscape_list" alt="Hatton Canyon Park Property"></div>
+            <div id="l590_p" class="landscape_list" alt="Hearst San Simeon State Park">
+                <img class="landscape" id="l590_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ZSiMd0uiz8iy6hVOuQgEuao-9lmnGHlaZRMYJMap430G1cqVfqmGZub208N2_dJM9Spy369pAP_Bru9HWL3I9IMU7ECubet3Dhp6Ek1F4iRIBZTfVmE8X1FscCE-y1ZEkY7CJDiwR4g=w1366">
+                <img class="landscape" id="l590_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/aTMNP4EjM8901u7-6ym_WbLetWNpIG5G1mw9FDZ7FZF39Ae03PJOo8VEU8Kr_BIywvi7ARsOr9PeOh5hlgNRvLB9aVz4FAZK-459l2FimQUx081DIz2zy-JfEH9bsBBZo4zB4uu101Q=w1366">
+                <img class="landscape" id="l590_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/OxcYD74_SVlfrVZ6GcQLHY8NWuJpS1NwlLyO0gIpPUnS4427maaT0d6EuT819Zr7j9NZmTA2TuxpqgOB9odlw2xUeqct1I69Va1L4z9xnlb6TXwCTOriDafmN2fFypAu_KKTHVQSjWo=w1366">
+            </div>
+            <div id="l591_p" class="landscape_list" alt="Hearst San Simeon State Historical Monument"></div>
+            <div id="l910_p" class="landscape_list" alt="Heber Dunes State Vehicular Recreation Area"></div>
+            <div id="l438_p" class="landscape_list" alt="Hendy Woods State Park"></div>
+            <div id="l546_p" class="landscape_list" alt="Henry Cowell Redwoods State Park"></div>
+            <div id="l561_p" class="landscape_list" alt="Henry W. Coe State Park">
+                <img class="landscape" id="l561_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/JiFP9W0n_ZBRcjz7wIZeXYiDbVeeIS17M_flQRyKcAAv_2AqYv4ypIJpbeSMfyk3wxDw6qPmKwg0asQWb5dunynzVZghD6MqQT3t6bPZaMy8qdNPclAk8ld9N7J7_tWjANacqsX05Tc=w1366">
+                <img class="landscape" id="l561_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/MnQVeyFupzJtC7CBVUb3h6lDSKWYBM8wUWHdUGSfnMAEcH-pstrF3JmaN7X8vJtPQLN-il6nseIh2pN8C8aLwcMHZqn7MS_bTyKFMRzNXvqpF6pAd6okgYAA0OG62HSqQHFFk96YoWk=w1366">
+                <img class="landscape" id="l561_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/jA2usM0eqRAOYN7IUeYAqRzSJ_0MPCzsAROFzyencGpE9nksoD_Gio3knk5_T_d2dnVPrvgKC4Yijci7NuzG5kMoCgO0-ukm2jiBiTPOpSahGwtC5AGcUqC5KGJXD7_GUUkv2MeMLNI=w1366">
+            </div>
+            <div id="l911_p" class="landscape_list" alt="Hollister Hills State Vehicular Recreation Area"></div>
+            <div id="l416_p" class="landscape_list" alt="Humboldt Lagoons State Park"></div>
+            <div id="l425_p" class="landscape_list" alt="Humboldt Redwoods State Park"></div>
+            <div id="l405_p" class="landscape_list" alt="Hungry Valley State Vehicular Recreation Area"></div>
+            <div id="l643_p" class="landscape_list" alt="Huntington State Beach"></div>
+            <div id="l553_p" class="landscape_list" alt="Indian Grinding Rock State Historic Park"></div>
+            <div id="l640_p" class="landscape_list" alt="Indio Hills Palms Park Property"></div>
+            <div id="l478_p" class="landscape_list" alt="Jack London State Historic Park"></div>
+            <div id="l413_p" class="landscape_list" alt="Jedediah Smith Redwoods State Park"></div>
+            <div id="l912_p" class="landscape_list" alt="John B. Dewitt Redwoods State Natural Reserve"></div>
+            <div id="l568_p" class="landscape_list" alt="John Little State Natural Reserve"></div>
+            <div id="l441_p" class="landscape_list" alt="Jug Handle State Natural Reserve"></div>
+            <div id="l578_p" class="landscape_list" alt="Julia Pfeiffer Burns State Park"></div>
+            <div id="l612_p" class="landscape_list" alt="Kenneth Hahn State Recreation Area"></div>
+            <div id="l511_p" class="landscape_list" alt="Kings Beach State Recreation Area"></div>
+            <div id="l448_p" class="landscape_list" alt="Kruse Rhododendron State Natural Reserve"></div>
+            <div id="l598_p" class="landscape_list" alt="La Purísima Mission State Historic Park"></div>
+            <div id="l537_p" class="landscape_list" alt="Lake Del Valle State Recreation Area">
+                <img class="landscape" id="l537_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ExgPxgX4G8pzRkctHVGg0ic55LUqjgueuzpzMTdPtk0aH3tH2H-nAhXbYDLTxjpHVGo3Px8kc6tpSXOrP60_ogxOG_LLSOn5UZEpciM8Yv31GG9DndL08lBIyw9ODM-Xgojk5RF6jSk=w1366">
+                <img class="landscape" id="l537_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/wj0lbeXcxpv7yEugqi4jNfO3IujTK9CRjJJpuQ7RtoT9AucpENhVbnU9cSu9mhavQ9Q79ohmp8DHrgG8UY_qSmbtlT4ZExKEEXPeHT3QnPW__WmkuOcywRl_ia5SZcfKD9i1yxp5bes=w1366">
+                <img class="landscape" id="l537_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/cMapy61vK0KvlEvNGMSiP6xeRlxhS_OjlmVC1xROXvBLKwxoVN6ta6r8_hXLKbzRaCpVYBZzqLFW9k8B602fKT0mnvyTrPSCgCsN_yBgCJItIgqw8wmj2UoYZkfsHSKj0bC9rQu1IVo=w1366">
+            </div>
+            <div id="l462_p" class="landscape_list" alt="Lake Oroville State Recreation Area"></div>
+            <div id="l651_p" class="landscape_list" alt="Lake Perris State Recreation Area"></div>
+            <div id="l515_p" class="landscape_list" alt="Lake Valley State Recreation Area"></div>
+            <div id="l489_p" class="landscape_list" alt="Leland Stanford Mansion State Historic Park"></div>
+            <div id="l616_p" class="landscape_list" alt="Leo Carrillo State Park"></div>
+            <div id="l661_p" class="landscape_list" alt="Leucadia State Beach"></div>
+            <div id="l550_p" class="landscape_list" alt="Lighthouse Field State Beach"></div>
+            <div id="l577_p" class="landscape_list" alt="Limekiln State Park"></div>
+            <div id="l419_p" class="landscape_list" alt="Little River State Beach"></div>
+            <div id="l913_p" class="landscape_list" alt="Locke Boarding House Museum Point of Interest"></div>
+            <div id="l914_p" class="landscape_list" alt="Los Angeles State Historic Park"></div>
+            <div id="l619_p" class="landscape_list" alt="Los Encinos State Historic Park"></div>
+            <div id="l597_p" class="landscape_list" alt="Los Osos Oaks State Natural Reserve"></div>
+            <div id="l436_p" class="landscape_list" alt="MacKerricher State Park"></div>
+            <div id="l439_p" class="landscape_list" alt="Mailliard Redwoods State Natural Reserve"></div>
+            <div id="l494_p" class="landscape_list" alt="Malakoff Diggins State Historic Park"></div>
+            <div id="l614_p" class="landscape_list" alt="Malibu Creek State Park"></div>
+            <div id="l835_p" class="landscape_list" alt="Malibu Lagoon State Beach"></div>
+            <div id="l437_p" class="landscape_list" alt="Manchester State Park"></div>
+            <div id="l609_p" class="landscape_list" alt="Mandalay State Beach"></div>
+            <div id="l545_p" class="landscape_list" alt="Manresa State Beach">
+                <img class="landscape" id="l545_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/Oyfw3L1gSK4ByuhTAx6gA4BQce6FoxA0yVfRiXPWa2mF-vwnM9Y_e0l5xYS_EpvWITKij7MGYEXOotq7ol2vOP_yk9soS-yEYG0B6KKfFqfAf3i6WviDBaFQy4TaTww4jG1JUKxvqq8=w1366">
+                <img class="landscape" id="l545_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/6GjCMl8sEHGuIYW0rPMzjAGZO0zyxtvWtTl7M3cAHRIDHHKtijqclpJKFZYr3lXdgCcCTGfixRInGxnmWbEizVnw-lHc8Mjly8yVtbGHiDE0VlKhCLMLhGsdOEMZxYoSSARET0MrLko=w1366">
+                <img class="landscape" id="l545_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/4AuaVn4BXxjKgkK45KYwObvfkNV8H8aXrtDfF9IIvUEwFoOxgB0kKgbi95maIrAbpMz82YymzR54NUIDoUlYSMAwldHqTQlm2UMAGNZ9lttj95qJljBQksti-lfW4x36n2EHlE5zRkQ=w1366">
+            </div>
+            <div id="l467_p" class="landscape_list" alt="Marconi Conference Center State Historic Park"></div>
+            <div id="l581_p" class="landscape_list" alt="Marina State Beach"></div>
+            <div id="l525_p" class="landscape_list" alt="Marsh Creek State Historic Park"></div>
+            <div id="l484_p" class="landscape_list" alt="Marshall Gold Discovery State Historic Park">
+                <img class="landscape" id="l484_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/I7TClnplMX3S0E4NdVG8uY7vDI5kyCwQRRaVkvBhhFj8Oh_K2yWu_GHULp5M3a093rkX5bXQU8d_G_g-S-RM3GSclbm7GyBqjB9EvsHLyL-hTt3sD1HHC6qR2LNj-HnjkdX5OUx3UbU=w1366">
+                <img class="landscape" id="l484_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/HyT8h_-QZzzhz7Dci1AbfcJSwjuM5DDezQIogW7wtVeHGxjIkDAhdFZLBwWsfmO_7Vfn9NntJX4WsUXg49tVQ77RC7rNU0wiNDCPUq3H8Zl6fS8p3PBt9wF50Pj48ymCzIrCLsGRZ8g=w1366">
+                <img class="landscape" id="l484_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/vQ6nTnbQkkyFVrHTtTihor8i3z8JiZYJW5ifB0Ppm11fL9CM5RM2ipsGW3eeHPjH-Oz05vzXyNILgKcUQjHwB7PW0w9vG07Q0JDjQbUv50R-pAxgrd6wip4SBXDr_2I5qZDfp29SAGg=w1366">
+            </div>
+            <div id="l915_p" class="landscape_list" alt="Martial Cottle Park State Recreation Area"></div>
+            <div id="l455_p" class="landscape_list" alt="McArthur-Burney Falls Memorial State Park"></div>
+            <div id="l554_p" class="landscape_list" alt="McConnell State Recreation Area"></div>
+            <div id="l607_p" class="landscape_list" alt="McGrath State Beach"></div>
+            <div id="l520_p" class="landscape_list" alt="McLaughlin Eastshore State Park State Seashore">
+                <img class="landscape" id="l520_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/YZtbT2WYGEOSBZui3hgkJsP6fflMiuju5SkOD0BcHo2XpOppzdcNsxnz_z9fJNAEn7Ou67_DviF9AcbRND3NNjOPQVdEo4QCuGvy5-03wpQy5oil_1sSe3KeE5S2t7xDB2Q2xGMuS-I=w1366">
+                <img class="landscape" id="l520_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/-V0u--UhnHyjlpz5QR6ZQ1jPBdZpF-b8rx23kj0RBddPdpe2TXEXot0JcZTgVzwCatvqjQYG_g3gMNczmAC0EYi3aUYGbZovJAWeBDDcbtGOgCKti-SQgxLCfS-A1tVjpXYfCzn87AM=w1366">
+                <img class="landscape" id="l520_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/iZC5-1SRO9uzY42Oqxk7N4h2Cc-2q5hhhdfs-w3Hoci_sSpd3o7SKq1pXb3DpuzRW13bDl-aADihufxLEzo_Vy1XAan2fgKhma6xD0QpGwUwP0fMUuhTBRxtUe6C73HMBU5ruhOzmBw=w1366">
+            </div>
+            <div id="l442_p" class="landscape_list" alt="Mendocino Headlands State Park"></div>
+            <div id="l443_p" class="landscape_list" alt="Mendocino Woodlands State Park"></div>
+            <div id="l587_p" class="landscape_list" alt="Millerton Lake State Recreation Area"></div>
+            <div id="l514_p" class="landscape_list" alt="Mono Lake Tufa State Natural Reserve"></div>
+            <div id="l592_p" class="landscape_list" alt="Montaña de Oro State Park">
+                <img class="landscape" id="l592_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/m6FlEUnI8K68JoiGwTbQjD2yolo3nknw96aaBI4tiJdDC3vE8f74TwHgKRXpdI4kzwC3UKZO8kK_nmuU3tZe-Ho-k_Wv4n94GMTTYOq8omkMl6MsRSjzmCVttSDoVzambV9RH9R9QgE=w1366">
+                <img class="landscape" id="l592_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/sLWA4pIER_kT3oHfYzQvHddAdtiunUJdHuq93SJlPCIDWlX8-0httYSAPdGgaTu1Ovzhx8_RTbxAGGrUfTqVVbEnF9xRol3xQ5U9j8xSXUnaLzse42pxPPb0Nz7GLPq6QwUAPWx-oio=w1366">
+                <img class="landscape" id="l592_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/W4ROQ_1c3vw1lMcIc51JNXYqa_ic_DchxHqiYu3qmlHdzVJFTqLx7a9qUkG5CqVMSuxRzlvpDJhTwEcZEsrHVehbCb-4vqMvRZkdSyhkTqbrVbmCa2gJZTC4NdtTRcSnXplWTqbYAOo=w1366">
+            </div>
+            <div id="l532_p" class="landscape_list" alt="Montara State Beach">
+                <img class="landscape" id="l532_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/FFKPPPLh8GzGf0BkCT0ryfjTpPlzwmkBYFg7yDbvnB1UiJyOt7doVJmMdMDH2Oj62NDdEYBK07XqbQigjY_Nw4gkA7N58xUAU99UUaJzN_cffR8yzaVrm7QJTKUMsfEs1b2VaRe9vIw=w1366">
+                <img class="landscape" id="l532_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/nqksNK5gvp0dD3A13L-mN2keFZiirbuufGJbq1WoB-Xk58rbUxUY3G1tvCUFfFLKq3lX47zzqnHXvzHTgNeHJm22cHfJSa2uMFBc_AGR8a3CJwobk6fcXK7C5BR0q34KkmUU00YGDg=w1366">
+                <img class="landscape" id="l532_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/Jshw0pqbnkQvFii2W9mDwgf-mgXBfasDg6wFqejXHwSMepNkMTf4xmjFmmYWH1EvQNU9nLt1BD2lIBoPh4pTVlkgUKv23gIGDXerux3Cr60S_v6Vea_q60JdTKfYYtIOf-c8qId3A2s=w1366">
+            </div>
+            <div id="l575_p" class="landscape_list" alt="Monterey State Historic Park"></div>
+            <div id="l576_p" class="landscape_list" alt="Monterey State Beach"></div>
+            <div id="l434_p" class="landscape_list" alt="Montgomery Woods State Natural Reserve"></div>
+            <div id="l659_p" class="landscape_list" alt="Moonlight State Beach"></div>
+            <div id="l594_p" class="landscape_list" alt="Morro Bay State Park"></div>
+            <div id="l593_p" class="landscape_list" alt="Morro Strand State Beach">
+                <img class="landscape" id="l593_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/bYh7MSFLeHw9e7q0G3JwJmwaCQH33pzSMrnRXjqpK38GEi0sj9Fymr9sDXOXUsW07kgfEXxX97_KIeLRRqrHCblXjhF8j5kYqZTvsrbRryo15PB1ImUtcPqc5xibEUHJmBgO1I8GIqQ=w1366">
+                <img class="landscape" id="l593_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/VuO52tF3EvGzGr71FOM23TxF8jK6t3fg72lGlhh5cb8lgWyto31HPldtKIS8HrwjX7nUVU4Zp5IVhHl3bhPLw8P4eomIB5z7r74VMAMyybl6WBbrpw3aXH2wne9BvNvoLtgIHNhDhn0=w1366">
+                <img class="landscape" id="l593_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/5pggcvHeRnTTpX0Yxw55G52H_fVGXR-Xghq2nEqr0Pyoqd-sPLsR2niPUQ1S85sh3plX1BytAm1sv8Y067iYALrhz0HoUPmhn2iPFwMZpfHocuLTtbxBMKrOBmF4uuuK2ppWZdITtw=w1366">
+            </div>
+            <div id="l574_p" class="landscape_list" alt="Moss Landing State Beach">
+                <img class="landscape" id="l574_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/e4d8LuT5qKmfybjQRi3AhfRocM5uY4CaGisjKTOQ47GrG4zua3tLDdsUH1xtZR8EFlO9HqW6OAg4jLmG-cOBTupUQ4wKKGpN6gErQxNcFdz3e0xoIDg21tD4j3zydLd4GwyNDSW2zic=w1366">
+                <img class="landscape" id="l574_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/nuBShEDsjTI-m_ALM2c2kDyBC7Q5rGzxROzRakY8wGxUXJ-gNlnXHeAglrEleOndL1uEm64ehnTNBMu8BTP3kmEUcd-fy8F9Y7x4ZQjBjefMoAx4whoZkicmmAOUj_e-IvSyBYc6iZs=w1366">
+                <img class="landscape" id="l574_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/t7eOgR4UsxTyvpiq1w-RxazPDvk50v7w0USYXmHNJ3epdVMH3d9I4zTejxWgrQHaYVeMJukFOWfNfb6gclmDhXWbZr7y8KfEORjVBb6F5tseS1Ieu3bbDSz0NXW-ItLbAUq451SBxdc=w1366">
+            </div>
+            <div id="l517_p" class="landscape_list" alt="Mount Diablo State Park">
+                <img class="landscape" id="l517_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/3GAYxjl9WpSvE0-6J11hgVHOVGZIQJtJlkS0oUVOmumlgC3pKiEKU6SKEXeLqJo3psulDXfzk9jYWSdXQyRjX-J16TdlCJc9BTxYYI5aiO_6dbMMrY8WQJBSUcI3Nyj4R7k2JIQXqV0=w1366">
+                <img class="landscape" id="l517_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/RTg688ck6U4RZaG9iw0YSxpX6W6Qi9uW4eVneRgloTQZeDA_5-qg6xbDWnvsOty1dGJUsR2YETcQPD5P5obEG_evBqCQ7tl47fNrj06SxHJTLcE7GmST9xsfGxcfREKXKuWVg8g0pPk=w1366">
+                <img class="landscape" id="l517_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/9uzHreGSKVQ_XB3tDUl-cwcwI6qMp3GBZ7jgkOZIb-YvGT1T4p6zpoaUX4extDmu2JWimD2vb5s9jwGV22RPbi3sEuB0W5DvKvTYNSrCdQU-Zc1wVIfbHR1WnGIkYgVO7_C3-rnVS3Y=w1366">
+            </div>
+            <div id="l636_p" class="landscape_list" alt="Mount San Jacinto State Park"></div>
+            <div id="l471_p" class="landscape_list" alt="Mount Tamalpais State Park">
+                <img class="landscape" id="l471_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/7TjHcN4oDKhMkmdEAKUtHGuuuLiJ5d3sLwhv8OIsSTLru35XpvTTdFeewT_Rt7T_FyFezjhi9nsUKRnjW8SZRjS_luKqND1OOxyFuaYSIiH3EhxkGm_eMNZS3zKtkKPSCRD5jCO2zG0=w1366">
+                <img class="landscape" id="l471_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/UvOz2EhfgNbDv1X9aYriTbC_wSdf45vpLw6weeZscRnQ2iDe36JhXUy_7-9NkC88CXD15OV3JysFohPheiJ7wvMTjD45TIA8dY_embeAofoZBfPrUa4wTN6UL668w6wytdWbpCOUIKU=w1366">
+                <img class="landscape" id="l471_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/6900UvrNjJMejawuL28qI7KY-B-rDBGHZvXNGxRiqPrdYHMCA07TLoOE04p3-V8eR1PF-BQBKV2IveCOiw4jHf1_x9U_VfGI8CiduNSQbIO3ZqM601MgmOa0CbAvdpCLOrGq9pN6R3Y=w1366">
+            </div>
+            <div id="l541_p" class="landscape_list" alt="Natural Bridges State Beach"></div>
+            <div id="l435_p" class="landscape_list" alt="Navarro River Redwoods State Park"></div>
+            <div id="l542_p" class="landscape_list" alt="New Brighton State Beach">
+                <img class="landscape" id="l542_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ngM7u-cHEFFqOLQv5CVGlvtMb_v6X5qruhId-5aUcYW3G3NJyHDeewbn_XDbMAV6HbPfS0XPZJnbESEK21EQNoaQGS_vvklGr2oGmIuh3oCgEKK_GqSHfLGkWSiowL9iEe7SAWTl-mE=w1366">
+                <img class="landscape" id="l542_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/Xz3udFy2COEK73Q_8Y1up3eCu5D3hdUxdN14gXFiQVcnN293Kca2BpVo3j0msIzmpyEKy1mOhbzwV8Tp7vHxSv6wSAVpGHmfcSZBCo4QlQh-QpGsZGX7o55Lj4FQTHGDSUdTB-wcvkM=w1366">
+                <img class="landscape" id="l542_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/8OmXk97nX-NTrZTSieKb03vCeTCN0QiLMFaC6KWI4_iOIz6sTXkCyWzAYN00ac4j0uPGIae9iO6F0Hfg5nDqgSjBkghEOAkeUy8X4cfrrTBYT5s_n4zDP00ryCangQYJBDwfFI9mzlE=w1366">
+            </div>
+            <div id="l916_p" class="landscape_list" alt="Oceano Dunes State Vehicular Recreation Area"></div>
+            <div id="l917_p" class="landscape_list" alt="Ocotillo Wells State Vehicular Recreation Area"></div>
+            <div id="l497_p" class="landscape_list" alt="Old Sacramento State Historic Park"></div>
+            <div id="l663_p" class="landscape_list" alt="Old Town San Diego State Historic Park"></div>
+            <div id="l465_p" class="landscape_list" alt="Olompali State Historic Park"></div>
+            <div id="l560_p" class="landscape_list" alt="Pacheco State Park"></div>
+            <div id="l524_p" class="landscape_list" alt="Pacifica State Beach">
+                <img class="landscape" id="l524_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/j33-FkpAMVg1PbSoQTSEgoS26RJvqiAz9uYEugjNc_PrAn3dM4vR7plXOdKypQFlF6QVdsu7LnCIWpetGUlN8zJOgrLz-W0qcm5Pyz4EEG1PG7TWT--Sz1LNAX6coiDBUf6IuUsJ4p0=w1366">
+                <img class="landscape" id="l524_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/J4CYUx7YdjLxlBMFyp7oRw7VScgPmJVwh_wHQTc_vX5jB8lI5dNnNH-G4pgu0n6v8aqrfWWzlfaesnSxDRUe_HfjqGHQ4QM29R7gzl52by2aIwwoY47cutXWhzwvGF6a_qtC73hom6w=w1366">
+                <img class="landscape" id="l524_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/FESgPDNuPyCeb9BlMsoFROklWqkg7g1UKGpZcvkTEqu-efYlPBRzqGJ8sKMwbRbvRd4WIF53zr5XBOiKMJcYmmz8pCHBz2cSQsmB1XR1s1eo3l8vD2b9uhfHbAkQ6wcVw4ntkRvml-4=w1366">
+            </div>
+            <div id="l637_p" class="landscape_list" alt="Palomar Mountain State Park"></div>
+            <div id="l412_p" class="landscape_list" alt="Pelican State Beach"></div>
+            <div id="l522_p" class="landscape_list" alt="Pescadero State Beach">
+                <img class="landscape" id="l522_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/GsYac_-y50D1lWRq6wEB2DXdyIHOdoq-jyC6zUy5OYU1S18gZpdlxVLZ931ghxE0_U-ihHGpjf9K3fRne1gD_joC7KYtyTxth_zooN53YQafhD9-gfFdo_ChbmkSG4CXXL-9_2PsDp4=w1366">
+                <img class="landscape" id="l522_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/G7jkXr9YdbaYRGtg3vi2hHZZ8XLwHybsVXL3Esf7UUsmb1rXnSelmC9PAC9w8rBKQcp1zHH2_NoJnqZK-Fwwov1weLSb7-g04d7PvoG8OCBQ8-CQKeLShP7fAQJzOSBD3NJj4uuLHds=w1366">
+                <img class="landscape" id="l522_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/v1Sf0PEYAdWA2sGUVfeAoW3RM-ss_kT7tRPKq4ewKHeaF6eW4pQmcZecf4oafjHYgCT0P6mvIeaqpXykbsMNd3UjQYx8pHMFvw7urigite2YJBCcqIDiFdHshBDODZ0wmAQibvhcN6g=w1366">
+            </div>
+            <div id="l474_p" class="landscape_list" alt="Petaluma Adobe State Historic Park"></div>
+            <div id="l570_p" class="landscape_list" alt="Pfeiffer Big Sur State Park"></div>
+            <div id="l641_p" class="landscape_list" alt="Picacho State Recreation Area"></div>
+            <div id="l533_p" class="landscape_list" alt="Pigeon Point Light Station State Historic Park">
+                <img class="landscape" id="l533_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/px4WWlzTedW3PWsqdRVglEx91QC05OX80j2NbTqSwqlr5Fw5DKiP7mmNMFNGkLWJfcrRkGv0gkr_cvfJxhqlJbFuvEUFFnUFWPdlVNmfdt4Px5HWTcKCj5fQlnGdU-bahw-2lv_HloE=w1366">
+                <img class="landscape" id="l533_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/gD7dwTCtlxgBltjoLLxUW-Ffn7a107-CE345Ah2MnqdpL8WOEuxMYhWozPfax4Pnz3wz6T1h_5X7OrLg90_t--8RadIhcdh8mMds4lmj0upgsFyS0TN_VKYIMlj8DxexJW5wv2OIzwc=w1366">
+                <img class="landscape" id="l533_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/Yxm884WqGRkAN3rmjT6upQam-tnJxYl7HcY06OYDpqR-Vd5QaZfV5d19oUUjpQybjSLfsPuTHuZ807bcqzGK8l9Eb8l8VqIJK0hZfO57ksNpm6SS28UpgK1X4Qi40UxHGyJKYHY_q6U=w1366">
+            </div>
+            <div id="l621_p" class="landscape_list" alt="Pío Pico State Historic Park"></div>
+            <div id="l595_p" class="landscape_list" alt="Pismo State Beach"></div>
+            <div id="l622_p" class="landscape_list" alt="Placerita Canyon State Park"></div>
+            <div id="l507_p" class="landscape_list" alt="Plumas-Eureka State Park"></div>
+            <div id="l918_p" class="landscape_list" alt="Point Cabrillo Light Station State Historic Park"></div>
+            <div id="l623_p" class="landscape_list" alt="Point Dume State Beach"></div>
+            <div id="l571_p" class="landscape_list" alt="Point Lobos State Natural Reserve">
+                <img class="landscape" id="l571_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/BCnQg5z7ZSB0AbVgbXyHYiBVYAGgkiozK5lfzzjfAt46vl95nu7YjUCEnVJRL1BDbLG-pFkYlImYyOHUuimRQ24VzzUEP4FziqtGPMVafQwvbTTi0RnMI00hs14HKUUdmZmrRf0hj_M=w1366">
+                <img class="landscape" id="l571_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/T4SYhfBHDqMvwlDwH0lzQLRioRcvKgqz1-MO1VexJ7JbxasUKq66c2ujErJWvqj9iCeDLykHNRc-p-bwyfucr-8iYB6U0s15EerPb0xPk5rdhOKDb076Xxbip6LV4nMVHWqF5qnq9pI=w1366">
+                <img class="landscape" id="l571_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/uGBNYUWDN21YF8AujQhn9elyG7XMtIE2-Lgc-meIolkE7v3nuWs90V9JbYiTYEkwIy8rnewsPz3YeTLxf-2SX6zJm_v0J_p4BQRysFEoINqCv-v4XgZRad6HEIuVg8VFU3smD9cPLAI=w1366">
+            </div>
+            <div id="l569_p" class="landscape_list" alt="Point Lobos Ranch Park Property"></div>
+            <div id="l630_p" class="landscape_list" alt="Point Mugu State Park"></div>
+            <div id="l605_p" class="landscape_list" alt="Point Sal State Beach"></div>
+            <div id="l565_p" class="landscape_list" alt="Point Sur State Historic Park"></div>
+            <div id="l521_p" class="landscape_list" alt="Pomponio State Beach">
+                <img class="landscape" id="l521_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/1a3uIBuJ7v2lZNFyoEXDnT3UrrFymC0Si3U88bjMPand-zl3xAe9bP00gQwYxp3nA8WsCkWMYKKvt1BMs4wQXf5Y0Uj75vMZTbZMlkh39KiqIQvHa_jokRF2nAojwNYJh0tQfYircS4=w1366">
+                <img class="landscape" id="l521_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ebQx3cj4O2AqRULxdO5ESO6gjv5Vcll91TzRJ1y3R0wo1rqLNrRsUYZeGTGa0h9KZGCAu7i_QlR9yqNb9FoOuDVNbAhRl_G29y39siUAxIuf8SlIaE9b_yCW8LpIls3tN4ru4FPojX0=w1366">
+                <img class="landscape" id="l521_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/I6kr0_0JbbyHhwKDn6pf4UjD5rCgwLQ_rWKnxXjfTVRc33hkjXe0qT3j5MpsflCpwhb4WEaAg_xx7sFUdmYL8wnlg-gNGGVlnKgnpuJ2EYOC72LRuA8MglAidxlH6VVISuGbry9Ab_c=w1366">
+            </div>
+            <div id="l539_p" class="landscape_list" alt="Portola Redwoods State Park"></div>
+            <div id="l411_p" class="landscape_list" alt="Prairie City State Vehicular Recreation Area"></div>
+            <div id="l415_p" class="landscape_list" alt="Prairie Creek Redwoods State Park"></div>
+            <div id="l615_p" class="landscape_list" alt="Providence Mountains State Recreation Area"></div>
+            <div id="l491_p" class="landscape_list" alt="Railtown 1897 State Historic Park"></div>
+            <div id="l919_p" class="landscape_list" alt="Rancho San Andrés Castro Adobe Park Property"></div>
+            <div id="l631_p" class="landscape_list" alt="Red Rock Canyon State Park"></div>
+            <div id="l603_p" class="landscape_list" alt="Refugio State Beach"></div>
+            <div id="l428_p" class="landscape_list" alt="Reynolds Wayside Campground"></div>
+            <div id="l422_p" class="landscape_list" alt="Richardson Grove State Park"></div>
+            <div id="l920_p" class="landscape_list" alt="Rio de Los Angeles State Park State Recreation Area"></div>
+            <div id="l633_p" class="landscape_list" alt="Robert H. Meyer Memorial State Beach"></div>
+            <div id="l472_p" class="landscape_list" alt="Robert Louis Stevenson State Park"></div>
+            <div id="l526_p" class="landscape_list" alt="Robert W. Crown Memorial State Beach">
+                <img class="landscape" id="l526_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/4G7qnrScAb_bWXODxXzVU-F3mJcIlJaLF7NbboPREWIhcNZdkQuMa-t7JC_4UVB5dNJ9DQrdiXiogLQl-G2O5_mtnGaxvDpZDZWcNKF-O45sDAiPIXAyE44OmM4Ccx0WdPBneVrd_qM=w1366">
+                <img class="landscape" id="l526_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/7qNfO7V7cuX-1OBhv2WW3M4ILmrzqJDD2MWfsldQhTgreNHDt97eyXEtW2pBxu7q6GzdNhIX3JNml9Nab2q3rol3L-fd17SS4A2lwaJrmD1v3WiWALH3g8aLfcPOVoyjAtARkvgSAi0=w1366">
+                <img class="landscape" id="l526_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/RJWXzhc-3Q6XPYbIzFvd-8eLI22DT_nJ-F_vrwaQUUqc5BRAr9xh2Qvd_oWxwpwD4FHg2bPxXu9kS1oQ_s03du70dMysbjMgIFEIROAjo4xkXL9GCUXRIhBUc0U0cSebvu4sQo-8jZ4=w1366">
+            </div>
+            <div id="l432_p" class="landscape_list" alt="Russian Gulch State Park"></div>
+            <div id="l618_p" class="landscape_list" alt="Saddleback Butte State Park"></div>
+            <div id="l573_p" class="landscape_list" alt="Salinas River State Beach">
+                <img class="landscape" id="l573_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/uMDOgE0z7HHvVQp32Y0XQgM96almQncPFVVxlujHEAnNt0whdlGSzuCNoEC2fTdJajiuGz_IXI1xwGMX9Urlzt9XqOxJBwi00wjWm3wqPG3iIVEPth0gRjh3kJmvkn28bzlMxVlHTzo=w1366">
+                <img class="landscape" id="l573_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/TsxacvSDZ_FBTV457Njd38Bzhk9Ot3uU-yEqYDvaRRg7EVslxT24hmLfR31Py4Nbt036Ir3d4i7qmW7AEjupyAvMHUlp_kkDBirhrRPhULgvWFrMaIWsbsjQxJ9dQb7gCWPMPBBA2v8=w1366">
+                <img class="landscape" id="l573_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/LXmw6i1co5_Y1O8Jk9ctFHld17vQUEcqVO92g6PzHCTVSfH5Nmg7YxOon5OeBxHhgxt-4d0m2F_u1MWUTdSylm_r44_hgKuHlpcvcmCAc8UswUifGEZ40-bAYNaKeFG0A0zexQ-OSL0=w1366">
+            </div>
+            <div id="l453_p" class="landscape_list" alt="Salt Point State Park"></div>
+            <div id="l639_p" class="landscape_list" alt="Salton Sea State Recreation Area"></div>
+            <div id="l469_p" class="landscape_list" alt="Samuel P. Taylor State Park"></div>
+            <div id="l518_p" class="landscape_list" alt="San Bruno Mountain State Park">
+                <img class="landscape" id="l518_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/A0n1Ow_jLZezpWtnulR1fqjkzK1ov_ZGIpJwh2dL7rId46KDwiCW63sAOhPsSq7hS09KEK-vH5NCHcxzDHDV88hOoiIa2_FrWtWI7Ki_nBqVEibzKvqR1_PqGjd-OYAIzCReAbzZ1rs=w1366">
+                <img class="landscape" id="l518_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ljvbXSAdPVMBuOX42uyn1Goio4LGIOfxyDevIPScdoQQRSpgLDkUH-wJRRGUOBQUmkW9_v6noD81A1EYfN2C156iG1JzRg8xclCHyDAVzIBsK-LQar1bc7TPWsBFJHauq9jReHp9cX8=w1366">
+                <img class="landscape" id="l518_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/n3aPP5SchuQDadiXOJP7kLrruN981TufcK_RE2sSnM-mXfA5Bo5MNnZfKqxlx1kG6zqa56gdTPE3WqTDgGCODZpJUtBudax5A0YLYID7YXGpTCqGieyIh6AfnPqFZz6NqcHCdvyQlxk=w1366">
+            </div>
+            <div id="l600_p" class="landscape_list" alt="San Buenaventura State Beach"></div>
+            <div id="l646_p" class="landscape_list" alt="San Clemente State Beach"></div>
+            <div id="l662_p" class="landscape_list" alt="San Elijo State Beach"></div>
+            <div id="l529_p" class="landscape_list" alt="San Gregorio State Beach">
+                <img class="landscape" id="l529_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/RerH1G7tq3QTehsR1rTN8kHoBAoF9-TD9QHSlMvJF8YlucR0Wo21CoGxhLC0VwNO3Jfhdk4fAceQU7jiz6Vu11RwHvCM2dIwVZYEFd-D7pDeCkD5awDr8khb4Xf21FsgAZ0Bxw5QX5k=w1366">
+                <img class="landscape" id="l529_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/L9WvOe2LxkQv_pLs_FydU8qj0Rb83VBrgP82II6Jm0o4z36tkfvCbFdfsMQOX_Fx2u_oYEmlY3f7Kcm9Skr0tXC5VkRcosGuuiUs2I76u7QYpYiFzguN22VGYUlBXQqbtEUhOaM1toA=w1366">
+                <img class="landscape" id="l529_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/kVJTMYfBlB1R9P9M-AYiTvpVoUYtIv8V6QzLWt6NlM8CTFJ4I1_BXpPxROFmZ2tcYNEY1LCOvfR-8JHelrkGadTzcEnXq2vIPYzNcwM6hdUjx-k5Ip5_CzkILjg8UDDZ3xac8rYDPaE=w1366">
+            </div>
+            <div id="l563_p" class="landscape_list" alt="San Juan Bautista State Historic Park">
+                <img class="landscape" id="l563_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/HIJxBDEp2dPVW8xD1ed71BbNPywyvuQZqJMsYXdpY28JvtQjZTKX3A2LmG6gsyURuNKAkBE1pk9RIBCj0Un9hJCaAXOJcEBREk0YjttmJMeLPUurvGtj0afpW6zbMsa6IrGw6ORXdzU=w1366">
+                <img class="landscape" id="l563_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/OR9vaYaovC4I1U-I-HIP1N9H9MGPLwaxkjFbhbFD80jnfi9fBG_ICEGWjd2cjMx_SGSaB7IJStlUjxw0IgbD-c3N0gIB1Sk00oOX-gZ7yhyNqeDXQ7gwYfTZqg-LmDATZsGZyiWw7qg=w1366">
+                <img class="landscape" id="l563_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/aEOA2KgZmPUQxkEr44Ky_LdciK7ACRvZlwiVR40hvNoDJRJdSuV1E1iXTdzFtU3otA-EpqPxQo8RCs6xCa4MJT27SwNe5NOOUFSGeJkGAV_eLVmUmnnQZqhJiKu5qMcKa2oam3QFGoM=w1366">
+            </div>
+            <div id="l558_p" class="landscape_list" alt="San Luis Reservoir State Recreation Area"></div>
+            <div id="l647_p" class="landscape_list" alt="San Onofre State Beach"></div>
+            <div id="l655_p" class="landscape_list" alt="San Pasqual Battlefield State Historic Park"></div>
+            <div id="l921_p" class="landscape_list" alt="San Timoteo Canyon Park Property"></div>
+            <div id="l548_p" class="landscape_list" alt="Santa Cruz Mission State Historic Park"></div>
+            <div id="l624_p" class="landscape_list" alt="Santa Monica State Beach"></div>
+            <div id="l611_p" class="landscape_list" alt="Santa Susana Pass State Historic Park"></div>
+            <div id="l446_p" class="landscape_list" alt="Schooner Gulch State Beach"></div>
+            <div id="l543_p" class="landscape_list" alt="Seacliff State Beach"></div>
+            <div id="l456_p" class="landscape_list" alt="Shasta State Historic Park"></div>
+            <div id="l654_p" class="landscape_list" alt="Silver Strand State Beach"></div>
+            <div id="l650_p" class="landscape_list" alt="Silverwood Lake State Recreation Area"></div>
+            <div id="l429_p" class="landscape_list" alt="Sinkyone Wilderness State Park"></div>
+            <div id="l427_p" class="landscape_list" alt="Smithe Redwoods State Natural Reserve"></div>
+            <div id="l479_p" class="landscape_list" alt="Sonoma State Historic Park"></div>
+            <div id="l451_p" class="landscape_list" alt="Sonoma Coast State Park"></div>
+            <div id="l660_p" class="landscape_list" alt="South Carlsbad State Beach"></div>
+            <div id="l496_p" class="landscape_list" alt="South Yuba River State Park"></div>
+            <div id="l423_p" class="landscape_list" alt="Standish-Hickey State Recreation Area"></div>
+            <div id="l486_p" class="landscape_list" alt="State Indian Museum State Historic Park"></div>
+            <div id="l493_p" class="landscape_list" alt="Stone Lake Park Property"></div>
+            <div id="l417_p" class="landscape_list" alt="Sue-meg State Park">
+                <img class="landscape" id="l417_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/n5ZGVONMIC0ImSYJlgR4JeaMg78Djx72YKUNLQrqAoTlSatdUM1x9tRIiEvfwAsDWnskVGhd9OEr_3DrS0DyMPi-d3cIvXdkXDYYdMunSdyyugXlF9K2VJX1jR8ZQnOsSNMS7kLjl0Q=w1366">
+                <img class="landscape" id="l417_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/BDSZX49FFUrdhLp2EfCw3vytdQ5r41w4a1jcm5L3QG0wKhwfCUQwscOPgWAMvxjWWiyrEwVP5ekVZhKk7HAqu37aRLz7-eNxwRnmaKvfDXNQ928oe5sbEH9wHoq_p55c-hnCwbl3Beo=w1366">
+                <img class="landscape" id="l417_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/AnEGRpyOm-K1G6ZXR7LSJ1wiS2fEdSwNX4dRLF_z7AImaFUe0-GsrMz9xuZ_KPX4GeeWffxTc813gbRFoKsHba_fVvdf6RVW8--GfOsMhvbZSJdfvfwrFTn4UsWfHnoWMya42fvnpV4=w1366">
+            </div>
+            <div id="l481_p" class="landscape_list" alt="Sugarloaf Ridge State Park"></div>
+            <div id="l544_p" class="landscape_list" alt="Sunset State Beach">
+                <img class="landscape" id="l544_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/e3PGvNaGL8zI4kDjH_cJSv3mtcAssSkKeThPnK5wsBD_3vJq9XHK6_OV7cYOUr6tRLk5a4m_2dgPagUl08xJabEBCktMGG4iiA_Is8gbgZX2unllkb8MGMFHh8DzLywYL7Cngu9X04A=w1366">
+                <img class="landscape" id="l544_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/31SH7Swc99U01cIjZ_s2rHz-o0O7iKfcmrZYkr2f6fpX7x4pLauhjvBBWWF-HV6ab1AkOVXmggYBmhZfOKDu-ahhFw7dQ5P0GU2KSHErLimP1fck1iSzSaq0_ABCo1c5y5bPIofaN5A=w1366">
+                <img class="landscape" id="l544_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/AhOv9M7O4ARgffM8jI9zmN-mCQDc_JUPgJfSiV3czrz3t0l64Cdfe1fy6ZpiKiVoPUXNTusHf2DwXUtxZQnQwS5foC418a39JGGYXKuhPT2sZQhHCnSAFNe0lzJPFWZxpnuLL0JYhDw=w1366">
+            </div>
+            <div id="l922_p" class="landscape_list" alt="Sutter Buttes State Park"></div>
+            <div id="l485_p" class="landscape_list" alt="Sutter's Fort State Historic Park"></div>
+            <div id="l504_p" class="landscape_list" alt="Tahoe State Recreation Area"></div>
+            <div id="l666_p" class="landscape_list" alt="The Forest of Nisene Marks State Park">
+                <img class="landscape" id="l666_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/wtTUadKQQgU8-gqTPdVWT2H-JOtlibWk7LliyeXkPYUHADcoQu6Nrkog1-1fuZ8_abadzlEv43Md7tjYhcKTGfAO7jeCZw3iPRw5NyDoiYOqI2bsWGxKGkWn9a9bdpwjox9N043pF14=w1366">
+                <img class="landscape" id="l666_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/EJgo3sJqcc66qvgxXDArI5xQ4Y0W16gjgzj9EDjJIJ1E9JIfuDDtYxH30-ziTZMDDvg_FS_lhzPA2TD-CZC2wZOE-_BSPU_e1UwJ1AfaeohcEhKECTD8lk2PW_lG3F7tm5AwFAp0Atg=w1366">
+                <img class="landscape" id="l666_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/ZR5AT_upPgU3YHq4E3eOrymrpEuXqmpDt1AZVpPaTGXYnN4t7iszkdnOm3Fcn7k8m2MgRH4kwER0IHd4vwzf4yvfqP1TIjads2FiISqchxXVUNOFgVmKWbMWagk4fSrCnT6acVnj4gU=w1366">
+            </div>
+            <div id="l530_p" class="landscape_list" alt="Thornton State Beach">
+                <img class="landscape" id="l530_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/j9Pvr_E1834kv4jyaBODikt-UYzsK_wYq010qnqpZQ1Xsq-UYWEjY3OaBuvaCW_9wENmbpD3N4ycXAoTlHzlx_X8-qGDxnnEb6AWx8iKK4lR5Xik-qAFWAe3Hewd3nlEKbhF9WLV5kQ=w1366">
+                <img class="landscape" id="l530_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/Sm5_ox-rYKpm7wQjxwbOSuaiyl-oaNwQX6-AboAon06rG469b98-uMm4Dxq350aUuQZucOmLSBQR-tuX5MOyv6KBtdpSN_Ey1iO73mxxnX9ylBSD41Bf7S_4RDh3NhpYVJGdPUlG_CY=w1366">
+                <img class="landscape" id="l530_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/J58x39q77FQkUHz8KWCwlNip1mCNvGFzt9ljIrCGl7F9o75rrKAy3q1lW6JhBYaWFhtX7mSNxFqmdlrNWU0RPBvdoS6ier2GEGPiQzwL4gFisBUlwueLVDV0sUn4OBO7WbBPitYdXg0=w1366">
+            </div>
+            <div id="l669_p" class="landscape_list" alt="Tijuana Estuary NP Point of Interest"></div>
+            <div id="l430_p" class="landscape_list" alt="Tolowa Dunes State Park"></div>
+            <div id="l470_p" class="landscape_list" alt="Tomales Bay State Park"></div>
+            <div id="l610_p" class="landscape_list" alt="Tomo-Kahni State Historic Park"></div>
+            <div id="l629_p" class="landscape_list" alt="Topanga State Park"></div>
+            <div id="l657_p" class="landscape_list" alt="Torrey Pines State Natural Reserve"></div>
+            <div id="l658_p" class="landscape_list" alt="Torrey Pines State Beach"></div>
+            <div id="l418_p" class="landscape_list" alt="Trinidad State Beach"></div>
+            <div id="l480_p" class="landscape_list" alt="Trione-Annadel State Park"></div>
+            <div id="l584_p" class="landscape_list" alt="Tule Elk State Natural Reserve"></div>
+            <div id="l555_p" class="landscape_list" alt="Turlock Lake State Recreation Area"></div>
+            <div id="l547_p" class="landscape_list" alt="Twin Lakes State Beach"></div>
+            <div id="l433_p" class="landscape_list" alt="Van Damme State Park"></div>
+            <div id="l635_p" class="landscape_list" alt="Verdugo Mountains Park Property"></div>
+            <div id="l513_p" class="landscape_list" alt="Ward Creek Park Property"></div>
+            <div id="l516_p" class="landscape_list" alt="Washoe Meadows State Park"></div>
+            <div id="l586_p" class="landscape_list" alt="Wassama Round House State Historic Park"></div>
+            <div id="l613_p" class="landscape_list" alt="Watts Towers of Simon Rodia State Historic Park"></div>
+            <div id="l457_p" class="landscape_list" alt="Weaverville Joss House State Historic Park"></div>
+            <div id="l440_p" class="landscape_list" alt="Westport-Union Landing State Beach"></div>
+            <div id="l549_p" class="landscape_list" alt="Wilder Ranch State Park"></div>
+            <div id="l923_p" class="landscape_list" alt="Wildwood Canyon Park Property"></div>
+            <div id="l625_p" class="landscape_list" alt="Will Rogers State Beach"></div>
+            <div id="l626_p" class="landscape_list" alt="Will Rogers State Historic Park"></div>
+            <div id="l458_p" class="landscape_list" alt="William B. Ide Adobe State Historic Park">
+                <img class="landscape" id="l458_1" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/_RVfMsFYwuQ4nehIHE83066XrSQ-KAoBaF2BUjvrej_900k7rnRaslD7sHn9CX-y8Yv4pUur1CdBpOEX5gZl7WjYptUiZQ91PrdS83D7keN7GwHyVQClcD_J01OFZxhM_kyOLPPymSY=w1366">
+                <img class="landscape" id="l458_2" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/3OOQNx0zSvP3OYl1Y-rrge426qEc-69XOgAVrhczT0VX4rpDNddqc5AE5weSHigM-tbGrd2tawxssVIZ_9wAXx7SGZIB2rflqljcNTwueVjPpX2sveinGcIvaP-6PCGPbGaux66vceM=w1366">
+                <img class="landscape" id="l458_3" src="img/minlandtr.png" data-photo-link="https://lh3.googleusercontent.com/60t9EKHsJlMj2botrDk3otobGRMlolqbaf_n43Wpm2tDeDfhjUEiowb44ygXAPkEnMZA8nsv69iASCKvG_TPae3SCRmUOJBcPvQRnA_V8DtxAiHLR_Q4BRlLNQQP6cVk5lSE8nmKLvs=w1366">
+            </div>
+            <div id="l488_p" class="landscape_list" alt="Woodland Opera House State Historic Park"></div>
+            <div id="l459_p" class="landscape_list" alt="Woodson Bridge State Recreation Area"></div>
+            <div id="l572_p" class="landscape_list" alt="Zmudowski State Beach"></div>
+        </div>
+        <script src="js/speedy.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+        <script src="js/navbar.js"></script>
+    </body>
+</html>
+

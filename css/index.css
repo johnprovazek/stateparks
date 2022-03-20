@@ -15,6 +15,7 @@ html, body {
     caret-color: transparent;
     font-family: 'FormataMedium';
     font-size: 20px;
+    -webkit-appearance: none;
 }
 
 body::-webkit-scrollbar {
@@ -164,4 +165,10 @@ body::-webkit-scrollbar {
     right:auto;
 }
 
-/* <button id="guest">Guest Access</button> */
+#guestaccess {
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'FormataMedium';  
+    color: #592626;
+    text-decoration: underline;
+}
