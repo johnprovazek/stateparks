@@ -48,5 +48,5 @@ Lastly, this website has been setup and designed to fit the picture aspect ratio
 
 ## Bugs & Improvements
 
-- Possible race condition when opening landscape photos, specifcally a problem on slow networks.
+- Possible race condition when opening landscape photos, specifically a problem on slow networks.
 - Add missing parks SVGs.
