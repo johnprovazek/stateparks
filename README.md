@@ -2,7 +2,7 @@
 
 ## Description
 
-On December 12th 2019, I started a journey to see every state park in the California State Park system. I have currently visited 45/282 parks! This website was created to document that journey and share with the people that joined me. At every park I visit, I take a picture at the park sign and take at least three landscape photos of that park. This website can be accessed at [johnprovazek.com/stateparks](https://www.johnprovazek.com/stateparks/).
+On December 12th 2019, I started a journey to see every state park in the California State Park system. I have currently visited 51/282 parks! This website was created to document that journey and share with the people that joined me. At every park I visit, I take a picture at the park sign and take at least three landscape photos of that park. This website can be accessed at [johnprovazek.com/stateparks](https://www.johnprovazek.com/stateparks/).
 
 This website is hosted for free here using GitHub Pages. It is written using vanilla JavaScript. The navbar was built on top of Bootstrap 5. The main body and pictures shown are built using a flexbox layout. I didn't want search engines or webcrawlers to have access to the images on this website. I am using [PageCrypt](https://www.maxlaumeister.com/pagecrypt/) as a solution to encrypt the main html file containing the image links. This keeps the website password protected while still taking advantage of GitHub Pages free hosting. I made a password-free guest option on my website to showcase the website to anyone that might want to setup something similar. 
 
@@ -50,3 +50,4 @@ Lastly, this website has been setup and designed to fit the picture aspect ratio
 
 - Possible race condition when opening landscape photos, specifically a problem on slow networks.
 - Add missing parks SVGs.
+- Blur new images and add them to the guest page 
