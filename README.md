@@ -48,6 +48,18 @@ Lastly, this website has been setup and designed to fit the picture aspect ratio
 
 ## Bugs & Improvements
 
-- Possible race condition when opening landscape photos, specifically a problem on slow networks.
 - Add missing parks SVGs.
-- Blur new images and add them to the guest page 
+- Blur new images and add them to the guest page.
+
+## Device Tests
+
+| Device                  | Browser       | Viewport Width | Viewport Height | Screen Width | Screen Height | DPR  | Default View | Alt View                         | Notes                                                         |
+|-------------------------|---------------|----------------|-----------------|--------------|---------------|------|--------------|----------------------------------|---------------------------------------------------------------|
+| Windows 10              | Chrome 101    | 2560           | 1329            | 2560         | 1440          | 1.00 | 5/2/2022     | null                             |                                                               |
+| Windows 10              | Edge 101      | 2560           | 1329            | 2560         | 2560          | 1.00 | 5/2/2022     | null                             |                                                               |
+| Windows 10              | Firefox 99    | 2560           | 1315            | 2560         | 2560          | 1.00 | 5/2/2022     | null                             | When loading landscape photos background is white             |
+| iPad Pro 11inch 3rd Gen | Safari iOS 15 | 834            | 1075            | 834          | 1194          | 2.00 | Password input box too big     | Password input box too big                         | Occasionally, text SVG file is too big at the end of the page.|
+| iPad Pro 11inch 3rd Gen | Chrome 101    | 834            | 1087            | 834          | 1194          | 2.00 | Password input box too big     | Password input box too big                         |                                                               |
+| Pixel 3                 | Chrome 101    | 393            | 654             | 393          | 786           | 2.75 | 5/2/2022     | 5/2/2022                         |                                                               |
+| iPhone 13               | Chrome 101    | 414            | 720             | 414          | 896           | 2.00 |              |                                  |                                                               |
+| iPhone 13               | Safari iOS 15 | 414            | 714             | 414          | 896           | 2.00 |              |                                  |                                                               |

@@ -37,15 +37,18 @@
     src: local('FormataMedium'), url('../fonts/Formata-Medium.woff2') format('woff2'), url('../fonts/Formata-Medium.woff') format('woff');
 }
 
-body {
-    margin:0;
+html{
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+body {
+    margin:0;
     caret-color: rgba(0,0,0,0);
     background-color: #FCC917;
 }
 
-body::-webkit-scrollbar {
+html::-webkit-scrollbar {
     display: none;
 }
 
@@ -78,11 +81,13 @@ body::-webkit-scrollbar {
     flex: 1 1 auto;
     /* height: auto;
     width: 33vw; */
+    /* background-color: #FCC917; */
 }
 
 .parksigntext{
     display:none;
-    background-color: #FCC917
+    opacity:0;
+    background-color: #FCC917;
 }
 
 .transparentend{

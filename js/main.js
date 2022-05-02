@@ -6,35 +6,45 @@ var currentActiveDropdown = "ALL"
 var numParkSignPerRow = 0
 var intervalID = null
 var mobileOpen = false
-var numParkPerCategory = {  /*  TODO: could reduce to tuples probably  */
-    ALL: 1,
-    SPK: 1,
-    HPK: 1,
-    SBH: 1,
-    SRA: 1,
-    SNR: 1,
-    VRA: 1,
-    OTH: 1,
+var numParkPerCategory = {
+    ALL: 1, SPK: 1, HPK: 1, SBH: 1, 
+    SRA: 1, SNR: 1, VRA: 1, OTH: 1
 };
-var numVisitedPerCategory = {  /*  TODO: could reduce to tuples probably  */
-    ALL: 1,
-    SPK: 1,
-    HPK: 1,
-    SBH: 1,
-    SRA: 1,
-    SNR: 1,
-    VRA: 1,
-    OTH: 1,
+var numVisitedPerCategory = {
+    ALL: 1, SPK: 1, HPK: 1, SBH: 1,
+    SRA: 1, SNR: 1, VRA: 1, OTH: 1
 };
+
+// Handles when a park sign is resized
+const parkSignResizeObserver = new ResizeObserver(entries => {
+    manageParkSigns(0)
+});
+const ALL_resize = document.getElementsByClassName("ALL")[0]
+const SPK_resize = document.getElementsByClassName("SPK")[0]
+const HPK_resize = document.getElementsByClassName("HPK")[0]
+const SBH_resize = document.getElementsByClassName("SBH")[0]
+const SRA_resize = document.getElementsByClassName("SRA")[0]
+const SNR_resize = document.getElementsByClassName("SNR")[0]
+const VRA_resize = document.getElementsByClassName("VRA")[0]
+const OTH_resize = document.getElementsByClassName("OTH")[0]
+parkSignResizeObserver.observe(ALL_resize);
+parkSignResizeObserver.observe(SPK_resize);
+parkSignResizeObserver.observe(HPK_resize);
+parkSignResizeObserver.observe(SBH_resize);
+parkSignResizeObserver.observe(SRA_resize);
+parkSignResizeObserver.observe(SNR_resize);
+parkSignResizeObserver.observe(VRA_resize);
+parkSignResizeObserver.observe(OTH_resize);
+
 
 window.onload = function() {
     setParkData()  /*  Calculates and sets data for parks  */
-    photoLoadManager()  /*  Handles loading in park images  */
+    finalphotoLoadManager()  /*  Handles loading in park images  */
     navbarOnLoad()  /*  js/navbar.js: Handles navbar variables and setup on mobile  */
 };
 
 window.onresize = function() {
-    manageParkSigns(0)  /*  Manages adding transparent parksigns to bottom of parksignflexbox  */
+    // manageParkSigns(0)  /*  Manages adding transparent parksigns to bottom of parksignflexbox  */
     removeLandscape("xxx")  /*  Removes any landscape photos that do not match the input code  */
     navbarOnResize()  /*  js/navbar.js: Handles navbar toggle and dropdown issues when switching between mobile (small window < 1025px) and desktop screens  */
 }
@@ -58,69 +68,122 @@ function setParkData(){
     }
 }
 
-/*  Handles loading in park images  */
-function photoLoadManager(){
-    var parksigns = document.getElementsByClassName("parksigntext")
-    var counter = 0
-    var dumpFirstLandscapesComplete = 0
-    var landscapeIDArray = []
-    for(const park of parksigns) {
-        counter++
-        if(park.getAttribute("data-visited") == "1"){
-            if(counter < numParkSignPerRow * 5){  /*  Load portrait photos for the first visible portrait images */
-                park.src = park.getAttribute("data-photo-link");
-                landscapeIDArray.push(park.id.substring(1, 4));
-            }
-            else{
-                if(!dumpFirstLandscapesComplete){  /*  Load landscape photos for the first visible portrait images */
-                    for(const code of landscapeIDArray){
-                        for (let i = 1; i < 4; i++){
-                            var landscapeElement = document.getElementById("l" + code + "_" + i)
-                            landscapeElement.src = landscapeElement.getAttribute("data-photo-link")
-                        }
-                    }
-                    landscapeIDArray = []
-                    dumpFirstLandscapesComplete = 1
-                    var list_parks = document.getElementsByClassName("parksign")
-                    for(const park of list_parks) {
-                        park.style.opacity =  0;
-                        park.style.display = "block";
-                    }
-                    intervalID = setInterval(opacityFade, 10);
-                    manageParkSigns(1)
-                }
-                park.src = park.getAttribute("data-photo-link"); /*  Load rest of portrait photos  */
-                landscapeIDArray.push(park.id.substring(1, 4));
-            }
-        }
-    }
-    for(const code of landscapeIDArray){  /*  Load rest of landscape photos  */
-        for (let i = 1; i < 4; i++){
-            var landscapeElement = document.getElementById("l" + code + "_" + i)
-            landscapeElement.src = landscapeElement.getAttribute("data-photo-link")
-        }
-    }
-}
+// Optimzed photo loading function
+//
+// wave1: Load in the first 15 pictures that I took with with the park sign. This should cover most screens landing page.
+// This is to show the pictures people will see first. Adjust this number from 15 as I visit more parks.
+//
+// wave2: Load in the landscape photos associated with those first 15 pictures. If these photos are moused over or clicked
+// they should be seen next.
+// 
+// wave3: Load in the rest of the pictures that I took with the park sign.
+//
+// wave4: Load in the landscape photos associated with the rest of the pictures I took with the park sign.
+function finalphotoLoadManager(){
+    var num_parks_front_load = 15
+    var park_elements = document.getElementsByClassName("parksigntext")
+    var wave_items_populated_check = false // Boolean to indicate that all item arrays have been populated.
+    var wave1_counter = 0 // Counter to count the first 15 pictures that I took with the park sign. On most screens this should be all the pictures initially shown.
+    var wave1_onload_counter = 0 // Counter to count once the first 15 pictures that I took with the park sign have been loaded.
+    var wave2_items = [] // Landscape photo elements associated with the first 15 pictures that I took with the park sign elements.
+    var wave2_onload_counter = 0 // Counter to count once the landscape photo elements associated with the first 15 pictures that I took with the park sign elements have been loaded.
+    var wave3_items = [] // The rest of the pictures that I took with the park sign elements.
+    var wave3_onload_counter = 0 // Counter to count once all the rest of the pictures that I took with the park sign elements have been loaded
+    var wave4_items = [] // Landscape photo elements associated with the rest of the pictures that I took with the park sign elements.
+    var svg_items = [] // All the elements that are in the form of park sign text SVGs.
 
-/*  Helper function to increase opacity of parksign elements  */
-function opacityFade(){
-    var list_parks = document.getElementsByClassName("parksign")
-    for(const park of list_parks) {
-        var opacity = Number(park.style.opacity)
-        if(opacity < 1){
-            opacity = opacity + 0.01
-            park.style.opacity = opacity
+    var wave3_OnLoadCallback = function(){
+        wave3_onload_counter++;
+        if(wave3_onload_counter < wave3_items.length){
+            return;
+        }
+        wave3_AllLoadedCallback();
+    }
+
+    var wave3_AllLoadedCallback = function(){
+        manageParkSigns(1)
+        for(const element of wave4_items){
+            element.src = element.getAttribute("data-photo-link");
+        }
+    };
+
+    var wave2_OnLoadCallback = function(){
+        wave2_onload_counter++;
+        if(wave2_onload_counter < num_parks_front_load*3){
+            return;
+        }
+        wave2_AllLoadedCallback();
+    }
+
+    var wave2_AllLoadedCallback = function(){
+        for(const element of wave3_items){
+            element.onload = wave3_OnLoadCallback
+            element.src = element.getAttribute("data-photo-link");
+            element.style.opacity =  1;
+            element.style.display = "block";
+        }
+    };
+
+    var wave1_OnLoadCallback = function(){
+        wave1_onload_counter++;
+        console.log(wave1_onload_counter)
+        if(wave1_onload_counter < num_parks_front_load + 1 && wave_items_populated_check){
+            return;
+        }
+        wave1_AllLoadedCallback();
+    };
+
+    var wave1_AllLoadedCallback = function(){
+        for(const element of svg_items){
+            element.style.opacity =  1;
+            element.style.display = "block";
+        }
+        manageParkSigns(1)
+        for(const element of wave2_items){
+            element.onload = wave2_OnLoadCallback
+            element.src = element.getAttribute("data-photo-link");
+        }
+    };
+
+    for(const element of park_elements) {
+        if(wave1_counter < num_parks_front_load && element.getAttribute("data-visited") == "1"){
+            element.onload = wave1_OnLoadCallback
+            element.style.opacity =  1;
+            element.style.display = "block";
+            element.src = element.getAttribute("data-photo-link");
+            var code = element.id.substring(1, 4)
+            for (let i = 1; i < 4; i++){
+                var landscape_element = document.getElementById("l" + code + "_" + i)
+                wave2_items.push(landscape_element)
+            }
+            wave1_counter++;
         }
         else{
-            clearInterval(intervalID); 
+            if(element.getAttribute("data-visited") == "1"){
+                wave3_items.push(element)
+                var code = element.id.substring(1, 4)
+                for (let i = 1; i < 4; i++){
+                    var landscape_element = document.getElementById("l" + code + "_" + i)
+                    wave4_items.push(landscape_element)
+                }
+            }
+            else{
+                svg_items.push(element)
+                element.style.opacity =  1;
+                element.style.display = "block";
+            }
         }
     }
+    wave_items_populated_check = true
+    wave1_OnLoadCallback()
 }
+
 
 /*  Manages adding transparent parksigns to bottom of parksignflexbox  */
 function manageParkSigns(force) {
     var parkSignElement = document.getElementsByClassName(currentActiveDropdown)[0]
     const numPerRow = Math.round(window.innerWidth / parkSignElement.width)
+    // alert(window.innerWidth + ' ' + parkSignElement.width + ' ' + numPerRow); 
     if (force || numPerRow != numParkSignPerRow) {
         var extras = (numPerRow - (numParkPerCategory[currentActiveDropdown] % numPerRow)) % numPerRow
         var elements = document.getElementsByClassName("transparentend");
@@ -137,6 +200,7 @@ function manageParkSigns(force) {
     }
     numParkSignPerRow = numPerRow;
 }
+
 
 /*  Removes any landscape photos that do not match the input code  */
 function removeLandscape(code){
@@ -191,6 +255,7 @@ function handleLandscapeOnMouseOver(elem){
             }
             counter++
             var restInRow = (numParkSignPerRow - (counter % numParkSignPerRow)) % numParkSignPerRow
+            // alert(numParkSignPerRow)
             var endsibling = elem
             for (let i = 0; i < restInRow; i++) {
                 do{
