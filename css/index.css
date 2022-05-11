@@ -173,3 +173,7 @@ body::-webkit-scrollbar {
     color: #592626;
     text-decoration: underline;
 }
+
+#githublink, #seperator {
+    color: #592626;
+}

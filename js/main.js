@@ -119,14 +119,13 @@ function finalphotoLoadManager(){
         for(const element of wave3_items){
             element.onload = wave3_OnLoadCallback
             element.src = element.getAttribute("data-photo-link");
-            element.style.opacity =  1;
             element.style.display = "block";
+            element.style.animation = "opacityFade 3s ease 0.2s 1 normal forwards";
         }
     };
 
     var wave1_OnLoadCallback = function(){
         wave1_onload_counter++;
-        console.log(wave1_onload_counter)
         if(wave1_onload_counter < num_parks_front_load + 1 && wave_items_populated_check){
             return;
         }
@@ -135,8 +134,8 @@ function finalphotoLoadManager(){
 
     var wave1_AllLoadedCallback = function(){
         for(const element of svg_items){
-            element.style.opacity =  1;
             element.style.display = "block";
+            element.style.animation = "opacityFade 3s ease 0.2s 1 normal forwards";
         }
         manageParkSigns(1)
         for(const element of wave2_items){
@@ -148,8 +147,8 @@ function finalphotoLoadManager(){
     for(const element of park_elements) {
         if(wave1_counter < num_parks_front_load && element.getAttribute("data-visited") == "1"){
             element.onload = wave1_OnLoadCallback
-            element.style.opacity =  1;
             element.style.display = "block";
+            element.style.animation = "opacityFade 3s ease 0.2s 1 normal forwards";
             element.src = element.getAttribute("data-photo-link");
             var code = element.id.substring(1, 4)
             for (let i = 1; i < 4; i++){
@@ -169,15 +168,12 @@ function finalphotoLoadManager(){
             }
             else{
                 svg_items.push(element)
-                element.style.opacity =  1;
-                element.style.display = "block";
             }
         }
     }
     wave_items_populated_check = true
     wave1_OnLoadCallback()
 }
-
 
 /*  Manages adding transparent parksigns to bottom of parksignflexbox  */
 function manageParkSigns(force) {
@@ -221,10 +217,14 @@ function filterParks(elem){
     /*  Set Display to none and display to block to filter  */
     var list_parks = document.getElementsByClassName("ALL")
     for(const park of list_parks) {
+        park.style.opacity = 1;
+        park.style.animation = "none";
         park.style.display = "none";
     }
     var list_parks = document.getElementsByClassName(code)
     for(const park of list_parks) {
+        park.style.opacity = 1;
+        park.style.animation = "none";
         park.style.display = "block";
     }
 

@@ -93,3 +93,8 @@ html::-webkit-scrollbar {
 .transparentend{
     background-color: #FCC917;
 }
+
+@keyframes opacityFade {
+    0%   {opacity:0;}
+    100% {opacity:1;}
+}
