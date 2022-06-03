@@ -2,7 +2,7 @@
 
 ## Description
 
-On December 12th 2019, I started a journey to see every state park in the California State Park system. I have currently visited 51/282 parks! This website was created to document this journey and to share it with the people that joined me. At every park I visit, I take a picture at the park sign and take at least three landscape photos of that park. This website can be accessed at [johnprovazek.com/stateparks](https://www.johnprovazek.com/stateparks/).
+On December 12th 2019, I started a journey to see every state park in the California State Park system. I have currently visited 54/282 parks! This website was created to document this journey and to share it with the people that joined me. At every park I visit, I take a picture at the park sign and take at least three landscape photos of that park. This website can be accessed at [johnprovazek.com/stateparks](https://www.johnprovazek.com/stateparks/).
 
 This website is hosted for free here using GitHub Pages. It is written using vanilla JavaScript. The navbar was built on top of Bootstrap 5. The main body and pictures shown are built using a flexbox layout. I didn't want search engines or webcrawlers to have access to the images on this website. I am using [PageCrypt](https://www.maxlaumeister.com/pagecrypt/) as a solution to encrypt the main html file containing the image links. This keeps the website password protected while still taking advantage of GitHub Pages free hosting. I made a password-free guest option on my website to showcase the website to anyone that might want to setup something similar. 
 
@@ -50,18 +50,5 @@ Lastly, this website has been setup and designed to fit the picture aspect ratio
 
 - Opacity fade in as images load could be improved.
 - Needs testing on a slow network.
-- Add missing parks SVGs.
 - Use a linter and a style guide.
-
-## Device Tests
-
-| Device                  | Browser       | Viewport Width | Viewport Height | Screen Width | Screen Height | DPR  | Default View  | Alt View                         | Notes                                                         |
-|-------------------------|---------------|----------------|-----------------|--------------|---------------|------|---------------|----------------------------------|---------------------------------------------------------------|
-| Windows 10              | Chrome 101    | 2560           | 1329            | 2560         | 1440          | 1.00 | 5/11/2022     | null                             |                                                               |
-| Windows 10              | Edge 101      | 2560           | 1329            | 2560         | 2560          | 1.00 | 5/11/2022     | null                             |                                                               |
-| Windows 10              | Firefox 99    | 2560           | 1315            | 2560         | 2560          | 1.00 | 5/11/2022     | null                             | When loading landscape photos the background is white.        |
-| iPad Pro 11inch 3rd Gen | Safari iOS 15 | 834            | 1075            | 834          | 1194          | 2.00 | 5/11/2022     | 5/11/2022                        | Occasionally, text SVG file is too big at the end of the page.|
-| iPad Pro 11inch 3rd Gen | Chrome 101    | 834            | 1087            | 834          | 1194          | 2.00 | 5/11/2022     | 5/11/2022                        |                                                               |
-| Pixel 3                 | Chrome 101    | 393            | 654             | 393          | 786           | 2.75 | 5/11/2022     | If loaded here first then switched to default the navbar will be too big|                                                               |
-| iPhone 13               | Chrome 101    | 414            | 720             | 414          | 896           | 2.00 |               |                                  |                                                               |
-| iPhone 13               | Safari iOS 15 | 414            | 714             | 414          | 896           | 2.00 |               |                                  |                                                               |
+- guest page is 9 parks behind encrypted page
