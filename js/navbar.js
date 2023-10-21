@@ -1,182 +1,77 @@
-/*  Global Variables  */
-var last_width = 0
-
-/*  Handles navbar variables and setup on mobile  */
+// Handles navbar setup.
 function navbarOnLoad(){
-    last_width = window.innerWidth;  /*  Sets intial window width  */
-    navbarSetParkNumbersDropdown()  /*  Sets the parks filter dropdown onload for mobile to show the numbers visted per category  */
-    navbarStyleSelectedDropdown()  /*  Sets the parks dropdown background and color to the one selected  */
+  navbarSetDropdownText(); // Sets the dropdown text. Handles mobile screens showing the number of parks visited per category.
+  let dropdownItems = document.getElementsByClassName('dropdown-item');
+  for (let i = 0; i < dropdownItems.length; i++) {
+    dropdownItems[i].addEventListener('click', navbarHandleSelectedDropdown);
+  }
 };
 
-/*  Handles navbar toggle and dropdown issues when switching between mobile (small window < 1025px) and desktop screens  */
+// Handles navbar resizing.
 function navbarOnResize(){
-    var window_width = window.innerWidth;
-    if((window_width < 1025 && last_width > 1024) || (window_width > 1024 && last_width < 1025)){  /*  Resets dropdowns to be closed when screen is switched between mobile and desktop  */
-        var top_dropdown = document.getElementById("navbarNavDropdown")
-        var dropdown = document.getElementById("navbarDropdownMenuLink")
-        var dropdown_list = document.getElementById("dropdown-parks")
-        top_dropdown.className = "collapse navbar-collapse"
-        top_dropdown.style.height = "auto"
-        top_dropdown.style.paddingTop = "12px"
-        dropdown.className = "nav-link dropdown-toggle unselectable"
-        dropdown.ariaExpanded = "false"
-        dropdown.style.display = "block"
-        dropdown_list.className = "dropdown-menu dropdown-menu-end"
-        dropdown_list.removeAttribute('data-bs-popper')
-    }
-    if(window_width < 1025 && last_width > 1024){  /*  Mobile  - Adds Number Visited to text in dropdown and resets color  */
-        var parktypes = [ "SPK","HPK","SBH","SRA","SNR", "VRA", "OTH", "ALL"]
-        for (const parktype of parktypes) {
-            document.getElementById(parktype).innerHTML = document.getElementById(parktype).getAttribute("data-text") + " - " + numVisitedPerCategory[parktype] + "/" + numParkPerCategory[parktype]
-        }
-        navbarStyleSelectedDropdown()
-    }
-    if(window_width > 1024 && last_width < 1025){  /*  Desktop  - Removes Number Visited to text in dropdown and resets color  */
-        var parktypes = [ "SPK","HPK","SBH","SRA","SNR", "VRA", "OTH", "ALL"]
-        for (const parktype of parktypes) {
-            document.getElementById(parktype).innerHTML = document.getElementById(parktype).getAttribute("data-text")
-            document.getElementById(parktype).style.color = "#FCC917";
-            document.getElementById(parktype).style.backgroundColor = "#592626";
-        }
-    }
-    last_width = window_width
+  navbarMobileDropdownClose();
+  navbarSetDropdownText();
 }
 
-/*  Sets the parks filter dropdown onload for mobile to show the numbers visted per category  */
-function navbarSetParkNumbersDropdown(){
-    var window_width = window.innerWidth
-    if(window_width < 1025){
-        var parktypes = [ "SPK","HPK","SBH","SRA","SNR", "VRA", "OTH", "ALL"]
-        for (const parktype of parktypes) {
-            document.getElementById(parktype).innerHTML = document.getElementById(parktype).getAttribute("data-text") + " - " + numVisitedPerCategory[parktype] + "/" + numParkPerCategory[parktype]
-        }
+// Handles adding dropdown text. On mobile screens the dropdown text will include the number of parks visited per category.
+function navbarSetDropdownText(){
+  let parkCategories = ['all','state-park','state-historic-park','state-beach','state-recreation-area','state-natural-reserve','state-vehicular-recreation-area','other'];
+  for (let parkCategory of parkCategories) {
+    let navElement = document.getElementById(parkCategory + '-filter');
+    let navElementText = navElement.textContent.split(' - ')[0];
+    if(window.innerWidth < 1025){
+      navElementText = navElementText + ' - ' + stats[parkCategory]['visited'] + '/' + stats[parkCategory]['count'];
     }
+    navElement.innerHTML = navElementText;
+  }
 }
 
-/*  Sets the parks dropdown background and color to the one selected */
-function navbarStyleSelectedDropdown(){
-    var window_width = window.innerWidth
-    if(window_width < 1025){
-        /*  Reset all dropdowns backgrounds and colors  */
-        var parktypes = [ "SPK","HPK","SBH","SRA","SNR", "VRA", "OTH", "ALL"]
-        for (const parktype of parktypes) {
-            document.getElementById(parktype).style.color = "#FCC917";
-            document.getElementById(parktype).style.backgroundColor = "#592626";
-        }
-        /*  Set selected dropdown backgrounds and colors  */
-        var current_selected_id = document.getElementById("navbarDropdownMenuLink").getAttribute("data-current-id")
-        document.getElementById(current_selected_id).style.color = "#337321";
-        document.getElementById(current_selected_id).style.backgroundColor = "#002469";
-    }
+// Handles when a navbar dropdown item has been selected.
+function navbarHandleSelectedDropdown(event){
+  // Adding and removing 'selected-item' class.
+  document.querySelector('.selected-item').classList.remove('selected-item');
+  let selectedDropdown = event.target;
+  selectedDropdown.classList.add('selected-item');
+  // Setting dropdown text.
+  let dropdown = document.getElementById('navbar-dropdown-menu-link');
+  let code = selectedDropdown.id.replace('-filter','');
+  dropdown.text = selectedDropdown.textContent.split(' - ')[0] + ' ' + stats[code]['visited'] + '/' + stats[code]['count'];
+  // Handle closing dropdown on mobile screens.
+  if(window.innerWidth < 1025){
+    navbarMobileDropdownClose();
+  }
 }
 
-
-/*  Handles opening and closing dropdown on mobile menu button press  */
-function navbarOpenDropdown(elem){
-    var top_dropdown = document.getElementById("navbarNavDropdown")
-    var dropdown = document.getElementById("navbarDropdownMenuLink")
-    var dropdown_list = document.getElementById("dropdown-parks")
-    if(dropdown.ariaExpanded == "true"){  /*  Open  */
-        top_dropdown.className = "collapse navbar-collapse"
-        top_dropdown.style.height = "auto"
-        top_dropdown.style.paddingTop = "12px"
-        dropdown.className = "nav-link dropdown-toggle unselectable"
-        dropdown.ariaExpanded = "false"
-        dropdown.style.display = "block"
-        dropdown_list.className = "dropdown-menu dropdown-menu-end"
-        dropdown_list.removeAttribute('data-bs-popper')
-    }
-    else{  /*  Closed  */
-        top_dropdown.className = "navbar-collapse collapse show"
-        top_dropdown.style.height = "auto"
-        top_dropdown.style.paddingTop = "12px"
-        dropdown.className = "nav-link dropdown-toggle unselectable"
-        dropdown.ariaExpanded = "true"
-        dropdown.style.display = "none"
-        dropdown_list.className = "dropdown-menu dropdown-menu-end show"
-        dropdown_list.setAttribute("data-bs-popper", "none")
-    }
+// Handles opening and closing dropdown on a mobile screen when the menu button is pressed.
+function navbarMenuToggle(){
+  if(document.getElementById('navbar-dropdown-menu-link').ariaExpanded == 'true'){
+    navbarMobileDropdownClose();
+  }
+  else{
+    navbarMobileDropdownOpen();
+  }
 }
 
-/*  Handles closing dropdown when a selection is made from the dropdown on mobile  */
-function navbarCloseDropdown(elem){
-    var window_width = window.innerWidth;
-    if(window_width < 1025){
-        var top_dropdown = document.getElementById("navbarNavDropdown")
-        var dropdown = document.getElementById("navbarDropdownMenuLink")
-        var dropdown_list = document.getElementById("dropdown-parks")
-        top_dropdown.className = "collapse navbar-collapse"
-        top_dropdown.style.height = "auto"
-        top_dropdown.style.paddingTop = "12px"
-        dropdown.className = "nav-link dropdown-toggle unselectable"
-        dropdown.ariaExpanded = "false"
-        dropdown.style.display = "block"
-        dropdown_list.className = "dropdown-menu dropdown-menu-end"
-        dropdown_list.removeAttribute('data-bs-popper')
-    }
+// Handles opening navbar in a mobile friendly view by overriding Bootstrap.
+function navbarMobileDropdownOpen(){
+  let topDropdown = document.getElementById('navbar-nav-dropdown');
+  topDropdown.className = 'collapse navbar-collapse show show-mobile-collapse';
+  let dropdown = document.getElementById('navbar-dropdown-menu-link');
+  dropdown.className = 'nav-link dropdown-toggle unselectable hide-mobile-dropdown';
+  dropdown.ariaExpanded = 'true';
+  let dropdownList = document.getElementById('dropdown-parks');
+  dropdownList.className = 'dropdown-menu dropdown-menu-end show';
+  dropdownList.setAttribute('data-bs-popper', 'none');
 }
 
-/*  Handles resizing navbar to look better on mobile  - TODO: this is handled in js/speedy.js now but might need later  */
-function navbarMobileResize(){
-    if(isMobileDevice()){
-        var element = document.getElementsByClassName("container-fluid")[0];
-        var computedStyle = getComputedStyle(element);
-        elementHeight = element.clientHeight;  // height with padding
-        elementWidth = element.clientWidth;   // width with padding
-        elementHeight -= parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
-        elementWidth = elementWidth - parseFloat(computedStyle.paddingLeft) - parseFloat(computedStyle.paddingRight);
-    
-        var logo = document.getElementById("logo")
-        var menu = document.getElementById("menu-symbol")
-        var text = document.getElementById("navbar-main-text")
-        var index = 0;
-        logo.setAttribute("style","width:2px;height:2px;");
-        menu.setAttribute("style","width:2px;height:2px;");
-        text.setAttribute("style","width:2px;height:4px;");
-    
-        while (logo.clientWidth + menu.clientWidth + text.clientWidth + 16 + 16 < elementWidth) {
-            index = index + 1
-            logo.setAttribute("style","width:" + index*2 + "px;height:" + index*2 + "px;");
-            menu.setAttribute("style","width:" + index*2 + "px;height:" + index*2 + "px;");
-            text.setAttribute("style","font-size:" + index + "px;");
-        }
-        index = index - 1
-        logo.setAttribute("style","width:" + index*2 + "px;height:" + index*2 + "px;");
-        menu.setAttribute("style","width:" + index*2 + "px;height:" + index*2 + "px;");
-        text.setAttribute("style","font-size:" + index + "px;");
-    }
+// Handles closing navbar in a mobile friendly view by overriding Bootstrap.
+function navbarMobileDropdownClose(){
+  let topDropdown = document.getElementById('navbar-nav-dropdown');
+  topDropdown.className = 'collapse navbar-collapse';
+  let dropdown = document.getElementById('navbar-dropdown-menu-link');
+  dropdown.className = 'nav-link dropdown-toggle unselectable show-mobile-dropdown';
+  dropdown.ariaExpanded = 'false';
+  let dropdownList = document.getElementById('dropdown-parks');
+  dropdownList.className = 'dropdown-menu dropdown-menu-end';
+  dropdownList.removeAttribute('data-bs-popper');
 }
-
-//  Mobile  - Standard - Open
-//  <button id="menu-button" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation" onclick="navbarOpenDropdown(this)">
-//  <div class="navbar-collapse collapse show" id="navbarNavDropdown" style="">
-//  <a class="nav-link dropdown-toggle unselectable show" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="true">All State Parks 43/282</a>
-//  <ul id="dropdown-parks" class="dropdown-menu dropdown-menu-end show" aria-labelledby="navbarDropdownMenuLink" data-bs-popper="none">
-
-
-//  Mobile  - Standard - Half Open
-//  <button id="menu-button" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation" onclick="navbarOpenDropdown(this)">
-//  <div class="navbar-collapse collapse show" id="navbarNavDropdown" style="">
-//  <a class="nav-link dropdown-toggle unselectable" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">All State Parks 43/282</a>
-//  <ul id="dropdown-parks" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-
-
-//  Mobile  - Standard - Closed
-//  <button id="menu-button" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" onclick="navbarOpenDropdown(this)">
-//  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-//  <a class="nav-link dropdown-toggle unselectable" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">All State Parks 43/282</a>
-//  <ul id="dropdown-parks" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-
-
-//  Desktop - Standard - Open
-//  <button id="menu-button" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" onclick="navbarOpenDropdown(this)">
-//  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-//  <a class="nav-link dropdown-toggle unselectable show" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="true">All State Parks 43/282</a>
-//  <ul id="dropdown-parks" class="dropdown-menu dropdown-menu-end show" aria-labelledby="navbarDropdownMenuLink" data-bs-popper="none">
-
-
-//  Desktop - Standard - Closed
-//  <button id="menu-button" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" onclick="navbarOpenDropdown(this)">
-//  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-//  <a class="nav-link dropdown-toggle unselectable" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">All State Parks 43/282</a>
-//  <ul id="dropdown-parks" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">

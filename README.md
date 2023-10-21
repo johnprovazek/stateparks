@@ -2,53 +2,59 @@
 
 ## Description
 
-On December 12th 2019, I started a journey to see every state park in the California State Park system. I have currently visited 54/282 parks! This website was created to document this journey and to share it with the people that joined me. At every park I visit, I take a picture at the park sign and take at least three landscape photos of that park. This website can be accessed at [johnprovazek.com/stateparks](https://www.johnprovazek.com/stateparks/).
+On December 12th 2019, I started a journey to see every state park in the California State Park system. This project was created to document this journey and share it with the people that joined me. At every park I visit I take a picture with the park sign and at least three landscape photos. This website can be accessed at [johnprovazek.com/stateparks](https://www.johnprovazek.com/stateparks/).
 
-This website is hosted for free here using GitHub Pages. It is written using vanilla JavaScript. The navbar was built on top of Bootstrap 5. The main body and pictures shown are built using a flexbox layout. I didn't want search engines or webcrawlers to have access to the images on this website. I am using [PageCrypt](https://www.maxlaumeister.com/pagecrypt/) as a solution to encrypt the main html file containing the image links. This keeps the website password protected while still taking advantage of GitHub Pages free hosting. I made a password-free guest option on my website to showcase the website to anyone that might want to setup something similar. 
+This website is hosted for free using GitHub Pages. It is written using vanilla JavaScript. The navbar was built on top of Bootstrap 5. To avoid search engines and webcrawlers from having access to the image links on this website, I am using [PageCrypt](https://github.com/MaxLaumeister/pagecrypt) as a solution to encrypt the main html file containing the image links. This keeps the website password protected while still taking advantage of GitHub Pages free hosting. This project is setup to use image links from Google Photos. There is also a password free [guest option](https://www.johnprovazek.com/stateparks/guest.html) to showcase the website to anyone that might be interested in setting up something similar.
 
 ## Installation
 
-If you would like to access my website it can be found at [johnprovazek.com/stateparks](https://www.johnprovazek.com/stateparks/). If you would like to create a copy of this website follow the steps below. 
+### Structure
 
-The repo is currently structured with [index.html](./index.html) as the default page. The page [index.html](./index.html) is utilizing [PageCrypt](https://www.maxlaumeister.com/pagecrypt/) so the main content is encrypted. The page [template.html](./template.html) would be a good place to start your development. You can rename [template.html](./template.html) to "index.html" and delete the old [index.html](./index.html) if you wish.
+The way this project is setup is with the [index.html](./index.html) file as the login page. The *main.html* file is where the main content of this project is located. The *main.html* file is included in the [.gitignore](./.gitignore) file and has been left out of this repository. This is because the file contains the Google Photos image links that need to be encrypted. The content of *main.html* is encrypted and stored in the [index.html](./index.html) file using [PageCrypt](https://github.com/MaxLaumeister/pagecrypt). There is also a [guest.html](./guest.html) file that acts as a password free demo page for this project. The [guest.html](./guest.html) file is structered identically to the *main.html* file just with different image links. If you are not interested in utilizing [PageCrypt](https://github.com/MaxLaumeister/pagecrypt) in your project you will have to make some adjustments to alter this structure.
+
+### Updates
+
+This project contains many helpful python scripts to assist with setting up and maintaining the website as new parks are visited. These scripts can be found in the [update](./update/) directory. There is a *parks.json* that is included in the [.gitignore](./.gitignore) file and has been left out of this repository. This is because the file contains the Google Photos image links that need to be encrypted. The *parks.json* file is where all the important park information is stored and updated. This file will be used when generating the html files for the website.
+
+When first building this project the first script to run is [scrape.py](./update/scrape.py). This script is used to gather the latest California State Parks data from the official California State Parks website. This script will then generate/update the *parks.json* file and the [parks](./img/parks/) and [overlay](./img/overlay/) image directories with SVG images of the park names.
+
+The next step would be to go through the *parks.json* file and update the park fields as needed.
+
+Some of the park names pulled from the official California State Parks website were too long and needed to be abriviated or altered. You may do this as you see fit. When changing a park name in the *parks.json* file you will also need to generate new SVG images for that park. You can do this by running the script [sign.py](./update/sign.py).
+
+Parks that have been visited will need to be updated in the *parks.json* file. To mark a park as visited set the visited field to true.
+
+This project is currently setup to use Google Photos image links for all park photos. There is a script [photos.py](./update/photos.py) included to help with automating the process of gathering the direct image links from Google Photos shared album links.
+
+Occasionally photos with the park sign may be difficult to read so there is an overlay option included to place an SVG image overlay of the park name on top of the park sign photo. To utilize this set the overlay option to true in the *parks.json* file.
+
+The last step is to run the script [build.py](./update/build.py) to generate the html files. You will need to add a *passphrase.txt* file with a passphrase in the first line to the [assets](./update/assets/) directory in order to encrypt the site.
+
+### Adjustments
+
+This website has been setup and designed to fit the picture aspect ratio of 3:4 for park sign photos and 4:3 for landscape park photos. If you have photos with different aspect ratios you may need to modify this projects code to get it to work with your photos.
+
+This project also utilizes Google Photos image links. If you would like to use a different method, you will need to make adjustments.
+
+The website navbar title is setup as a SVG and will likely need to be adjusted when adding your own name.
 
 ## Usage
 
-### Adding Park Sign Photos
+Use the dropdown to filter the type of parks shown.
 
-Start by modifying `<img>` elements with the class `parksigntext` updating the parks you've visited. Here's an example of an `<img>` element of a park that hasn't been visited:
-```
-<img class="parksign parksigntext SRA ALL" id="s424" data-visited="0" src="img/parks/424.svg" data-parksid="424" alt="Admiral William Standley State Recreation Area" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
-```
-`<img>` elements that look like the one above will show up as text with the park name. They are represented as svg images that can be found under the [img/parks](img/parks/) folder. Each park has a code associated with it. You can find the code that corresponds to a park in the html file. Here is an example of an `<img>` element for a park that has been visited:
-```
-<img class="parksign parksigntext SPK ALL" id="s523" data-visited="1" src="img/minporttr.png" data-photo-link="https://via.placeholder.com/324x432?text=parksign" data-parksid="523" alt="Año Nuevo State Park" onmouseover="handleLandscapeOnMouseOver(this)" onclick="handleLandscapeOnClick(this)">
-```
-For parks you've visited update the `data-visited` attribute to 1. This signifies the parks has been visited. Make sure the `src` attribute is set to "img/minporttr.png". This is a small image file displayed when rendering the page. Replace the link at the `data-photo-link` attribute with a link to your picture with the park sign. In my website I used links from Google Photos.
-
-### Adding Landscape Park Photos
-
-The next step is to add `<img>` elements for each landscape photo. Each park will have a `<div>` with the class `landscape_list`. Add `<img>` elements under that element. This website is structured to take three landscape photos for every park that has been visited. If a park hasn't been visited you can leave the `landscape_list <div>` empty. Here is an example of a `landscape_list <div>` with three landscape `<img>` elements:
-```
-<div id="l523_p" class="landscape_list" alt="Año Nuevo State Park">
-    <img class="landscape" id="l523_1" src="img/minlandtr.png" data-photo-link="https://via.placeholder.com/1366x1024?text=l523_1">
-    <img class="landscape" id="l523_2" src="img/minlandtr.png" data-photo-link="https://via.placeholder.com/1366x1024?text=l523_2">
-    <img class="landscape" id="l523_3" src="img/minlandtr.png" data-photo-link="https://via.placeholder.com/1366x1024?text=l523_3">
-</div>
-```
-First find the code associated with the park for which you would like to add landscape photos. In the example above this is for the park "Año Nuevo State Park" that has the code "523". Prepend the character "l" and append the strings "_1","_2", or "_3" like the example above. Make sure the `src` attribute is set to "img/minlandtr.png". Replace the links at the `data-photo-link` attribute with links to your landscape photos.
-
-Lastly, this website has been setup and designed to fit the picture aspect ratios taken from my phone. The park sign pictures are taken in a portrait aspect ratio of 3x4. The landscape park pictures are in aspect ratio of 4x3. If you have pictures with different aspect ratios you may need to modify this projects code to work with your photos. The website navbar scaling was scaled according to the title "John Provazek's State Park Checklist". The website scaling might need to be altered for a longer or shorter title.
+Click on the landscape icon under a park to view the landscape photos for that park.
 
 ## Credits
 
-[PageCrypt](https://www.maxlaumeister.com/pagecrypt/) was used for the encryption solution.
+[PageCrypt](https://github.com/MaxLaumeister/pagecrypt) was used for the encryption solution.
 
 [Bootstrap 5](https://getbootstrap.com/docs/5.0/components/navbar/) was used for the navbar.
 
 ## Bugs & Improvements
 
-- Opacity fade in as images load could be improved.
-- Needs testing on a slow network.
+- Test directly embedding SVGs using the `<text>` element instead of using SVG image files. 
+- Add retry logic for when Google Photos images fail to load.
+- Add lines to seperate the landscape loading images.
+- Needs further testing on a slow network.
+- Add a map feature to show all the parks on a map.
 - Use a linter and a style guide.
-- guest page is 9 parks behind encrypted page

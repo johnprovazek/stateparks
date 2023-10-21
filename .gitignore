@@ -1,0 +1,7 @@
+# Contains encrypted links and passphrase.
+main.html
+update/assets/parks.json
+update/assets/passphrase.txt
+
+# Local development files.
+update/__pycache__

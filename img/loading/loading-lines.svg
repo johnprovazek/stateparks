@@ -1,0 +1,8 @@
+<svg class='landscape-grid-loading-lines' height='100%' width='100%'>
+  <line class='h-left' x1='33%' y1='0%' x2='33%' y2='100%' stroke='#592626' stroke-width='4px'/>
+  <line class='h-right' x1='66%' y1='0%' x2='66%' y2='100%' stroke='#592626' stroke-width='4px'/>
+  <line class='p-across' x1='25%' y1='50%' x2='75%' y2='50%' stroke='#ff0000' stroke-width='4px'/>
+  <line class='p-down' x1='50%' y1='50%' x2='50%' y2='100%' stroke='#ff0000' stroke-width='4px'/>
+  <line class='v-top' x1='0%' y1='33%' x2='100%' y2='33%' stroke='#ff00ff' stroke-width='4px'/>
+  <line class='v-bottom' x1='0%' y1='66%' x2='100%' y2='66%' stroke='#ff00ff' stroke-width='4px'/>
+</svg>
