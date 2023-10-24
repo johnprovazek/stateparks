@@ -20,7 +20,7 @@ When first building this project the first script to run is [scrape.py](./update
 
 The next step would be to go through the *parks.json* file and update the park fields as needed.
 
-Some of the park names pulled from the official California State Parks website were too long and needed to be abriviated or altered. You may do this as you see fit. When changing a park name in the *parks.json* file you will also need to generate new SVG images for that park. You can do this by running the script [sign.py](./update/sign.py).
+Some of the park names pulled from the official California State Parks website were too long and needed to be abbreviated or altered. You may do this as you see fit. When changing a park name in the *parks.json* file you will also need to generate new SVG images for that park. You can do this by running the script [sign.py](./update/sign.py).
 
 Parks that have been visited will need to be updated in the *parks.json* file. To mark a park as visited set the visited field to true.
 
