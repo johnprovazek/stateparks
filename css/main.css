@@ -13,6 +13,7 @@ body.no-scroll {
   height: calc(100% - clamp(30px, 5vw, 100px) - (2*clamp(12px, 1vw, 20px)));
   background-color: rgba(0,0,0,0.91);
   z-index: 1;
+  cursor: pointer;
 }
 
 #landscape-container.shown{
@@ -57,6 +58,7 @@ body.no-scroll {
   bottom: 0;
   left: 0;
   right: 0;
+  cursor: default;
 }
 
 .exit-landscape-button{

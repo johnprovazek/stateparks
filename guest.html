@@ -13,7 +13,7 @@
       <link rel="stylesheet" href="css/navbar.css">
       <script>
         document.querySelector(':root').style.setProperty('--screenwidth', window.screen.width + 'px');
-        var stats = {'all': {'count': 283, 'visited': 96}, 'state-park': {'count': 89, 'visited': 33}, 'state-historic-park': {'count': 52, 'visited': 18}, 'state-beach': {'count': 62, 'visited': 22}, 'state-recreation-area': {'count': 32, 'visited': 12}, 'state-natural-reserve': {'count': 16, 'visited': 5}, 'state-vehicular-recreation-area': {'count': 9, 'visited': 2}, 'other': {'count': 23, 'visited': 4}};
+        var stats = {'all': {'count': 283, 'visited': 107}, 'state-park': {'count': 89, 'visited': 35}, 'state-historic-park': {'count': 52, 'visited': 21}, 'state-beach': {'count': 62, 'visited': 27}, 'state-recreation-area': {'count': 32, 'visited': 12}, 'state-natural-reserve': {'count': 16, 'visited': 6}, 'state-vehicular-recreation-area': {'count': 9, 'visited': 2}, 'other': {'count': 23, 'visited': 4}};
       </script>
   </head>
     <body>
@@ -36,7 +36,7 @@
               <div class="collapse navbar-collapse" id="navbar-nav-dropdown">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown-menu-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">All State Parks 96/283</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown-menu-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">All State Parks 107/283</a>
                     <ul id= "dropdown-parks" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbar-dropdown-menu-link">
                       <li id="all-filter" class="dropdown-item selected-item" onclick="filterParks(this)">All State Parks<li>
                       <li id="state-park-filter" class="dropdown-item" onclick="filterParks(this)">State Parks<li>
@@ -707,14 +707,20 @@
               <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
             </div>
-          <div id="602" class="sign-container sign-shown state-historic-park">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/602.svg" referrerpolicy="no-referrer" alt="Chumash Painted Cave State Historic Park Sign Photo"></img>
+          <div id="602" class="sign-container sign-shown visited state-historic-park">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV865iJZbrVb1SDGmWmmYr9blYOH_hR69N5esFZN2KZYYg31ffLRTEiIvof5J-tsERhy3gVctJNbebLK3aW9LwKpwVgpJMutrOq_OKV8_1r3qAiNCJ-Q" referrerpolicy="no-referrer" alt="Chumash Painted Cave State Historic Park Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.50440876485665,-119.78771958617638">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=602">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87zevDivdEDqL4Ylm91IrEq7QGkPoP3vj-ebkk53Mv7F8yI72xnIJ-enO04JrwQeyJxvcMkp8ovzxfVmwk0HGioD3FFa4HIDqhpx8KxHwMrKDrTOUGe" alt="Chumash Painted Cave State Historic Park Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85pbSwY3jrtBmo6mEBDxntY81V398oaAQkg1jkPWSyJyeSfL6zTzpnhKgzc1xZXCAjoBdtpa4AIN78tHZA68sHxiApUq86keHG8c9R53jwGp71OvxFb" alt="Chumash Painted Cave State Historic Park Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV874AzqkJOkR_2Cu8d5NNsV5SNPf54PERyGTlCzl-b6tmvsSXqvByfp2xwJp1zXF1YsaWHLSRnXYtdISz8HIm84Xcmlp2ToHOlvuHpmbVIsFMhXj9v9t" alt="Chumash Painted Cave State Historic Park Landscape Photo 3"></img>
             </div>
           <div id="25572" class="sign-container sign-shown visited state-vehicular-recreation-area">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc9GzwwAxhhKl_PkjTA-8Qo6RYoIq8ulb5jHYhz0G-WIAeFDv8czI9X0FFzvnwjhb6jqVURFuTKv1S_NIgBITY1ePTcYazd-y99RRobWp_1oixmWGtg" referrerpolicy="no-referrer" alt="Clay Pit SVRA Sign Photo"></img>
@@ -882,23 +888,35 @@
               <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
             </div>
-          <div id="601" class="sign-container sign-shown state-beach">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/601.svg" referrerpolicy="no-referrer" alt="El Capitán State Beach Sign Photo"></img>
+          <div id="601" class="sign-container sign-shown visited state-beach">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV84GHzQLCkTZev5yh3IIfcZhyWNgh0IibmAAsrMFKvwUoavmrCO7jwfEg-D9QNJsWBuG-itd2q2eg2CrjLPjbuYmGvD5vM7pYFUxiQztMqWkTMm7FhU" referrerpolicy="no-referrer" alt="El Capitán State Beach Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.45977952901525,-120.02476858245318">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=601">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85IoCC6INqM3Ug8pyaaqErl7-jhXF16RrUTKKNvbMpgBrBvgJkLDa_EeELUXY-NEe8eVBIMOUOwjssHS1QMBZg8951SebVcBP8Cv0co1B0aN4H5YBNe" alt="El Capitán State Beach Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV84Qs8YbWrDSXLTs39sE48CrVqtJe5uttPHw2YbRvb7x-pDvJCJWJ6fMy2G1t2CTItBrvHmXquc3roRcAT-hyHjfS_BoI-6GGRPh4M5VSzBLKO1n-zpo" alt="El Capitán State Beach Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87mnEEwJuJ2zIg6KjFAWqKm5OzRKiyX55diWNt92issgVv4mq9zypvyQCMM8SKS9shETrhiP7kK1RD3PuEbUkWyiDWJJG0USjdOSATmuTMMIiHMks5-" alt="El Capitán State Beach Landscape Photo 3"></img>
             </div>
-          <div id="608" class="sign-container sign-shown state-historic-park">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/608.svg" referrerpolicy="no-referrer" alt="El Presidio de Santa Barbara State Historic Park Sign Photo"></img>
+          <div id="608" class="sign-container sign-shown visited state-historic-park">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85n_al4YQYt9ZOHK9Ln4cyZYEXJlyiTG90pMJS9ZFC-ct4KygoQBN7eG0P720H9AwzXy6j2P7B1-ohcRBCkq-eUlKIOLXLyyHwH2sLBQaVGXGPDnIc" referrerpolicy="no-referrer" alt="El Presidio de Santa Barbara State Historic Park Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.42243834176503,-119.69858092725687">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=608">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85BTQVy-vl2UDD78N6neZunuE61SP80rsFkNmMGn5Gjr1ny8GGZAqnUJ9LYlXMqeFtD11zVTki5g_Pkg_BCXv2iEmDN2VsvxmOjuPbMZLlvi423sfOu" alt="El Presidio de Santa Barbara State Historic Park Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87Mn2txti1RTJVZShI3p-_kyKkUKHqbQQuLpW8A1g9crwnKPvdosp5pFKNmkkEv3LfVxvNGqoQQDu0uAALr0NSMXliumc05jBiJhai8FADBAw0Frq3r" alt="El Presidio de Santa Barbara State Historic Park Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87qhlslV2K2SW-BlJxT2ej_8iVSF8b-17hpt8rF1w1Y_swXNvWM_NDxWZ_m3oFyFbJXUUbjgYHpwdrhS5PJf_2pmfTBTJJmlBZ8xgJoUOS34wrBojjA" alt="El Presidio de Santa Barbara State Historic Park Landscape Photo 3"></img>
             </div>
           <div id="506" class="sign-container sign-shown state-park">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/506.svg" referrerpolicy="no-referrer" alt="Emerald Bay State Park Sign Photo"></img>
@@ -925,14 +943,20 @@
             <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc8fZOsEGVGdFzJ8iNtP3_XCqEcBsWJLanCST7QGWVW0q3b9TZeig2gQ_xDfZHv0OGss10y0tk3dzke-pA9M9-EQvMFnLen37cnxEqj_r5vsYbP1N948" alt="Emeryville Crescent State Marine Reserve Landscape Photo 2"></img>
             <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc_gckocK0IfQp0-1y3WyT61QS7d_wV5FOpo7Ctm0m1MFvYgs47qFVpUvM4Y3283x1xmiTUlU21sCbK1mQr-7RnsGe9oxhlMuKf1ukw71rfQAFR41AnJ" alt="Emeryville Crescent State Marine Reserve Landscape Photo 3"></img>
             </div>
-          <div id="604" class="sign-container sign-shown state-beach">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/604.svg" referrerpolicy="no-referrer" alt="Emma Wood State Beach Sign Photo"></img>
+          <div id="604" class="sign-container sign-shown visited state-beach">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV861dF4Qd6cLnjtbluzxb-unCCKfKHmU1F7N0F82XoOiDGcIlwrXkyB51mlHkFBzYIj8DyzwlPw8T46D369Qi5L0wOvBFK-982Bwh5xuEazn0hMBQgo" referrerpolicy="no-referrer" alt="Emma Wood State Beach Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.280871161281446,-119.31558207113954">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=604">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87hFeiNzdp7TzjU2qTCdEYftj1V2SJiqF_6d6iDWbKUW27ufD2FkA5ePq4mJndFVhUNHSjh9sgZVw-lSLWMoghNZI91yp1hlXrOT_h2baNddLh9oEuu" alt="Emma Wood State Beach Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87NwYAVihW8X7Z7D4zSd2RCPPL1XTpoOf0zFNVmkFbAqRzg494argqZpgfyThRxLHpUXJKiD4XPtFCu2lDu11une2w2dliH_E1zR38ceZBolXtBd1_P" alt="Emma Wood State Beach Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85uouu1EEvkZ8KaXIN5S6tD2wshZiPOF00C_uB3ZSi8Cd376bC7Jj9HY7A1bX1hEo8NwsFtORZYTcZ80hzGBZaeJtA3aDy7xwCMGAZ_N-fWnyTLVKiX" alt="Emma Wood State Beach Landscape Photo 3"></img>
             </div>
           <div id="499" class="sign-container sign-shown visited state-historic-park">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc8TVIPz9rZ2ZphisNDrksdomBjsuMbWSRY4MpRKhWHOJZelIk7ONkPSZIf3OxGaYpHSUVdFUzUwyy679Ts0b4XCd4JFtCSTER1tZ-cjGmM-8m9IRhk" referrerpolicy="no-referrer" alt="Empire Mine State Historic Park Sign Photo"></img>
@@ -1058,14 +1082,20 @@
             <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc_Oy5JtZoYiewpxzaqCJksmWC33iW6jnjO7tp2aQFfjUevO44Fxs6zyJax3Hc3BOTh1D-T79PGxLY8ULG8OY4mxqNYnyoaFW1z3XwcITL-nx1aXaP6n" alt="Garrapata State Park Landscape Photo 2"></img>
             <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc9VxTlakpddbYcFFWYliWdnGcshkqyroaAnrpsKnT3n2XW1fIdSr8dCb4zaQY09C0QJePGHCzHMAIWAO4eQU1P-795uGQfKjjElofgCbGBv0N2p-7fp" alt="Garrapata State Park Landscape Photo 3"></img>
             </div>
-          <div id="606" class="sign-container sign-shown state-park">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/606.svg" referrerpolicy="no-referrer" alt="Gaviota State Park Sign Photo"></img>
+          <div id="606" class="sign-container sign-shown visited state-park">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV866lDur44G3GXz9jCZhy4tz-Ueu-ArlJ38PiNd5eL301ineCoexHyrHM-aXjj2mIXztyWiOoi9FDTL104ZnDQEhnqfsmaVDYjAtcxnKk1nFyeB6SDM" referrerpolicy="no-referrer" alt="Gaviota State Park Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.47198811206891,-120.22844791056589">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=606">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV86OhM0xz-i4g_V_nZdUUYeSGiPC5H1HiihG_jvWx__qcnfHzGmievjqqYaKsgN_maG6jKa5nxp159jiwna_MhCTA8eJGoob1VMKHWuHPL9js-oBhHUw" alt="Gaviota State Park Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85myISSzyTBtYE4l-92NTT5HRoryBBc2bEYdDw-sfLfqXs2aVMRnBMDvdcVMrrENFykl9vrGJHGs7rSwod6ikD4pUQYbBK5HfPKyqLathd5IfFVmmp1" alt="Gaviota State Park Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV84yijtRbAVJa0zylyDEyzioq8_hg685MQSmgM-WbdDrttNGfNzBcdhlmjl--AQPL1_2c5Lx8Mxl9R1G_vJfEbGHmAya-wUUE30I5qmCAQuhY4jl-GRu" alt="Gaviota State Park Landscape Photo 3"></img>
             </div>
           <div id="556" class="sign-container sign-shown visited state-recreation-area">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc89l6zbEAC_R6pJAo2E7TJ5Jg1Tmf--q2oFviyZ9RKfqSFsku7rWTI3ac64LjxK_bX2MlXEijaqnY8wbgeacwc6CJC9KSLiSOoU_zx1G6Fpq9MAb6s" referrerpolicy="no-referrer" alt="George J. Hatfield State Recreation Area Sign Photo"></img>
@@ -1443,14 +1473,20 @@
               <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
             </div>
-          <div id="598" class="sign-container sign-shown state-historic-park">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/598.svg" referrerpolicy="no-referrer" alt="La Purísima Mission State Historic Park Sign Photo"></img>
+          <div id="598" class="sign-container sign-shown visited state-historic-park">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV868JxqUwoOB-dpHF8jmNlV88j5g-WP25k3nzhiqgWNVndCwaWuGLJE8_sw84okE23EdsHaBuoG27gJjvTzCdgLjkmWVnTjoID8PIc4ocZG3vfd1Ee8" referrerpolicy="no-referrer" alt="La Purísima Mission State Historic Park Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.669583050729294,-120.42150435267466">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=598">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87e-h41_F1scz3Z8fUL8aTVAiMidxWMBjQqcghtQ3Nu-4rIGi4Ira6PBe12NShpiii-CqeyxywFnxdGdnwTwfLQQV6aD_pGVB-KCVs_j7T-iedVZ_ZE" alt="La Purísima Mission State Historic Park Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV866TTw5FSYSvrGhJkED15EvJzOzRPV1DiiBHiz02rr_pXsqVa5NOc5VGaBBRDJvNHSlQR8RLuiqBk12svK751X7GOJlgYh4aCwMupTXPc6L9E5mck-h" alt="La Purísima Mission State Historic Park Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV84mzMgYcuT2GojRVRIMMUxjjMbiawUQu2WuVto6SlPLx6nuY03L6YoHV3oHOSa02CgHB4dAt3LeDRHFKgeIMOf0ieyqcDwJUZswDqFV56E-CuBfRFcC" alt="La Purísima Mission State Historic Park Landscape Photo 3"></img>
             </div>
           <div id="537" class="sign-container sign-shown visited state-recreation-area">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc_gQHIpdxLqKli5JxZKbN7bMnAQmE2EdNtTmu3AvxO30CGfJ9VqlvhS5V6FcC_SHw4j-k_ge5mqoTxz66CctidlJhujgJ7vDenOdG1Dcd50MaYhDsk" referrerpolicy="no-referrer" alt="Lake Del Valle State Recreation Area Sign Photo"></img>
@@ -1594,14 +1630,20 @@
               <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
             </div>
-          <div id="597" class="sign-container sign-shown state-natural-reserve">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/597.svg" referrerpolicy="no-referrer" alt="Los Osos Oaks State Natural Reserve Sign Photo"></img>
+          <div id="597" class="sign-container sign-shown visited state-natural-reserve">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85Zxu4COL5POuQGvLt4iiwxaPhIcwZHT3oXHBEzQIWh2SgW1dfL5UmOFyEn9Max9nznVzurj2e5Yqvsu_Up2uvT4HEPHpVTTDGCdOW0PNAMdlIahzU" referrerpolicy="no-referrer" alt="Los Osos Oaks State Natural Reserve Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=35.306311188492586,-120.81353137723222">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=597">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85x4BjUMbRUfuIrtH9-WeYoMrJ_WPzsXijZyzj8DljPkuahdmOhPUhwTgHPozfKiuinGh7y04AzhaSDtsBFdf_eH74abkQFlXD05hzk1jHSWmpa72qG" alt="Los Osos Oaks State Natural Reserve Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV86O6Or6Mr3v3AHDxXcIPEaIzA1cMbQd3ljG58X19rRkO37KvDu7zKrxDKYKwoDnHflpKNgBAkePddpxnRyjVsXSdFqfzEHcD0HNJJqhj6OmJeVLvaGE" alt="Los Osos Oaks State Natural Reserve Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV869vUw71B2kg3OtRt9Liytd9BGGkoPdnUXue8_Uq6BoMG-nnnRa7D_02NrOL3uhNj7u20ZCOJ_ecFGQlAeWOe2jMlKGiWLsI5GNMenCQV0G13Wk7YrG" alt="Los Osos Oaks State Natural Reserve Landscape Photo 3"></img>
             </div>
           <div id="436" class="sign-container sign-shown state-park">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/436.svg" referrerpolicy="no-referrer" alt="MacKerricher State Park Sign Photo"></img>
@@ -1657,14 +1699,21 @@
               <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
             </div>
-          <div id="609" class="sign-container sign-shown state-beach">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/609.svg" referrerpolicy="no-referrer" alt="Mandalay State Beach Sign Photo"></img>
-            <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.181885426614095,-119.235462410618">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+          <div id="609" class="sign-container sign-shown visited state-beach">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85cA25KFKye7_JdsPlwXTzYL4cAJEhscB6KAprMvB7EGI6KaKM8jguHSyY3NvlDk9K9Eg-vxXavr0zh0c4e9sapG8g0cxs5Z0prIUhsBzCGqgLA_io" referrerpolicy="no-referrer" alt="Mandalay State Beach Sign Photo"></img>
+            <img class="park-sign-overlay hidden-overlay" src="img/overlay/609.svg" alt="Mandalay State Beach Sign Overlay">
+            <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.197768583680904,-119.24768890058044">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=609">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87XwPuD4ov1Xoix4JSupApcPG5-JAAnl2tQabjiaib_FH5R6ia5ny_xI7axaaLkDVvMfSIicBp1o8BpKlwjN2i3E2et85jnpVmvqfG6Chqt81b2XYz_" alt="Mandalay State Beach Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV84kvneRLXDRyikrmBKbYRHTsSK0SY-2EAzdWSYiLFvo8pNSXFRQYvDYMPezZtKkT721D-tu4ACmuX4xLFEImke4M8RAsXk1Sx6tsU1hpyXngFVlyB1X" alt="Mandalay State Beach Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV849o0cgk0oC1x95w1O4ebWkomNQEZcqgdJ4A6noAdttdaUp_ug3_bLqifpeie-kXZxHRRu4Cgt04vddPnh7gClEho1h362JDz_6nMXZUw7-H_xttwUR" alt="Mandalay State Beach Landscape Photo 3"></img>
             </div>
           <div id="545" class="sign-container sign-shown visited state-beach">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc8yuEYBvjTDdJnlgUBbmGdoyT3-l8pIGYtS6WOw8YZSbEVvNDJ9ItoMJZUVnarr_Q9IbeX69_9xEuuzWfR6hmh6vfHFOBboKaNfnsw-GxK4oDrd1vA" referrerpolicy="no-referrer" alt="Manresa State Beach Sign Photo"></img>
@@ -1894,14 +1943,20 @@
               <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
             </div>
-          <div id="594" class="sign-container sign-shown state-park">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/594.svg" referrerpolicy="no-referrer" alt="Morro Bay State Park Sign Photo"></img>
+          <div id="594" class="sign-container sign-shown visited state-park">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV86Wkv12QfaAgxAB2X1-BTyY80ZWQpMRI9dCBUzxH10BPJSUT65UBnRxBDgWcAUgA2RnkSyktuFe9qz150AmIdSxHOIFpuh-ZTo9zfameFgNe_j3uS0" referrerpolicy="no-referrer" alt="Morro Bay State Park Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=35.34655141569963,-120.84197745681215">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=594">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV86Yqll2zlPADgXQyUraWriPpl57zGs0poC7pVcM0J-f0siMnhiTVyMSN29yDwgT5Ki13hG_wuyNLUjKqeOA7ZgkmuGa2M6Y1IFwTt2KLzKNfIfI9em9" alt="Morro Bay State Park Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV86prMomJshb8yyHV-jkA_zEHmEag__CEOKG-VTQ3nOvH_chaHz2nadq-b6-UZHza0sLFyvov-RK0acBK_X5YQ5LOCQrWGiiDeq6Md0hAX0xjqM4ho-m" alt="Morro Bay State Park Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV84bQqwUvOzUqFdMq8GR2RsV8_-UZeo3GUbflvXJ0oxQsXSHjEmOsE_8oYl6GPAPmpaeDxrKH6NSasA33SDn0du8bpJTbrqM-L2N9eSvOGMbe0NG_yXq" alt="Morro Bay State Park Landscape Photo 3"></img>
             </div>
           <div id="593" class="sign-container sign-shown visited state-beach">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc8l_9GGUb9OwxCQmCi0MtpuMEDPgX3NRDWJsn1HEzChNPAf4MoL8Nj4YYLuvBXQB_-hEnFo-ybPU09iL13rDWsxr8r6N-mhxCHYBmzwtkKB42TSMyo" referrerpolicy="no-referrer" alt="Morro Strand State Beach Sign Photo"></img>
@@ -2183,14 +2238,20 @@
             <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc_N_mBQpoLbfPwT_o92EJY_VRLVu0LDdYc_6u7v4sN6K1h4bFXcaIzFj09mxhtIoOqL6aAKL0L-Vx-DqwPs5XN-hNbmAPU9JqhiJz_AiZHh9tgEBnyQ" alt="Pigeon Point Light Station State Historic Park Landscape Photo 2"></img>
             <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc_YPCsco4wT9Wa7lj3Xhz0X6eOhV8kCtgSGYJgVZfQ9lNiLBsfix2eClDFVAfmRW2DGXa-dWGvttaCO7jhQ1v9I9UvwTrahaablVWy8BRx2jZrUOION" alt="Pigeon Point Light Station State Historic Park Landscape Photo 3"></img>
             </div>
-          <div id="595" class="sign-container sign-shown state-beach">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/595.svg" referrerpolicy="no-referrer" alt="Pismo State Beach Sign Photo"></img>
+          <div id="595" class="sign-container sign-shown visited state-beach">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV871tOedG9A_ejQYmgMlkP9EeItsU_zwxIc-lhd9-GRMT_Xtt3mwFaCOC0QiaxupGiFkDvgCDeC6uLd0CoZOkhQRKekXEe_867MNa-fNg0wfybfAvsE" referrerpolicy="no-referrer" alt="Pismo State Beach Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=35.10665063717499,-120.62707595973694">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=595">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV86siY8M1iPnTo-hUg6cgDqlcSmXobUpvhBoovjN9V1dKDm5PyTe_7eOTJwXbNG-SxbqDsmAqSUMI39Ihd6uyldvFZ-Hwu44Clz6b07Np4ZD2_mk-Fyu" alt="Pismo State Beach Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87xM1r2uh9yhNVAIcwLzDR3BBGPXjq2lT5UTdC6NJDfOEyT1z58hOWtnVUXS9gCPmyyFL43DcvSmw4-lmfPf4OmxGZ3h-TQv7AiK1m5mnGjJhWarLZ1" alt="Pismo State Beach Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV86gZOJw3IodnDqjVmVOyNfunuYqnjUKz9mpgc8dmvxvgtbvzrCyKO0MLhi8HBdAlOXcxE7CYx-NhOKMsyegblnp8CKQ2mxXalYjYLQclxRJTYy5_Jw_" alt="Pismo State Beach Landscape Photo 3"></img>
             </div>
           <div id="622" class="sign-container sign-shown state-park">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/622.svg" referrerpolicy="no-referrer" alt="Placerita Canyon State Park Sign Photo"></img>
@@ -2410,7 +2471,7 @@
             <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc_DNlxJSU7HgX9pHqE7RMpLazObgys22PHKC8iYBdPU40x6UlNHSkks6TZ0EgzXAvFePOfoSYRAVqmdRLF9V62MnA1pv1qIuBA0rzpOgq9DJkFM8sZj" alt="Reynolds Wayside Campground Landscape Photo 3"></img>
             </div>
           <div id="422" class="sign-container sign-shown visited state-park">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc88Dv-Q1V1082JdYdR3xJSzvON8h0-q_Sb6bRNzL4RCCpYJ7i2pmfnvQx5o9uTxj8R2bCSPuY6ysmOSEdznM13gyJYGd81iig8AkNH5UM9X3Zo0_8g" referrerpolicy="no-referrer" alt="Richardson Grove State Park Sign Photo"></img>
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV870OoePu8OUl1FzqhJ2HSXvqBLRdwn8CxWvys01mYDvqfsrrPWggkCNKzGDllv2KOlaFlT4-UWXFbAd0Mqdch6cLLeX7Wn7UrDxnJGfVLdxVyr0Reo" referrerpolicy="no-referrer" alt="Richardson Grove State Park Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=40.023373305753964,-123.7940238436778">
               <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
@@ -2553,14 +2614,20 @@
             <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc8TBCPxWczVW6wBVTzalD1_z4uFk8nl_Zt_epOm8SwRaeXv05g78SPgTptaaOnHhQbj4lfQt7sQJw4TO49uUt0t_xwtbapohaxXojwPWF4sidwLH0wd" alt="San Bruno Mountain State Park Landscape Photo 2"></img>
             <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/AIL4fc9C21_6LR9XxSeea_kM0cgo7WybbjkvE7mhqh8E56HmkGELgzP1-YUsbd14IyXRVMUoQAZUZdG-H9mVYpculklRObZPdiJxXwhs-augfchIwEOY7u5Y" alt="San Bruno Mountain State Park Landscape Photo 3"></img>
             </div>
-          <div id="600" class="sign-container sign-shown state-beach">
-            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/600.svg" referrerpolicy="no-referrer" alt="San Buenaventura State Beach Sign Photo"></img>
+          <div id="600" class="sign-container sign-shown visited state-beach">
+            <img class="park-sign" src="img/loading/loading-sign.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV84SjK1_7w2wPb9fB3F_sG9nvS0iQ0b2OsPCzJcMHuaTk7EwIT8NCutIem8dxjBG5eQmwuIxh5JiPD1RS3wMIW8pSnUMGERwuxj50A_RN6BeVMOGAGw" referrerpolicy="no-referrer" alt="San Buenaventura State Beach Sign Photo"></img>
             <a class="icon-container" href="https://maps.google.com/maps?saddr=My+Location&daddr=34.26904895526352,-119.27622349670787">
-              <img class="maps-icon-fresh icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
+              <img class="maps-icon-visited icon" src="img/icon/google-maps-pin.svg" alt="Google Maps Icon">
             </a>
             <a class="icon-container" href="https://www.parks.ca.gov/?page_id=600">
-              <img class="website-icon-fresh icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
+              <img class="website-icon-visited icon" src="img/icon/park-emblem.svg" alt="State Parks Website Icon">
             </a>
+            <a class="icon-container">
+              <img class="gallery-icon-visited icon" src="img/icon/landscape.svg" alt="Landscape Photos Icon">
+            </a>
+            <img class="landscape-hidden landscape-hidden-1" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV87FsrzGxS5MnwHmSVD02T69K4Rh_V1Hr-pBI8V3psH5vOzY0GGBRW5PNK5gBDQwHGBh5CXgOucTzofU0m_87DMdMWWfIgHX9opFyzBHLKvDQNsheOFZ" alt="San Buenaventura State Beach Landscape Photo 1"></img>
+            <img class="landscape-hidden landscape-hidden-2" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV85SLzIN-NGYzTJ2Els7TXvhx7U4_Yvtq_jrw_1tIYj1b8Gabv_f6htMlN33zp9UxuxXTLf-WReOZ0Ax4J5l5jky3Hengxl-O63B5hsRSVY1wJVGreJG" alt="San Buenaventura State Beach Landscape Photo 2"></img>
+            <img class="landscape-hidden landscape-hidden-3" src="img/loading/loading-landscape.svg" data-src="https://lh3.googleusercontent.com/pw/ABLVV86ubntlYk2KHer5faBl0M4HY-sC75v9GCV2OJV1xSValCX8PdHPkE9xI3jXHoK9czSVd6owVfE8Wr6ZWP5C-i4Hvebhldy0e-SGrk0cyIaQSpQV_ZrW" alt="San Buenaventura State Beach Landscape Photo 3"></img>
             </div>
           <div id="646" class="sign-container sign-shown state-beach">
             <img class="park-sign" src="img/loading/loading-sign.svg" data-src="img/parks/646.svg" referrerpolicy="no-referrer" alt="San Clemente State Beach Sign Photo"></img>

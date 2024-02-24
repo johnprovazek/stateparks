@@ -192,13 +192,13 @@ function showLandscapes(signContainerElement){
   let galleryContainer = createElement(`
     <div id='landscape-gallery-container'>
       <div id='landscape-images-container'>
-        <div class='landscape-grid' id='landscape-grid-container'>
+        <div class='landscape-grid' id='landscape-grid-container' onclick='event.stopPropagation()'>
           <img class='landscape landscape-1' src=${signContainerElement.querySelector('.landscape-hidden-1').src} ></img>
           <img class='landscape landscape-2' src=${signContainerElement.querySelector('.landscape-hidden-2').src} ></img>
           <img class='landscape landscape-3' src=${signContainerElement.querySelector('.landscape-hidden-3').src} ></img>
         </div>
       </div>
-      <div class='landscape-grid' id='exit-grid-container'>
+      <div class='landscape-grid' id='exit-grid-container' onclick='event.stopPropagation()'>
         <svg class='exit-landscape-button' onclick='hideLandscapes()' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 2500 2500' shape-rendering='geometricPrecision' text-rendering='geometricPrecision'>
           <ellipse rx='1175' ry='1175' transform='translate(1250 1250)' fill='#592626' stroke='#fcc917' stroke-width='150'/>
           <path d='M1988.19,1407.99l.02-316.25-1035.834,15.99-440-16.07-.018,311.67l467.5-13.72Z' transform='matrix(-.707107 0.707107-.707107-.707107 3018.119405 1249.49909)' fill='#fcc917'/>
@@ -209,6 +209,7 @@ function showLandscapes(signContainerElement){
   `);
   landscapeContainer.appendChild(galleryContainer);
   landscapeContainer.classList.add('shown');
+  landscapeContainer.onclick = function() { hideLandscapes() };
   document.body.classList.add('no-scroll');
 }
 
