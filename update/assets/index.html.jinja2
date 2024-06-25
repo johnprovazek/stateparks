@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <title>State Parks</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/login.css">
   </head>
   <body>
-    <iframe id="contentFrame" frameBorder="0" allowfullscreen></iframe>
+    <iframe id="contentFrame" allowfullscreen></iframe>
     <div id="dialogWrap">
       <div id="dialogWrapCell">
         <div id="marginWrap">
@@ -41,11 +41,11 @@
             </div>
           </div>
           <span id="guestaccess" onclick="loadGuestPage()">Guest Access</span>
-          <span id="seperator"> | </span>
+          <span id="separator"> | </span>
           <a id="githublink" href="https://github.com/johnprovazek/stateparks">
             <span>Github</span>
           </a>
-        <div id="marginWrap">
+        </div>
       </div>
     </div>
     <script>
@@ -61,7 +61,7 @@
         var invalidPassEl = document.getElementById('invalidPass');
         var trycatcherror = document.getElementById('trycatcherror');
         var successEl = document.getElementById('success');
-        var contentFrame = document.getElementById('contentFrame');  
+        var contentFrame = document.getElementById('contentFrame');
         // Sanity checks
         if (pl === "") {
           submitPass.disabled = true;

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <circle fill="#fcc917" cx="500" cy="500" r="500"/>
+  <g transform="translate(-400,-400) scale(1.8)">
+    <g transform="translate(650,500)">
+      <circle cx="0" cy="0" r="35" fill="#002469" fill-opacity="1">
+        <animateTransform attributeName="transform" type="scale" begin="-0.875s" values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+        <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite" values="1;0" begin="-0.875s"></animate>
+      </circle>
+    </g>
+    <g transform="translate(606.066017178,606.066017178)">
+      <circle cx="0" cy="0" r="35" fill="#002469" fill-opacity="0.875">
+        <animateTransform attributeName="transform" type="scale" begin="-0.75s" values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+        <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite" values="1;0" begin="-0.75s"></animate>
+      </circle>
+    </g>
+    <g transform="translate(500,650)">
+      <circle cx="0" cy="0" r="35" fill="#002469" fill-opacity="0.75">
+        <animateTransform attributeName="transform" type="scale" begin="-0.625s" values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+        <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite" values="1;0" begin="-0.625s"></animate>
+      </circle>
+    </g>
+    <g transform="translate(393.933982822,606.066017178)">
+      <circle cx="0" cy="0" r="35" fill="#002469" fill-opacity="0.625">
+        <animateTransform attributeName="transform" type="scale" begin="-0.5s" values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+        <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite" values="1;0" begin="-0.5s"></animate>
+      </circle>
+    </g>
+    <g transform="translate(350,500)">
+      <circle cx="0" cy="0" r="35" fill="#002469" fill-opacity="0.5">
+        <animateTransform attributeName="transform" type="scale" begin="-0.375s" values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+        <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite" values="1;0" begin="-0.375s"></animate>
+      </circle>
+    </g>
+    <g transform="translate(393.933982822,393.933982822)">
+      <circle cx="0" cy="0" r="35" fill="#002469" fill-opacity="0.375">
+        <animateTransform attributeName="transform" type="scale" begin="-0.25s" values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+        <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite" values="1;0" begin="-0.25s"></animate>
+      </circle>
+    </g>
+    <g transform="translate(500,350)">
+      <circle cx="0" cy="0" r="35" fill="#002469" fill-opacity="0.25">
+        <animateTransform attributeName="transform" type="scale" begin="-0.125s" values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+        <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite" values="1;0" begin="-0.125s"></animate>
+      </circle>
+    </g>
+    <g transform="translate(606.066017178,393.933982822)">
+      <circle cx="0" cy="0" r="35" fill="#002469" fill-opacity="0.125">
+        <animateTransform attributeName="transform" type="scale" begin="0s" values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+        <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite" values="1;0" begin="0s"></animate>
+      </circle>
+    </g>
+  </g>
+</svg>

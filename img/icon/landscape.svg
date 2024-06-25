@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 700 700" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-  <ellipse rx="350" ry="350" transform="translate(350 350)" fill="#fcc917"/>
-  <path d="M800,500h400v-300h-400v300Z" transform="translate(-700 50)" fill="none" stroke="#002469" stroke-width="35" stroke-linecap="square" stroke-linejoin="round" />
-  <path d="M170,260v-50h400v300h-50" transform="translate(-20-10)" fill="none" stroke="#002469" stroke-width="35" stroke-linejoin="round" />
-  <path d="M220,210v-50h400v300h-50" transform="translate(-20-10)" fill="none" stroke="#002469" stroke-width="35" stroke-linejoin="round" />
-</svg>

@@ -20,7 +20,7 @@
   background-color: var(--parks-yellow);
 }
 
-#marginWrap{
+#marginWrap {
   margin-left: 4px;
   margin-right: 4px;
 }
@@ -34,7 +34,7 @@
   margin-right: auto;
   overflow: hidden;
   text-align: left;
-  position:relative;
+  position: relative;
   z-index: 5;
 }
 
@@ -84,7 +84,7 @@
   border: solid #000000 2px;
   float: right;
   cursor: pointer;
-  font-family: 'FormataMedium';
+  font-family: "FormataMedium";
   color: var(--parks-yellow);
 }
 
@@ -93,8 +93,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  height: 100dvh; /* fixes mobile address bar height issues */
+  height: 100dvh;
+  border: none;
 }
 
 #attribution {
@@ -108,7 +108,8 @@
   font-size: 0.8em;
 }
 
-#attribution, #attribution a {
+#attribution,
+#attribution a {
   color: #999;
 }
 
@@ -117,7 +118,7 @@
   color: red;
 }
 
-#passwordPrompt{
+#passwordPrompt {
   color: var(--parks-brown);
 }
 
@@ -127,22 +128,23 @@
   background-color: var(--parks-brown);
   border: solid #000000 2px;
   cursor: pointer;
-  font-family: 'FormataMedium';
+  font-family: "FormataMedium";
   color: var(--parks-yellow);
   position: relative;
   top: 20px;
-  left:auto;
-  right:auto;
+  left: auto;
+  right: auto;
 }
 
 #guestaccess {
   font-size: 20px;
   cursor: pointer;
-  font-family: 'FormataMedium';
+  font-family: "FormataMedium";
   color: var(--parks-brown);
   text-decoration: underline;
 }
 
-#githublink, #seperator {
+#githublink,
+#separator {
   color: var(--parks-brown);
 }

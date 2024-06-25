@@ -1,77 +1,78 @@
+import { filterParks, hideLandscapes } from "./main.js";
+
+let navbarActiveTitleTextElement = null;
+
 // Handles navbar setup.
-function navbarOnLoad(){
-  navbarSetDropdownText(); // Sets the dropdown text. Handles mobile screens showing the number of parks visited per category.
-  let dropdownItems = document.getElementsByClassName('dropdown-item');
-  for (let i = 0; i < dropdownItems.length; i++) {
-    dropdownItems[i].addEventListener('click', navbarHandleSelectedDropdown);
-  }
-};
+export function navbarOnLoad() {
+  document.getElementById("navbar-desktop-filter-button").addEventListener("click", function () {
+    hideLandscapes();
+    navbarToggleDropdown();
+  });
+  document.getElementById("navbar-mobile-filter-button").addEventListener("click", function () {
+    hideLandscapes();
+    navbarToggleDropdown();
+  });
+  document.querySelectorAll(".navbar-parks-filter").forEach((filterElement) => {
+    filterElement.addEventListener("click", (event) => {
+      navbarFilterSelect(event);
+    });
+  });
+  document.getElementById("navbar").addEventListener("mouseleave", () => {
+    navbarToggleDropdown("close");
+  });
+  navbarScaleSVGText();
+}
 
 // Handles navbar resizing.
-function navbarOnResize(){
-  navbarMobileDropdownClose();
-  navbarSetDropdownText();
+export function navbarOnResize() {
+  navbarScaleSVGText();
+  navbarToggleDropdown("close");
 }
 
-// Handles adding dropdown text. On mobile screens the dropdown text will include the number of parks visited per category.
-function navbarSetDropdownText(){
-  let parkCategories = ['all','state-park','state-historic-park','state-beach','state-recreation-area','state-natural-reserve','state-vehicular-recreation-area','other'];
-  for (let parkCategory of parkCategories) {
-    let navElement = document.getElementById(parkCategory + '-filter');
-    let navElementText = navElement.textContent.split(' - ')[0];
-    if(window.innerWidth < 1025){
-      navElementText = navElementText + ' - ' + stats[parkCategory]['visited'] + '/' + stats[parkCategory]['count'];
+// Processes toggling the navbar filter dropdown.
+export function navbarToggleDropdown(action) {
+  let parkFiltersElement = document.getElementById("navbar-parks-filters");
+  if (action === "close") {
+    parkFiltersElement.classList.add("hidden");
+  } else if (action === "open") {
+    parkFiltersElement.classList.remove("hidden");
+  } else {
+    parkFiltersElement.classList.toggle("hidden");
+  }
+}
+
+// Handles selecting a park filter option.
+function navbarFilterSelect(event) {
+  let filterElement = event.currentTarget;
+  document.querySelector(".filter-active").classList.remove("filter-active");
+  filterElement.classList.add("filter-active");
+  navbarToggleDropdown("close");
+  filterParks(filterElement.id.replace("-filter", ""));
+  document.getElementById("navbar-desktop-filter-button").textContent = filterElement.textContent + " ▾";
+}
+
+// Handles scaling and selecting the navbar title text.
+function navbarScaleSVGText() {
+  let titleTextWidthDifference = Number.MAX_SAFE_INTEGER;
+  let newTitleTextElement = null;
+  let navbarTitleElement = document.getElementById("navbar-title");
+  let titleWidth = navbarTitleElement.offsetWidth;
+  let svgWidth = titleWidth * (100 / navbarTitleElement.offsetHeight);
+  document.getElementById("navbar-title-svg").setAttribute("viewBox", "0 0 " + svgWidth + " " + 100);
+  document.querySelectorAll(".navbar-title-svg-text").forEach((textElement) => {
+    let textWidth = Math.ceil(textElement.getBoundingClientRect().width);
+    if (textWidth < titleWidth && titleWidth - textWidth < titleTextWidthDifference) {
+      newTitleTextElement = textElement;
+      titleTextWidthDifference = titleWidth - textWidth;
     }
-    navElement.innerHTML = navElementText;
+  });
+  if (newTitleTextElement !== navbarActiveTitleTextElement) {
+    if (navbarActiveTitleTextElement !== null) {
+      navbarActiveTitleTextElement.classList.add("invisible");
+    }
+    if (newTitleTextElement !== null) {
+      newTitleTextElement.classList.remove("invisible");
+    }
+    navbarActiveTitleTextElement = newTitleTextElement;
   }
-}
-
-// Handles when a navbar dropdown item has been selected.
-function navbarHandleSelectedDropdown(event){
-  // Adding and removing 'selected-item' class.
-  document.querySelector('.selected-item').classList.remove('selected-item');
-  let selectedDropdown = event.target;
-  selectedDropdown.classList.add('selected-item');
-  // Setting dropdown text.
-  let dropdown = document.getElementById('navbar-dropdown-menu-link');
-  let code = selectedDropdown.id.replace('-filter','');
-  dropdown.text = selectedDropdown.textContent.split(' - ')[0] + ' ' + stats[code]['visited'] + '/' + stats[code]['count'];
-  // Handle closing dropdown on mobile screens.
-  if(window.innerWidth < 1025){
-    navbarMobileDropdownClose();
-  }
-}
-
-// Handles opening and closing dropdown on a mobile screen when the menu button is pressed.
-function navbarMenuToggle(){
-  if(document.getElementById('navbar-dropdown-menu-link').ariaExpanded == 'true'){
-    navbarMobileDropdownClose();
-  }
-  else{
-    navbarMobileDropdownOpen();
-  }
-}
-
-// Handles opening navbar in a mobile friendly view by overriding Bootstrap.
-function navbarMobileDropdownOpen(){
-  let topDropdown = document.getElementById('navbar-nav-dropdown');
-  topDropdown.className = 'collapse navbar-collapse show show-mobile-collapse';
-  let dropdown = document.getElementById('navbar-dropdown-menu-link');
-  dropdown.className = 'nav-link dropdown-toggle unselectable hide-mobile-dropdown';
-  dropdown.ariaExpanded = 'true';
-  let dropdownList = document.getElementById('dropdown-parks');
-  dropdownList.className = 'dropdown-menu dropdown-menu-end show';
-  dropdownList.setAttribute('data-bs-popper', 'none');
-}
-
-// Handles closing navbar in a mobile friendly view by overriding Bootstrap.
-function navbarMobileDropdownClose(){
-  let topDropdown = document.getElementById('navbar-nav-dropdown');
-  topDropdown.className = 'collapse navbar-collapse';
-  let dropdown = document.getElementById('navbar-dropdown-menu-link');
-  dropdown.className = 'nav-link dropdown-toggle unselectable show-mobile-dropdown';
-  dropdown.ariaExpanded = 'false';
-  let dropdownList = document.getElementById('dropdown-parks');
-  dropdownList.className = 'dropdown-menu dropdown-menu-end';
-  dropdownList.removeAttribute('data-bs-popper');
 }
