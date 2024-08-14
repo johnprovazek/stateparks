@@ -1,0 +1,90 @@
+/*
+  Colors taken directly from California State Parks Brand Guidelines.
+  Link: http://ohv.parks.ca.gov/pages/735/files/Brand%20Standards%20Handbook%2001-07.pdf
+  Hex values taken from PMS Codes:
+  PMS 123, #FCC917, parks-yellow
+  PMS 281, #002469, parks-blue
+  PMS 364, #337321, parks-green
+  PMS 490, #592626, parks-brown
+  PMS 490 ( 60% tint ), #9B7D7D, parks-bear
+  PMS 465, #BA9E66, parks-tan
+  PMS 492, #8F3336, parks-red-brown
+  PMS 697, #803338, parks-red
+  PMS 5415, #5C788F, parks-light-blue
+  PMS 141, #EDCC97, parks-yellow-fade
+*/
+
+:root {
+  --parks-yellow: #fcc917;
+  --parks-blue: #002469;
+  --parks-green: #337321;
+  --parks-brown: #592626;
+  --parks-bear: #9b7d7d;
+  --parks-tan: #ba9e66;
+  --parks-red-brown: #8f3336;
+  --parks-red: #803338;
+  --parks-light-blue: #5c788f;
+  --parks-yellow-fade: #edcc97;
+  --unit: clamp(9px, 1.5vw, 16px);
+}
+
+.blue-background {
+  background-color: var(--parks-blue);
+}
+
+.green-background {
+  background-color: var(--parks-green);
+}
+
+.brown-background {
+  background-color: var(--parks-brown);
+}
+
+@font-face {
+  font-family: "FormataMedium";
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  src: local("FormataMedium"), url("../fonts/Formata-Medium.woff2") format("woff2"),
+    url("../fonts/Formata-Medium.woff") format("woff"), url("../fonts/Formata-Medium.otf") format("opentype");
+}
+
+html {
+  font-family: "FormataMedium";
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--parks-yellow);
+  margin: 0;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+*:focus,
+*:active {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}

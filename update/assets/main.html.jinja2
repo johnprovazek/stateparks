@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>stateparks</title>
+    <meta name="robots" content="noindex">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="preload" as="font" href="fonts/Formata-Medium.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="fonts/Formata-Medium.woff" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/landscape.css">
+  </head>
+  <body>
+    <div id="navbar">
+      <div id="navbar-main">
+        <div class="navbar-icon">
+          <a href="https://www.parks.ca.gov/">
+            <img class="navbar-symbol" src="images/icon/park-emblem.svg" alt="parkslogo" />
+          </a>
+        </div>
+        <div id="navbar-title">
+          <svg id="navbar-title-svg" viewBox="0 0 5000 100">
+            {% if firstname != None and firstname != '' and lastname != None and lastname != '' %}
+            <text
+              id="large-title"
+              class="navbar-title-svg-text invisible"
+              font-size="60px"
+              fill="currentColor"
+              x="0%"
+              y="50%"
+            >
+              {{firstname}} {{lastname}}'s State Park Checklist
+            </text>
+            {% endif %}
+            {% if (firstname != None and firstname != '') %}
+            <text
+              id="medium-title"
+              class="navbar-title-svg-text invisible"
+              font-size="60px"
+              fill="currentColor"
+              x="0%"
+              y="50%"
+            >
+              {{firstname}}'s State Park Checklist
+            </text>
+            {% endif %}
+            <text
+              id="small-title"
+              class="navbar-title-svg-text invisible"
+              font-size="60px"
+              fill="currentColor"
+              x="0%"
+              y="50%"
+            >
+              State Park Checklist
+            </text>
+            <text
+              id="extra-small-title"
+              class="navbar-title-svg-text invisible"
+              font-size="60px"
+              fill="currentColor"
+              x="0%"
+              y="50%"
+            >
+              State Parks
+            </text>
+          </svg>
+        </div>
+        <div id="navbar-end-mobile">
+          <div id="navbar-github-icon" class="navbar-icon">
+            <a href="https://github.com/johnprovazek/stateparks">
+              <svg class="navbar-symbol" viewBox="0 0 1000 1000">
+                <path
+                  fill="currentColor"
+                  d="M500 0A500 500 0 0 0 0 500c0 222 144 408 342 475 25 4 34-11 34-25v-93c-126 24-158-30-169-58-5-15-29-59-51-70-17-10-43-34-1-34 40-1 68 36 77 51 45 76 118 55 146 41 5-32 18-54 32-66-111-13-227-56-227-247 0-55 19-100 50-135-4-12-22-64 5-132 0 0 42-14 138 51a464 464 0 0 1 125-17c43 0 85 6 125 17 96-65 138-51 138-51 27 68 9 120 5 132a193 193 0 0 1 51 135c0 192-117 234-228 247 18 15 34 46 34 92l-1 137c0 14 10 29 34 25a501 501 0 0 0 341-475C1000 224 776 0 500 0z"
+                />
+              </svg>
+            </a>
+          </div>
+          <div id="navbar-mode-icon" class="navbar-icon">
+            <a href="https://csparks.maps.arcgis.com/apps/webappviewer/index.html?id=f96a883ff4154455b23bdc119f4574a9">
+              <svg class="navbar-symbol" viewBox="0 0 1000 1000">
+                <path
+                  fill="currentColor"
+                  d="M501 1001a501 501 0 0 0 500-500A501 501 0 0 0 501 0 501 501 0 0 0 0 501a501 501 0 0 0 501 500zm392-590c-40-25-32 5-32 5l30 23c27 23 49 34 38 68s-28 4-64 32c-34 29 43 36 45 78 4 40-40 19-62 62s-4 87-14 125-98 91-128 108-10-38 0-76-25-81-25-151-21-49-83-49c-64 0-91-34-97-99s53-132 80-153 66-43 104-21 51 42 93 42 43-15 66-32c26-17-34-38-70-34-34 2-27-21-72-38-45-19-61 17-76 23s-62 28-68 0c-4-27 25-31 57-31s4-24-6-41c-11-19-32-19-47-31s19-39 53-30 21 32 59 30 0-39 0-73 43-31 70-46c28-13 62 59 87 89 7 8 19 4 30-4 62 70 104 159 115 256-49 19-47-10-83-32zM501 21l55 2c-7 19-17 34-17 34s-13 45-45 49c-32 2-70 0-87 28s-15 76-42 48-4-29-32-59c-28-28-34-28-49-28-4 0-8-6-13-17 68-38 147-57 230-57zm-291 98c0 4 4 12 25 21 41 17 51 51 32 49-19 0-97 10-25 32 72 19 66 44 34 55s-26-34-32 10c-9 45-15 43-36 49-23 6-66 43-66 66 0 25-13 38 15 59s-9 57-23 30c-15-32-26-51-43-55-19-2-40 25 0 53s40 44 40 66 30 21 51 17c24-3 68 57 83 80a142 142 0 0 0 83 59c38 11 51 34 32 51-22 19-26 60-49 70-26 11-28 43-43 56a136 136 0 0 0-23 31 484 484 0 0 1-59-38v-10c-5-34-9-77-28-94a129 129 0 0 1-42-70c-7-27 10-70-5-97-12-28-12 0-40-41-29-38-29-38-46-70-9-17-15-44-20-72 20-125 87-233 185-307z"
+                />
+              </svg>
+            </a>
+          </div>
+          <div id="navbar-mobile-filter-button" class="navbar-icon">
+            <svg class="navbar-symbol" viewBox="0 0 1000 1000">
+              <path
+                fill="currentColor"
+                d="M900 251V100l-561 7-239-7v150l254-6Zm0 325V424l-561 8-239-8v150l254-6Zm0 324V749l-561 7-239-7v149l254-6Z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div id="navbar-end-desktop">
+          <svg id="navbar-end-desktop-svg" viewBox="0 0 1600 100">
+            <text font-size="60px" fill="currentColor" text-anchor="end" x="100%" y="50%">
+              <a fill="currentColor" href="https://github.com/johnprovazek/stateparks">Github</a>
+              │
+              <a
+                fill="currentColor"
+                href="https://csparks.maps.arcgis.com/apps/webappviewer/index.html?id=f96a883ff4154455b23bdc119f4574a9"
+              >
+                Map
+              </a>
+              │
+              <tspan id="navbar-desktop-filter-button">All State Parks {{stats["all"]["visited"]}}/{{stats["all"]["count"]}} ▾</tspan>
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div id="navbar-parks-filters" class="hidden">
+        <div id="all-filter" class="navbar-parks-filter filter-active">
+          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+            <text font-size="60px" fill="currentColor" x="0%" y="50%">All State Parks - {{stats["all"]["visited"]}}/{{stats["all"]["count"]}}</text>
+          </svg>
+        </div>
+        <div id="state-park-filter" class="navbar-parks-filter">
+          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Parks - {{stats["state-park"]["visited"]}}/{{stats["state-park"]["count"]}}</text>
+          </svg>
+        </div>
+        <div id="state-historic-park-filter" class="navbar-parks-filter">
+          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Historic Parks - {{stats["state-historic-park"]["visited"]}}/{{stats["state-historic-park"]["count"]}}</text>
+          </svg>
+        </div>
+        <div id="state-beach-filter" class="navbar-parks-filter">
+          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Beaches - {{stats["state-beach"]["visited"]}}/{{stats["state-beach"]["count"]}}</text>
+          </svg>
+        </div>
+        <div id="state-recreation-area-filter" class="navbar-parks-filter">
+          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Recreation Areas - {{stats["state-recreation-area"]["visited"]}}/{{stats["state-recreation-area"]["count"]}}</text>
+          </svg>
+        </div>
+        <div id="state-natural-reserve-filter" class="navbar-parks-filter">
+          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Natural Reserves - {{stats["state-natural-reserve"]["visited"]}}/{{stats["state-natural-reserve"]["count"]}}</text>
+          </svg>
+        </div>
+        <div id="state-vehicular-recreation-area-filter" class="navbar-parks-filter">
+          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+            <text font-size="60px" fill="currentColor" x="0%" y="50%">SVRA - {{stats["state-vehicular-recreation-area"]["visited"]}}/{{stats["state-vehicular-recreation-area"]["count"]}}</text>
+          </svg>
+        </div>
+        <div id="other-filter" class="navbar-parks-filter">
+          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+            <text font-size="60px" fill="currentColor" x="0%" y="50%">Other - {{stats["other"]["visited"]}}/{{stats["other"]["count"]}}</text>
+          </svg>
+        </div>
+      </div>
+      <div id="navbar-loading">
+        <span id="navbar-loading-fill"></span>
+      </div>
+    </div>
+    <div id="landscape-container" class="hidden">
+      <div id="landscape-content-container">
+        <div id="landscape-scroll-container">
+          <div id="landscape-grid-container" onclick="event.stopPropagation()">
+            <img id="landscape-1" class="landscape" src="images/loading/loading-landscape.svg" />
+            <img id="landscape-2" class="landscape" src="images/loading/loading-landscape.svg" />
+            <img id="landscape-3" class="landscape" src="images/loading/loading-landscape.svg" />
+            <img
+              id="landscape-exit-button-no-scroll"
+              class="landscape-exit-button"
+              src="images/icon/exit.svg"
+              alt="exit-button"
+            />
+          </div>
+        </div>
+      </div>
+      <img id="landscape-exit-button-scroll" class="landscape-exit-button" src="images/icon/exit.svg" alt="exit-button" />
+    </div>
+    <div id="signs-container" class="hidden">
+      {%+ for park in parks -%}
+      {%+ if park.visited -%}
+      {%- set containerclass = "sign-container visited " + park.type -%}
+      {%- set dataphotolink = park.sign -%}
+      {%+ else -%}
+      {%- set containerclass = "sign-container " + park.type -%}
+      {%- set dataphotolink = "images/parks/" + park.code + ".svg" -%}
+      {%- endif -%}
+      <div id="{{park.code}}" class="{{containerclass}}">
+        <img class="park-sign" src="images/loading/loading-sign.svg" data-src="{{dataphotolink}}" referrerpolicy="no-referrer" alt="{{park.name}} Sign Photo">
+        {%+ if park.overlay -%}
+        <img class="park-sign-overlay hidden" src="images/overlay/{{park.code}}.svg" alt="{{park.name}} Sign Overlay">
+        {%+ endif -%}
+        <a class="maps-icon-container sign-icon-container invisible" href="https://maps.google.com/maps?saddr=My+Location&daddr={{park.coordinates}}">
+          <img class="sign-icon" src="images/icon/google-maps-pin.svg" alt="Google Maps Icon">
+        </a>
+        <a class="website-icon-container sign-icon-container invisible" href="https://www.parks.ca.gov/?page_id={{park.code}}">
+          <img class="sign-icon" src="images/icon/park-emblem.svg" alt="State Parks Website Icon">
+        </a>
+        {%+ if park.visited -%}
+        <a class="gallery-icon-container sign-icon-container invisible icon-loading">
+          <img class="sign-icon" src="images/icon/landscape-button-loading.svg" alt="Landscape Photos Icon">
+        </a>
+        {%+ endif -%}
+        <div class="landscape-latent-container">
+          {%- if park.landscape1|length -%}
+          <img class="landscape-latent landscape-latent-1 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape1}}" alt="{{park.name}} Landscape Photo 1" data-load="false">
+          {% endif -%}
+          {%- if park.landscape2|length -%}
+          <img class="landscape-latent landscape-latent-2 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape2}}" alt="{{park.name}} Landscape Photo 2" data-load="false">
+          {% endif -%}
+          {%- if park.landscape3|length -%}
+          <img class="landscape-latent landscape-latent-3 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape3}}" alt="{{park.name}} Landscape Photo 3" data-load="false">
+          {% endif -%}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <script src="js/util.js" type="module"></script>
+    <script src="js/navbar.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+{
+  "overrides": [
+    {
+      "code": "424",
+      "name": "Admiral William Standley State Recreation Area",
+      "alias": "Adm. William Standley State Recreation Area"
+    },
+    {
+      "code": "627",
+      "name": "Antelope Valley California Poppy Reserve State Natural Reserve",
+      "alias": "Antelope Valley Poppy State Natural Reserve"
+    },
+    {
+      "code": "22628",
+      "name": "California Indian Heritage Center Park Property",
+      "alias": "California Indian Heritage Center"
+    },
+    {
+      "code": "495",
+      "name": "California State Capitol",
+      "alias": "California State Capitol Museum"
+    },
+    {
+      "code": "588",
+      "name": "California State Mining and Mineral Museum Park Property",
+      "alias": "California State Mining and Mineral Museum"
+    },
+    {
+      "code": "668",
+      "name": "California State Railroad Museum Point of Interest",
+      "alias": "California State Railroad Museum"
+    },
+    {
+      "code": "1172",
+      "name": "Carnegie State Vehicular Recreation Area",
+      "alias": "Carnegie SVRA"
+    },
+    {
+      "code": "25572",
+      "name": "Clay Pit State Vehicular Recreation Area",
+      "alias": "Clay Pit SVRA"
+    },
+    {
+      "code": "28617",
+      "name": "Eastern Kern County Onyx Ranch State Vehicular Recreation Area",
+      "alias": "Onyx Ranch SVRA"
+    },
+    {
+      "code": "25642",
+      "name": "Heber Dunes State Vehicular Recreation Area",
+      "alias": "Heber Dunes SVRA"
+    },
+    {
+      "code": "1179",
+      "name": "Hollister Hills State Vehicular Recreation Area",
+      "alias": "Hollister Hills SVRA"
+    },
+    {
+      "code": "1192",
+      "name": "Hungry Valley State Vehicular Recreation Area",
+      "alias": "Hungry Valley SVRA"
+    },
+    {
+      "code": "24343",
+      "name": "Locke Boarding House Museum Point of Interest",
+      "alias": "Locke Boarding House Museum"
+    },
+    {
+      "code": "525",
+      "name": "Marsh Creek State Park State Historic Park",
+      "alias": "Marsh Creek State Historic Park",
+      "type" : "State Historic Park"
+    },
+    {
+      "code": "1207",
+      "name": "Oceano Dunes State Vehicular Recreation Area",
+      "alias": "Oceano Dunes SVRA"
+    },
+    {
+      "code": "1217",
+      "name": "Ocotillo Wells State Vehicular Recreation Area",
+      "alias": "Ocotillo Wells SVRA"
+    },
+    {
+      "code": "1221",
+      "name": "Prairie City State Vehicular Recreation Area",
+      "alias": "Prairie City SVRA"
+    },
+    {
+      "code": "615",
+      "name": "Providence Mountains State Recreation Area",
+      "alias": "Providence Mtns. State Recreation Area"
+    },
+    {
+      "code": "22277",
+      "name": "Rio de Los Angeles State Park State Recreation Area",
+      "alias": "Rio de Los Angeles State Park",
+      "type": "State Park"
+    }
+  ]
+}

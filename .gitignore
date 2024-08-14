@@ -1,0 +1,10 @@
+# Contains encrypted links and passphrase.
+main.html
+update/assets/parks.json
+update/assets/passphrase.txt
+
+# Local python development files.
+update/__pycache__
+
+# Local development files. Contains photos.
+local-dev/

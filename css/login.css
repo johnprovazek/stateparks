@@ -1,0 +1,150 @@
+#dialogWrap {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: table;
+  font-size: 20px;
+}
+
+#dialogText {
+  color: var(--parks-yellow);
+  background-color: var(--parks-brown);
+}
+
+#dialogWrapCell {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  background-color: var(--parks-yellow);
+}
+
+#marginWrap {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+#mainDialog {
+  max-width: 400px;
+  margin: 5px;
+  border: solid #000000 2px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  text-align: left;
+  position: relative;
+  z-index: 5;
+}
+
+#mainDialog > * {
+  padding: 10px 30px;
+}
+
+#passArea {
+  padding: 20px 30px;
+  background-color: var(--parks-yellow);
+}
+
+#passArea > * {
+  margin: 5px auto;
+}
+
+#pass {
+  width: 100%;
+  height: 40px;
+  font-size: 30px;
+  box-sizing: border-box;
+  caret-color: #000000;
+}
+
+#messageWrapper {
+  float: left;
+  vertical-align: middle;
+  line-height: 30px;
+}
+
+.notifyText {
+  display: none;
+}
+
+#invalidPass {
+  color: red;
+}
+
+#success {
+  color: green;
+}
+
+#submitPass {
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: var(--parks-brown);
+  border: solid #000000 2px;
+  float: right;
+  cursor: pointer;
+  font-family: "FormataMedium";
+  color: var(--parks-yellow);
+}
+
+#contentFrame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  border: none;
+}
+
+#attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+#attribution,
+#attribution a {
+  color: #999;
+}
+
+.error {
+  display: none;
+  color: red;
+}
+
+#passwordPrompt {
+  color: var(--parks-brown);
+}
+
+#guest {
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: var(--parks-brown);
+  border: solid #000000 2px;
+  cursor: pointer;
+  font-family: "FormataMedium";
+  color: var(--parks-yellow);
+  position: relative;
+  top: 20px;
+  left: auto;
+  right: auto;
+}
+
+#guestaccess {
+  font-size: 20px;
+  cursor: pointer;
+  font-family: "FormataMedium";
+  color: var(--parks-brown);
+  text-decoration: underline;
+}
+
+#githublink,
+#separator {
+  color: var(--parks-brown);
+}

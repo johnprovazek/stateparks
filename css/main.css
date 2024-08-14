@@ -1,0 +1,57 @@
+.grid {
+  display: grid;
+}
+
+#signs-container {
+  background-color: var(--parks-yellow);
+  grid-template-columns: repeat(auto-fit, minmax(var(--sign-width), 1fr));
+}
+
+.sign-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.park-sign {
+  pointer-events: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.park-sign-overlay {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.sign-icon {
+  position: absolute;
+  height: auto;
+  width: min(65px, calc(875 / 975 / 3 * 100%));
+  bottom: calc(50 / 1300 * 100%);
+  right: 50%;
+}
+
+.sign-container.visited > .maps-icon-container > .sign-icon {
+  transform: translateX(-50%);
+}
+
+.sign-container.visited > .website-icon-container > .sign-icon {
+  transform: translateX(50%);
+}
+
+.sign-container.visited > .gallery-icon-container > .sign-icon {
+  transform: translateX(150%);
+}
+
+.sign-container:not(.visited) > .website-icon-container > .sign-icon {
+  transform: translateX(100%);
+}
+
+.icon-loading {
+  cursor: default;
+}
