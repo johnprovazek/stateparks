@@ -8,6 +8,12 @@ This project was built with the intention to be hosted using GitHub Pages. [Page
 
 Built using vanilla JavaScript.
 
+<div align="center">
+  <picture>
+    <img src="https://github.com/user-attachments/assets/efb8ac1f-c335-4c77-89c9-320a01bfb14a" width="830px">
+  </picture>
+</div>
+
 ## Installation
 
 ### Structure
