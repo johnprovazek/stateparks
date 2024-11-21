@@ -167,9 +167,9 @@
       <div id="landscape-content-container">
         <div id="landscape-scroll-container">
           <div id="landscape-grid-container" onclick="event.stopPropagation()">
-            <img id="landscape-1" class="landscape" src="images/loading/loading-landscape.svg" />
-            <img id="landscape-2" class="landscape" src="images/loading/loading-landscape.svg" />
-            <img id="landscape-3" class="landscape" src="images/loading/loading-landscape.svg" />
+            <img id="landscape-1" class="landscape" src="images/loading/loading-landscape.svg" fetchpriority="high" />
+            <img id="landscape-2" class="landscape" src="images/loading/loading-landscape.svg" fetchpriority="high" />
+            <img id="landscape-3" class="landscape" src="images/loading/loading-landscape.svg" fetchpriority="high" />
             <img
               id="landscape-exit-button-no-scroll"
               class="landscape-exit-button"
@@ -191,7 +191,7 @@
       {%- set dataphotolink = "images/parks/" + park.code + ".svg" -%}
       {%- endif -%}
       <div id="{{park.code}}" class="{{containerclass}}">
-        <img class="park-sign" src="images/loading/loading-sign.svg" data-src="{{dataphotolink}}" referrerpolicy="no-referrer" alt="{{park.name}} Sign Photo">
+        <img class="park-sign" src="images/loading/loading-sign.svg" data-src="{{dataphotolink}}" referrerpolicy="no-referrer" alt="{{park.name}} Sign Photo" fetchpriority="high" >
         {%+ if park.overlay -%}
         <img class="park-sign-overlay hidden" src="images/overlay/{{park.code}}.svg" alt="{{park.name}} Sign Overlay">
         {%+ endif -%}
@@ -203,18 +203,18 @@
         </a>
         {%+ if park.visited -%}
         <a class="gallery-icon-container sign-icon-container invisible icon-loading">
-          <img class="sign-icon" src="images/icon/landscape-button-loading.svg" alt="Landscape Photos Icon">
+          <img class="sign-icon" src="images/icon/landscape-button-loading.svg" alt="Landscape Photos Icon" fetchpriority="high" >
         </a>
         {%+ endif -%}
         <div class="landscape-latent-container">
           {%- if park.landscape1|length -%}
-          <img class="landscape-latent landscape-latent-1 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape1}}" alt="{{park.name}} Landscape Photo 1" data-load="false">
+          <img class="landscape-latent landscape-latent-1 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape1}}" alt="{{park.name}} Landscape Photo 1" data-load="false" fetchpriority="high" >
           {% endif -%}
           {%- if park.landscape2|length -%}
-          <img class="landscape-latent landscape-latent-2 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape2}}" alt="{{park.name}} Landscape Photo 2" data-load="false">
+          <img class="landscape-latent landscape-latent-2 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape2}}" alt="{{park.name}} Landscape Photo 2" data-load="false" fetchpriority="high" >
           {% endif -%}
           {%- if park.landscape3|length -%}
-          <img class="landscape-latent landscape-latent-3 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape3}}" alt="{{park.name}} Landscape Photo 3" data-load="false">
+          <img class="landscape-latent landscape-latent-3 hidden" src="images/loading/loading-landscape.svg" data-src="{{park.landscape3}}" alt="{{park.name}} Landscape Photo 3" data-load="false" fetchpriority="high" >
           {% endif -%}
         </div>
       </div>
