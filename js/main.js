@@ -39,6 +39,11 @@ window.onload = () => {
       hideLandscapes();
     });
   });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      hideLandscapes();
+    }
+  });
 };
 
 // Handles page resizing.
