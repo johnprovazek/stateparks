@@ -23,7 +23,6 @@ from bs4 import BeautifulSoup  # Used to parse Google Photos html files.
 parks_json = {}  # California State Parks json.
 sleep_time = 60  # Sleep time between html get requests to avoid flagging script as a robot.
 
-
 def get_direct_link(url):
     """Gets the direct image link from a Google Photos shared album link."""
     try:
@@ -34,7 +33,6 @@ def get_direct_link(url):
     soup = BeautifulSoup(req.content, "html.parser")
     link = soup.find("meta", property="og:image")["content"].split("=")[0]
     return link
-
 
 def create_photo_links():
     """Updating parks.json photo links from Google Photos shared album links in parks.json."""
@@ -60,7 +58,6 @@ def create_photo_links():
     with open("./assets/parks.json", "w", encoding="utf-8") as outfile:
         outfile.write(json_output)
     print("Execution of photos.py complete")
-
 
 # Start script execution.
 print("Running photos.py")

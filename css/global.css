@@ -1,5 +1,5 @@
 /*
-  Colors taken directly from California State Parks Brand Guidelines.
+  Colors taken directly from California State Parks brand guidelines.
   Link: http://ohv.parks.ca.gov/pages/735/files/Brand%20Standards%20Handbook%2001-07.pdf
   Hex values taken from PMS Codes:
   PMS 123, #FCC917, parks-yellow
@@ -25,6 +25,7 @@
   --parks-red: #803338;
   --parks-light-blue: #5c788f;
   --parks-yellow-fade: #edcc97;
+  --parks-black-overlay: #191402;
   --unit: clamp(9px, 1.5vw, 16px);
 }
 
@@ -58,6 +59,7 @@ html {
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 html::-webkit-scrollbar {
@@ -65,7 +67,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  background-color: var(--parks-yellow);
+  background-color: var(--parks-black-overlay);
   margin: 0;
 }
 

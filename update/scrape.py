@@ -6,7 +6,6 @@
 # changed since this script was last run. There is a copy of the California State Parks html file as it was on 9/25/2023
 # in the assets directory for reference.
 
-
 import json  # Used for creating, loading, and modifying json files.
 import os  # Used to process directories and files.
 import re  # Used to match regex patterns.
@@ -21,7 +20,6 @@ from sign import create_sign_svg, create_overlay_svg  # Used to generate state p
 # pylint: disable=C0103
 # pylint: disable=W0603
 # pylint: disable=E0601
-
 
 def add_coords(code, name):
     """Handles adding new coordinate to a park."""
@@ -68,7 +66,6 @@ def add_coords(code, name):
             return ""
         first_prompt = False
 
-
 def clear_directory(path):
     """Clears contents in a directory."""
     for filename in os.listdir(path):
@@ -82,7 +79,6 @@ def clear_directory(path):
             print("Failed to delete " + file_path + ". Reason: " + str(d_e))
             print("Exiting")
             sys.exit()
-
 
 def new_park_entry(park_code, park_name, park_type):
     """Handles creating a new park entry."""
@@ -137,7 +133,6 @@ def new_park_entry(park_code, park_name, park_type):
         },
     }
 
-
 def add_overrides(park_code, park_name, park_type):
     """Adds park overrides if available."""
     if overrides:
@@ -150,7 +145,6 @@ def add_overrides(park_code, park_name, park_type):
                 park_type_override = alc["type"]
             return {"code": park_code, "name": park_name_override, "type": park_type_override}
     return {"code": park_code, "name": park_name, "type": park_type}
-
 
 def scrape():
     """Scraping California State Parks website."""
@@ -284,7 +278,6 @@ def scrape():
     with open("./assets/parks.json", "w", encoding="utf-8") as outfile:
         outfile.write(json_output)
     print("Execution of scrape.py complete")
-
 
 PARKS_URL = "https://www.parks.ca.gov/?page_id=21805"  # California State Parks Url to scrape.
 parks_types_list = [  # California State Parks types of parks.

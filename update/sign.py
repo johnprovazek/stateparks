@@ -26,7 +26,6 @@ import cairo  # Used to create svg images.
 # pylint: disable=W0718
 # pylint: disable=C0103
 
-
 def hex_to_rgb(hex_color):
     """Converts hex color string to rgb decimal format."""
     return {
@@ -35,13 +34,11 @@ def hex_to_rgb(hex_color):
         "b": (int(hex_color[5:7], 16) / 255),
     }
 
-
 def set_font(context, preset, color):
     """Setting font context."""
     context.set_source_rgb(color["r"], color["g"], color["b"])
     context.set_font_size(font_settings["sizes"][preset]["size"])
     context.select_font_face(font_settings["font"], font_settings["slant"], font_settings["weight"])
-
 
 def get_text_box_data(context, line, size, dimension):
     """Getting text box data."""
@@ -49,7 +46,6 @@ def get_text_box_data(context, line, size, dimension):
     set_font(context, size, parks_brown)
     text_box_data = context.text_extents(line)
     return text_box_data[return_types.index(dimension)]
-
 
 def get_line_data_max(context, line):
     """Getting line data using the largest font size that will fit."""
@@ -65,7 +61,6 @@ def get_line_data_max(context, line):
                 print(line + " is too long for one line. Adjustments needed. Exiting")
                 sys.exit()
     return {"line": line, "width": line_width, "size": line_size}
-
 
 def get_line_data(context, line, size):
     """Getting line data at a specific size."""
@@ -83,12 +78,10 @@ def get_line_data(context, line, size):
         sys.exit()
     return {"line": line, "width": line_width, "size": size}
 
-
 def get_max_height(context, size):
     """Getting the max height of a font."""
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÑabcdefghijklmnopqrstuváéíóúñ"
     return get_text_box_data(context, alphabet, size, "height")
-
 
 def create_overlay_svg(code, name, directory):
     """Creating state park svg overlay."""
@@ -168,7 +161,6 @@ def create_overlay_svg(code, name, directory):
         context.text_path(line["line"])
         context.fill()
 
-
 def create_sign_svg(code, name, directory):
     """Creating state park svg sign."""
     surface = cairo.SVGSurface(directory + code + ".svg", w, h)
@@ -243,7 +235,6 @@ def create_sign_svg(code, name, directory):
         context.text_path(line["line"])
         context.fill()
 
-
 def clear_directory(path):
     """Clears contents in a directory."""
     for filename in os.listdir(path):
@@ -257,7 +248,6 @@ def clear_directory(path):
             print("Failed to delete " + file_path + ". Reason: " + str(d_e))
             print("Exiting")
             sys.exit()
-
 
 # Set to True to include debugging features.
 debug = False

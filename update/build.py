@@ -32,14 +32,12 @@ from Crypto.Protocol.KDF import PBKDF2  # Used to encrypt html file.
 # pylint: disable=C0103
 # pylint: disable=W0718
 
-
 def build_html(template_path, result_path, context):
     """Builds html file using jinja templates."""
     environment = jinja2.Environment(loader=jinja2.FileSystemLoader("./"))
     with open(result_path, mode="w", encoding="utf-8") as results:
         results.write(environment.get_template(template_path).render(context))
         print(f"... wrote {result_path}")
-
 
 # Start script execution.
 print("Running build.py")
