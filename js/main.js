@@ -1,45 +1,56 @@
-import { createElement } from "./util.js";
+import { createElement } from "./utils.js";
 import { navbarOnLoad, navbarOnResize, navbarToggleDropdown } from "./navbar.js";
 
-const SIGN_WIDTH_PCT = 0.2; // Ideal sign width as a percentage of screen width.
-const MIN_SIGN_WIDTH = 120; // Minimum sign width.
-const MAX_SIGN_PCT = 1.5; // Percentage of sign width the sign is allowed to expand.
-const SIGN_MOUSE_ALLOWANCE_PCT = 0.25; // Percentage of sign width mouse is allowed to travel.
-const LANDSCAPE_IMAGE_COUNT = 3; // Total count of landscape images.
+// HTML Elements.
+const galleryIconContainers = document.querySelectorAll(".gallery-icon-container");
+const landscapeContainer = document.getElementById("landscape-container");
+const landscapeExitButtons = document.querySelectorAll(".landscape-exit-button");
+const landscapeImages = document.querySelectorAll(".landscape-latent");
+const loadingBar = document.getElementById("navbar-loading-fill");
+const signContainers = document.querySelectorAll(".sign-container");
+const signsContainers = document.getElementById("signs-container");
 
 let activeSignContainerId = null; // Active sign container ID. Used to show and hide park icons.
 let maxSignWidth = 250; // Max park sign width for Google Photos.
+
+const LANDSCAPE_IMAGE_COUNT = 3; // Total count of landscape images.
+const MAX_SIGN_PCT = 1.5; // Percentage of sign width the sign is allowed to expand.
+const MIN_SIGN_WIDTH = 120; // Minimum sign width.
+const SIGN_MOUSE_ALLOWANCE_PCT = 0.25; // Percentage of sign width mouse is allowed to travel.
+const SIGN_WIDTH_PCT = 0.2; // Ideal sign width as a percentage of screen width.
 
 // Handles page setup.
 window.onload = () => {
   navbarOnLoad(); // Handles navbar setup (js/navbar.js).
   displaySignsContainer(); // Calculates park sign widths then displays park signs.
   photoLoadManager(); // Loads park sign and landscape photos.
-  document.querySelectorAll(".sign-container").forEach((signContainer) => {
+  galleryIconContainers.forEach((galleryIconContainer) => {
+    galleryIconContainer.addEventListener("click", (event) => {
+      showLandscapes(event);
+    });
+  });
+  landscapeExitButtons.forEach((exitButton) => {
+    exitButton.addEventListener("click", () => {
+      hideLandscapes();
+    });
+  });
+  signContainers.forEach((signContainer) => {
     signContainer.addEventListener("click", (event) => {
       navbarToggleDropdown("close");
       handleSignClick(event);
     });
   });
-  document.getElementById("signs-container").addEventListener("mousemove", (event) => {
+  signsContainers.addEventListener("mousemove", (event) => {
     handleSignsContainerMouseMove(event);
   });
-  document.getElementById("signs-container").addEventListener("mouseleave", () => {
+  signsContainers.addEventListener("mouseleave", () => {
     if (activeSignContainerId) {
       removeIcons();
+      activeSignContainerId = null;
     }
   });
-  document.querySelectorAll(".gallery-icon-container").forEach((galleryIconContainer) => {
-    galleryIconContainer.addEventListener("click", (event) => {
-      showLandscapes(event);
-    });
-  });
-  document.querySelectorAll(".landscape-exit-button").forEach((exitButton) => {
-    exitButton.addEventListener("click", () => {
-      hideLandscapes();
-    });
-  });
-  document.addEventListener("keydown", function (event) {
+
+  document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       hideLandscapes();
     }
@@ -52,9 +63,9 @@ window.onresize = () => {
 };
 
 // Filters the type of park signs shown.
-export function filterParks(type) {
+export const filterParks = (type) => {
   // Hide all visible park signs.
-  document.querySelectorAll(".sign-container").forEach((sign) => {
+  signContainers.forEach((sign) => {
     sign.classList.add("hidden");
   });
   // Show filtered park signs.
@@ -62,27 +73,26 @@ export function filterParks(type) {
   document.querySelectorAll(`.${targetType}`).forEach((sign) => {
     sign.classList.remove("hidden");
   });
-}
+};
 
 // Hides landscape photos.
-export function hideLandscapes() {
-  document.body.classList.remove("no-scroll");
-  document.getElementById("landscape-container").classList.add("hidden");
-}
+export const hideLandscapes = () => {
+  document.body.classList.remove("overlay-background", "no-scroll");
+  landscapeContainer.classList.add("hidden");
+};
 
 // Calculates park sign widths then displays park signs.
-function displaySignsContainer() {
+const displaySignsContainer = () => {
   let signWidth = parseInt(window.screen.width * SIGN_WIDTH_PCT); // Park sign width.
   signWidth = Math.max(MIN_SIGN_WIDTH, Math.min(signWidth, maxSignWidth));
   maxSignWidth = Math.floor(signWidth * MAX_SIGN_PCT);
   document.querySelector(":root").style.setProperty("--sign-width", `${signWidth}px`);
-  const signsContainerElement = document.querySelector("#signs-container");
-  signsContainerElement.classList.remove("hidden");
-  signsContainerElement.classList.add("grid");
-}
+  signsContainers.classList.remove("hidden");
+  signsContainers.classList.add("grid");
+};
 
 // Handles common processes when adding a new park sign photo or landscape photo.
-function processImage(imageCount, totalImages, loadingBar) {
+const processImage = (imageCount, totalImages, loadingBar) => {
   const newImageCount = imageCount + 1;
   const percentLoaded = parseFloat(loadingBar.style.width);
   const percentLoadedNew = ((newImageCount / totalImages) * 100).toFixed(2);
@@ -92,16 +102,14 @@ function processImage(imageCount, totalImages, loadingBar) {
     console.error("lock issue - processImage");
   }
   return newImageCount;
-}
+};
 
 // Loads park sign and landscape photos.
-function photoLoadManager() {
+const photoLoadManager = () => {
   // Setting up loading bar for park sign photos.
-  const loadingBar = document.getElementById("navbar-loading-fill");
   loadingBar.className = "green-background";
   loadingBar.style.width = "0%";
   // Load park sign photos. Once park sign photos are complete landscape photos are loaded next.
-  const signContainers = document.querySelectorAll(".sign-container");
   let signCount = 0;
   signContainers.forEach((signContainer) => {
     const loadImage = new Image();
@@ -142,16 +150,14 @@ function photoLoadManager() {
     }
     loadImage.src = newImageSrc;
   });
-}
+};
 
 // Loads all landscape photos.
-function landscapePhotosLoad() {
+const landscapePhotosLoad = () => {
   // Setting up loading bar for landscape photos.
-  const loadingBar = document.getElementById("navbar-loading-fill");
   loadingBar.className = "blue-background";
   loadingBar.style.width = "0%";
   // Load landscape photos.
-  const landscapeImages = document.querySelectorAll(".landscape-latent");
   let landscapeCount = 0;
   landscapeImages.forEach((landscapeImage) => {
     const loadImage = new Image();
@@ -182,10 +188,10 @@ function landscapePhotosLoad() {
     const newImageSrc = `${landscapeImage.getAttribute("data-src")}=w900`;
     loadImage.src = newImageSrc;
   });
-}
+};
 
 // Handles clicking on a sign container.
-function handleSignClick(event) {
+const handleSignClick = (event) => {
   const signContainerElement = event.target;
   if (signContainerElement.classList.contains("sign-container")) {
     const id = signContainerElement.id;
@@ -196,21 +202,22 @@ function handleSignClick(event) {
         iconContainer.classList.remove("invisible");
       });
       activeSignContainerId = id;
+    } else {
+      activeSignContainerId = null;
     }
   }
-}
+};
 
 // Hides all visible icons.
-function removeIcons() {
+const removeIcons = () => {
   const visibleIcons = document.querySelectorAll(".sign-icon-container:not(.invisible)");
   visibleIcons.forEach((visibleIconContainer) => {
     visibleIconContainer.classList.add("invisible");
   });
-  activeSignContainerId = null;
-}
+};
 
 // Handles mousing over signs container. Used to remove icons when mousing out of the active area.
-function handleSignsContainerMouseMove(event) {
+const handleSignsContainerMouseMove = (event) => {
   if (activeSignContainerId) {
     const box = document.getElementById(activeSignContainerId).getBoundingClientRect();
     const offset = box.width * SIGN_MOUSE_ALLOWANCE_PCT;
@@ -222,12 +229,13 @@ function handleSignsContainerMouseMove(event) {
     const y = event.clientY;
     if (x < left || x > right || y < top || y > bottom) {
       removeIcons();
+      activeSignContainerId = null;
     }
   }
-}
+};
 
 // Shows landscape photos.
-function showLandscapes(event) {
+const showLandscapes = (event) => {
   const iconContainerElement = event.target.parentElement;
   if (!iconContainerElement.classList.contains("icon-loading")) {
     const signContainerElement = iconContainerElement.parentElement;
@@ -236,7 +244,7 @@ function showLandscapes(event) {
         `.landscape-latent-${i + 1}`
       ).src;
     }
-    document.body.classList.add("no-scroll");
-    document.getElementById("landscape-container").classList.remove("hidden");
+    document.body.classList.add("overlay-background", "no-scroll");
+    landscapeContainer.classList.remove("hidden");
   }
-}
+};

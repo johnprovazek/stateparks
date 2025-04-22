@@ -1,35 +1,44 @@
 import { filterParks, hideLandscapes } from "./main.js";
 
+// HTML Elements.
+const filterButtons = document.querySelectorAll("#navbar-desktop-filter-button, #navbar-mobile-filter-button");
+const parkFilters = document.querySelectorAll(".navbar-parks-filter");
+const navbar = document.getElementById("navbar");
+const parkFiltersElement = document.getElementById("navbar-parks-filters");
+const desktopFilterButton = document.getElementById("navbar-desktop-filter-button");
+const navbarTitleElement = document.getElementById("navbar-title");
+const navbarTitleSVG = document.getElementById("navbar-title-svg");
+const navbarTitleTextSVG = document.querySelectorAll(".navbar-title-svg-text");
+
 let navbarActiveTitleTextElement = null;
 
 // Handles navbar setup.
-export function navbarOnLoad() {
-  const filterButtons = document.querySelectorAll("#navbar-desktop-filter-button, #navbar-mobile-filter-button");
+export const navbarOnLoad = () => {
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       hideLandscapes();
       navbarToggleDropdown();
     });
   });
-  const parkFilters = document.querySelectorAll(".navbar-parks-filter");
+
   parkFilters.forEach((filter) => {
     filter.addEventListener("click", navbarFilterSelect);
   });
-  document.getElementById("navbar").addEventListener("mouseleave", () => {
+
+  navbar.addEventListener("mouseleave", () => {
     navbarToggleDropdown("close");
   });
   navbarScaleSVGText();
-}
+};
 
 // Handles navbar resizing.
-export function navbarOnResize() {
+export const navbarOnResize = () => {
   navbarScaleSVGText();
   navbarToggleDropdown("close");
-}
+};
 
 // Processes toggling the navbar filter dropdown.
-export function navbarToggleDropdown(action) {
-  const parkFiltersElement = document.getElementById("navbar-parks-filters");
+export const navbarToggleDropdown = (action) => {
   if (action === "close") {
     parkFiltersElement.classList.add("hidden");
   } else if (action === "open") {
@@ -37,27 +46,26 @@ export function navbarToggleDropdown(action) {
   } else {
     parkFiltersElement.classList.toggle("hidden");
   }
-}
+};
 
 // Handles selecting a park filter option.
-function navbarFilterSelect(event) {
+const navbarFilterSelect = (event) => {
   const filterElement = event.currentTarget;
   document.querySelector(".filter-active").classList.remove("filter-active");
   filterElement.classList.add("filter-active");
   navbarToggleDropdown("close");
   filterParks(filterElement.id.replace("-filter", ""));
-  document.getElementById("navbar-desktop-filter-button").textContent = `${filterElement.textContent} ▾`;
-}
+  desktopFilterButton.textContent = `${filterElement.textContent} ▾`;
+};
 
 // Handles scaling and selecting the navbar title text.
-function navbarScaleSVGText() {
+const navbarScaleSVGText = () => {
   let titleTextWidthDifference = Number.MAX_SAFE_INTEGER;
   let newTitleTextElement = null;
-  const navbarTitleElement = document.getElementById("navbar-title");
   const titleWidth = navbarTitleElement.offsetWidth;
   const svgWidth = titleWidth * (100 / navbarTitleElement.offsetHeight);
-  document.getElementById("navbar-title-svg").setAttribute("viewBox", `0 0 ${svgWidth} 100`);
-  document.querySelectorAll(".navbar-title-svg-text").forEach((textElement) => {
+  navbarTitleSVG.setAttribute("viewBox", `0 0 ${svgWidth} 100`);
+  navbarTitleTextSVG.forEach((textElement) => {
     let textWidth = Math.ceil(textElement.getBoundingClientRect().width);
     if (textWidth < titleWidth && titleWidth - textWidth < titleTextWidthDifference) {
       newTitleTextElement = textElement;
@@ -73,4 +81,4 @@ function navbarScaleSVGText() {
     }
     navbarActiveTitleTextElement = newTitleTextElement;
   }
-}
+};

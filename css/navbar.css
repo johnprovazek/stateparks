@@ -80,7 +80,7 @@
   cursor: pointer;
 }
 
-#navbar-parks-filters {
+#navbar-parks-filters-list {
   border: 2px solid var(--parks-yellow);
   border-radius: 2px;
   background-color: var(--parks-brown);
@@ -104,7 +104,7 @@
   #navbar-title {
     width: calc(100% - 33 * var(--unit));
   }
-  #navbar-parks-filters {
+  #navbar-parks-filters-list {
     position: absolute;
     top: calc(4.5 * var(--unit));
     right: var(--unit);
@@ -128,10 +128,14 @@
     width: calc(100% - 22 * var(--unit));
   }
   #navbar-parks-filters {
-    margin-top: 4px;
-    margin-left: var(--unit);
-    margin-right: var(--unit);
-    margin-bottom: calc(var(--unit) - 4px);
+    position: absolute;
+    width: 100vw;
+    background-color: var(--parks-brown);
+  }
+  #navbar-parks-filters-list {
+    position: relative;
+    width: calc(100% - 2 * var(--unit) - 4px);
+    margin: var(--unit);
   }
   .navbar-parks-filter {
     height: calc(2.5 * var(--unit));

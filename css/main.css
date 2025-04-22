@@ -1,3 +1,7 @@
+.overlay-background {
+  background-color: var(--parks-black-overlay);
+}
+
 .grid {
   display: grid;
 }

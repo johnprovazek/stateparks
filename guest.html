@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#592626" />
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="preload" as="font" href="fonts/Formata-Medium.woff2" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" as="font" href="fonts/Formata-Medium.woff" type="font/woff2" crossorigin="anonymous">
+    <link as="font" href="fonts/Formata-Medium.woff2" type="font/woff2" crossorigin="anonymous">
+    <link as="font" href="fonts/Formata-Medium.woff" type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -118,45 +118,47 @@
         </div>
       </div>
       <div id="navbar-parks-filters" class="hidden">
-        <div id="all-filter" class="navbar-parks-filter filter-active">
-          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
-            <text font-size="60px" fill="currentColor" x="0%" y="50%">All State Parks - 133/283</text>
-          </svg>
-        </div>
-        <div id="state-park-filter" class="navbar-parks-filter">
-          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
-            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Parks - 42/89</text>
-          </svg>
-        </div>
-        <div id="state-historic-park-filter" class="navbar-parks-filter">
-          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
-            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Historic Parks - 29/52</text>
-          </svg>
-        </div>
-        <div id="state-beach-filter" class="navbar-parks-filter">
-          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
-            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Beaches - 36/62</text>
-          </svg>
-        </div>
-        <div id="state-recreation-area-filter" class="navbar-parks-filter">
-          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
-            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Recreation Areas - 12/32</text>
-          </svg>
-        </div>
-        <div id="state-natural-reserve-filter" class="navbar-parks-filter">
-          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
-            <text font-size="60px" fill="currentColor" x="0%" y="50%">State Natural Reserves - 7/16</text>
-          </svg>
-        </div>
-        <div id="state-vehicular-recreation-area-filter" class="navbar-parks-filter">
-          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
-            <text font-size="60px" fill="currentColor" x="0%" y="50%">SVRA - 2/9</text>
-          </svg>
-        </div>
-        <div id="other-filter" class="navbar-parks-filter">
-          <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
-            <text font-size="60px" fill="currentColor" x="0%" y="50%">Other - 5/23</text>
-          </svg>
+        <div id="navbar-parks-filters-list">
+          <div id="all-filter" class="navbar-parks-filter filter-active">
+            <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+              <text font-size="60px" fill="currentColor" x="0%" y="50%">All State Parks - 133/283</text>
+            </svg>
+          </div>
+          <div id="state-park-filter" class="navbar-parks-filter">
+            <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+              <text font-size="60px" fill="currentColor" x="0%" y="50%">State Parks - 42/89</text>
+            </svg>
+          </div>
+          <div id="state-historic-park-filter" class="navbar-parks-filter">
+            <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+              <text font-size="60px" fill="currentColor" x="0%" y="50%">State Historic Parks - 29/52</text>
+            </svg>
+          </div>
+          <div id="state-beach-filter" class="navbar-parks-filter">
+            <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+              <text font-size="60px" fill="currentColor" x="0%" y="50%">State Beaches - 36/62</text>
+            </svg>
+          </div>
+          <div id="state-recreation-area-filter" class="navbar-parks-filter">
+            <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+              <text font-size="60px" fill="currentColor" x="0%" y="50%">State Recreation Areas - 12/32</text>
+            </svg>
+          </div>
+          <div id="state-natural-reserve-filter" class="navbar-parks-filter">
+            <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+              <text font-size="60px" fill="currentColor" x="0%" y="50%">State Natural Reserves - 7/16</text>
+            </svg>
+          </div>
+          <div id="state-vehicular-recreation-area-filter" class="navbar-parks-filter">
+            <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+              <text font-size="60px" fill="currentColor" x="0%" y="50%">SVRA - 2/9</text>
+            </svg>
+          </div>
+          <div id="other-filter" class="navbar-parks-filter">
+            <svg class="navbar-parks-filter-svg" viewBox="0 0 5000 100" dominant-baseline="central">
+              <text font-size="60px" fill="currentColor" x="0%" y="50%">Other - 5/23</text>
+            </svg>
+          </div>
         </div>
       </div>
       <div id="navbar-loading">
@@ -3828,7 +3830,7 @@
       </div>
       
     </div>
-    <script src="js/util.js" type="module"></script>
+    <script src="js/utils.js" type="module"></script>
     <script src="js/navbar.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
   </body>
